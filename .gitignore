@@ -27,3 +27,6 @@ replay_pid*
 /nbproject/
 /MLEntregas/nbproject/private/
 build.xml
+/MLEntregas-Web/nbproject/private/
+/MLEntregas-Web/build/
+database.properties

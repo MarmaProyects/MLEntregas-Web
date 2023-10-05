@@ -1,9 +1,8 @@
-package Servlets;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
+package Servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,14 +12,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import logica.fabrica.Fabrica;
+import logica.interfaces.IEnvio;
 
 /**
  *
- * @author gasto
+ * @author franc
  */
-@WebServlet(urlPatterns = {""})
-public class Home extends HttpServlet {
-
+@WebServlet(name = "ListaEnvios", urlPatterns = {"/ListaEnvios"})
+public class ListaEnvios extends HttpServlet {
+    
+    public Fabrica fab = Fabrica.getInstancia();
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -34,16 +37,7 @@ public class Home extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Home</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Home at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+
         }
     }
 
@@ -59,7 +53,9 @@ public class Home extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/Vistas/Home.jsp");
+        IEnvio iEnvio = fab.getControladorEnvio();
+        request.setAttribute("ListaEnvios", iEnvio.listaDeEnvios());
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/Vistas/ListadoEnvios.jsp");
         dispatcher.forward(request, response);
     }
 
