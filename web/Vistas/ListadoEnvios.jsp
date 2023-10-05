@@ -4,9 +4,11 @@
     Author     : franc
 --%>
 
+<%@page import="logica.clases.Envio"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<% ArrayList<Envio> listadoEnv = null; %>
+<% ArrayList<Envio> listadoEnv = (ArrayList<Envio>) request.getAttribute("ListaEnvios"); %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -21,11 +23,11 @@
                 <th>Cliente emisor</th>
                 <th>Código rastreo</th>
             </tr>
-            <% for (int i = 0; i < listadoEnv.length(); i++) {%>
-            <td><%= listadoEnv[i].getIdEnvio()%></td>
-            <td><%= listadoEnv[i].getDireccionD()%></td>
-            <td><%= listadoEnv[i].getClienteE()%></td>
-            <td><%= listadoEnv[i].getCodigoR() %></td>
+            <% for (int i = 0; i < listadoEnv.size(); i++) {%>
+                <td><%= listadoEnv.get(i).getIdEnvio()%></td>
+                <td><%= listadoEnv.get(i).getDireccionDestino().getCalle() %></td>
+                <td><%= listadoEnv.get(i).getClienteEmisor().getNombre() %></td>
+                <td><%= listadoEnv.get(i).getPaquete().getDescripcion() %></td>
             <% }%>
         </table>
     </body>
