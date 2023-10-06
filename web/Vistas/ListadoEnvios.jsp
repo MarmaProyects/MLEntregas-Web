@@ -24,10 +24,12 @@
                 <th>Código rastreo</th>
             </tr>
             <% for (int i = 0; i < listadoEnv.size(); i++) {%>
+            <tr>
                 <td><%= listadoEnv.get(i).getIdEnvio()%></td>
                 <td><%= listadoEnv.get(i).getDireccionDestino().getCalle() %></td>
                 <td><%= listadoEnv.get(i).getClienteEmisor().getNombre() %></td>
                 <td><%= listadoEnv.get(i).getPaquete().getDescripcion() %></td>
+            </tr>
             <% }%>
         </table>
     </body>
