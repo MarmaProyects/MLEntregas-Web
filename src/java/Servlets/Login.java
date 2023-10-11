@@ -6,6 +6,7 @@ package Servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,7 +40,7 @@ public class Login extends HttpServlet {
             out.println("<title>Servlet Login</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Login at " + request.getContextPath() + "xd</h1>");
+            out.println("<h1>Servlet Login at " + request.getContextPath() + "hola</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -57,7 +58,8 @@ public class Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/Vistas/Login.jsp");
+        dispatcher.forward(request, response);
     }
 
     /**
