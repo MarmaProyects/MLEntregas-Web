@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author gasto
  */
-@WebServlet(name = "Login", urlPatterns = {"/Login"})
-public class Login extends HttpServlet {
+@WebServlet(name = "Registro", urlPatterns = {"/Registro"})
+public class Registro extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -58,7 +58,7 @@ public class Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/Vistas/Login.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/Vistas/Registro.jsp");
         dispatcher.forward(request, response);
     }
 
