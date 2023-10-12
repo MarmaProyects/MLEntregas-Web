@@ -26,10 +26,10 @@
             <form id="formularioR" onsubmit="verificarCamposVacios()">
                 <div class="mb-3">
                     <label for="InputCedula" class="form-label">Cedula</label>
-                    <input type="text" class="form-control" id="InputCedula" required>
+                    <input type="text" class="form-control" id="InputCedula">
                 </div>
                 <div class="col-auto">
-                    <span id="cedulaHelpInline" class="ocultarElemento" name="errorCedula">
+                    <span id="errorCedula" class="ocultarElemento">
                         Debe ingresar entre 1 y 8 digitos.
                     </span>
                 </div>
@@ -38,7 +38,7 @@
                     <input type="text" class="form-control" id="InputNombre" required>
                 </div>
                 <div class="col-auto">
-                    <span id="nombreHelpInline" class="ocultarElemento" name="errorNombre">
+                    <span id="errorNombre" class="ocultarElemento">
                         Debe ingresar entre 1 y 30 digitos.
                     </span>
                 </div>
@@ -47,7 +47,7 @@
                     <input type="text" class="form-control" id="InputApellido" required>
                 </div>
                 <div class="col-auto">
-                    <span id="apellidoHelpInline" class="ocultarElemento" name="errorApellido">
+                    <span id="errorApellido" class="ocultarElemento">
                         Debe ingresar entre 1 y 30 digitos.
                     </span>
                 </div>
@@ -56,7 +56,7 @@
                     <input type="email" class="form-control" id="InputCorreo" required>
                 </div>
                 <div class="col-auto">
-                    <span id="correoHelpInline" class="ocultarElemento" name="errorCorreo">
+                    <span id="errorCorreo" class="ocultarElemento">
                         Debe ingresar entre 1 y 40 digitos.
                     </span>
                 </div>
@@ -65,7 +65,7 @@
                     <input type="password" class="form-control" id="InputContrasenia" required>
                 </div>
                 <div class="col-auto">
-                    <span id="contraseniaHelpInline" class="ocultarElemento" name="errorContrasenia">
+                    <span id="errorContrasenia" class="ocultarElemento">
                         Debe ingresar entre 1 y 9 digitos.
                     </span>
                 </div>

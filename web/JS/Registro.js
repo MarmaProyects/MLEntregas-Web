@@ -3,22 +3,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/JavaScript.js to edit this template
  */
 
-function verificarCamposVacios (){
-    let cedula = document.getElementById("InputCedula");
-    let nombre = document.getElementById("InputNombre");
-    let apellido = document.getElementById("InputApellido");
-    let correo = document.getElementById("InputCorreo");
-    let contrasenia = document.getElementById("InputContrasenia");
-    let formularioRegistro = document.getElementById("formularioR");
-    
-    formularioRegistro.addEventListener("submit", function(event){
-        event.preventDefault();
-        let alertas = "";
-        if(cedula.value.length > 8){
-            let alerta = document.getElementsByName("errorCedula");
-            alerta.className = alerta.className.replace("ocultarElemento", "");
+function verificarCamposVacios() {
+    var cedula = document.getElementById("InputCedula");
+    console.log(cedula);
+    var mensajeErrorCedula = document.getElementById("errorCedula");
+    cedula.addEventListener("blur", function () {
+        var valorCampoCedula = cedula.value;
+
+        if (valorCampoCedula === "") {
+            mensajeErrorCedula.textContent = "Este campo es obligatorio.";
+            cedula.classList.remove("ocultarElemento");
+            alert("error");
+        } else {
+            mensajeErrorCedula.textContent = "";
+            cedula.classList.add("ocultarElemento");
         }
     });
-        
-    
+
 }
