@@ -24,7 +24,7 @@
                     <a class="nav-link active" aria-current="page" href="#">Zonas de reparto</a>
                 </li>
                 <li class="nav-itemw">
-                    <a class="nav-link active" aria-current="page" href="#">Preguntas frecuentes</a>
+                    <a class="nav-link active" aria-current="page" href="PreguntasFrecuentes">Preguntas frecuentes</a>
                 </li>
                 <li class="nav-itemw">
                     <a class="nav-link active" aria-current="page" href="#">Sobre nosotros</a>
