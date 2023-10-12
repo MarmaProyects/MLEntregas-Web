@@ -17,5 +17,8 @@
         <header>
             <jsp:include page="/Includes/Navbar.jsp" />
         </header>
+        <header>
+            <jsp:include page="/Includes/Footer.jsp" />
+        </header>
     </body>
 </html>
