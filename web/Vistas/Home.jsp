@@ -9,9 +9,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="CSS/bootstrap.min.css" rel="stylesheet">
+        <script src="JS/bootstrap.bundle.min.js"></script>
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <header>
+            <jsp:include page="/Includes/Navbar.jsp" />
+        </header>
     </body>
 </html>
