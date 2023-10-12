@@ -8,12 +8,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 */
 
 * {
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
 html {
-	font-family: Helvetica, Arial, sans-serif;
-	margin: none;
+    font-family: Helvetica, Arial, sans-serif;
+    margin: none;
 }
 
 h1 {
@@ -24,7 +24,7 @@ th{
     font-size: 1.5rem;
     border: solid blue;
     text-align: center;
-    padding: auto;  
+    padding: auto;
     padding: 5px 5px 5px 5px;
 }
 
