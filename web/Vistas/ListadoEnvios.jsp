@@ -23,7 +23,7 @@
                 <th>Cliente emisor</th>
                 <th>Código rastreo</th>
             </tr>
-            <% for (int i = 0; i < listadoEnv.size(); i++) {%>
+                <% for (int i = 0; i < listadoEnv.size(); i++) {%>
             <tr>
                 <td><%= listadoEnv.get(i).getIdEnvio()%></td>
                 <td><%= listadoEnv.get(i).getDireccionDestino().getCalle() %></td>
