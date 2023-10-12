@@ -32,12 +32,12 @@
                     <td>Desde 10kg hasta 15kg</td>
                     <td>$300.0</td>
                 </tr>
-                 <% for (int i = 0; i < listadoEnv.size(); i++) {%>
+                <% for (int i = 0; i < listadoEnv.size(); i++) {%>
                 <tr>
                     <td><%= /* Obtener nombre de tarifas BD */ %></td>
                     <td><%= /* Obtener precio de tarifa BD */ %></td>
-                </tr>   
-                <% } %>     
+                </tr>
+                <% } %>
             </table>
         </div>
     </body>
