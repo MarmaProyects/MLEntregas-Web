@@ -1,0 +1,19 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 12 oct 2023, 19:57:43
+    Author     : MarmaduX
+*/
+
+footer {
+    background-color: #333; /* Color de fondo del footer */
+    color: white; /* Color del texto del footer */
+    text-align: center; /* Alineación del texto en el centro */
+    align-content: center;
+    padding: 10px; /* Espaciado interno para separar el contenido del borde del footer */
+    position: fixed; /* Fija el footer en la parte inferior */
+    bottom: 0; /* Lo coloca en la parte inferior de la ventana del navegador */
+    width: 100%; /* Ancho del 100% para que ocupe toda la ventana */
+}
