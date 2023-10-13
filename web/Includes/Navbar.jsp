@@ -27,7 +27,7 @@
                     <a class="nav-link active" aria-current="page" href="#">Preguntas frecuentes</a>
                 </li>
                 <li class="nav-itemw">
-                    <a class="nav-link active" aria-current="page" href="#">Sobre nosotros</a>
+                    <a class="nav-link active" aria-current="page" href="VerInformacionEmpresa">Sobre nosotros</a>
                 </li>
             </ul>
         </div>
