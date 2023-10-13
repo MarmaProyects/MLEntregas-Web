@@ -41,7 +41,7 @@
                 <p>Dirección: Solano García 1465, Paysandú, Uruguay <br></p>
             </div>
             <div id="DivMapa">
-                <iframe allowfullscreen="" height="450" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3273.3099934796965!2d-56.157316284468855!3d-34.87356128039037!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x959f808b1622cb61%3A0x4a2d0315413b1da3!2sBv.%20Jos%C3%A9%20Batlle%20y%20Ord%C3%B3%C3%B1ez%203266%2C%2012000%20Montevideo%2C%20Departamento%20de%20Montevideo!5e0!3m2!1ses!2suy!4v1626789491151!5m2!1ses!2suy" style="border:0;" width="600"></iframe>
+                <iframe allowfullscreen="" height="450" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7895.174648745623!2d-58.06147869595547!3d-32.309617584208534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95afcb94ccad11d9%3A0x7cfd8a8fffbe81bd!2sMLEntregas!5e0!3m2!1sen!2s!4v1633887284420!5m2!1sen!2s" style="border:0;" width="600"></iframe>
             </div>
         </div>
         <header>
