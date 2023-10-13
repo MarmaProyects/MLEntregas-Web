@@ -12,6 +12,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import logica.clases.Envio;
+import logica.fabrica.Fabrica;
 
 /**
  *
@@ -37,7 +39,7 @@ public class Seguimiento extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Seguimiento</title>");            
+            out.println("<title>Servlet Seguimiento</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Seguimiento at " + request.getContextPath() + "</h1>");
@@ -73,7 +75,16 @@ public class Seguimiento extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        int codigoRastreo = Integer.parseInt(request.getParameter("codigoRastreo"));
+        Envio envio = Fabrica.getInstancia().getControladorEnvio().obtenerCodigoRastreo(codigoRastreo);
+        
+        if (envio == null) {
+            request.setAttribute("error", "No se encontró el paquete."); // Puedes almacenar el mensaje de error en el atributo de solicitud
+            request.getRequestDispatcher("/Vistas/Seguimiento.jsp").forward(request, response);
+        }
+        
+        request.setAttribute("envio", envio);
+        request.getRequestDispatcher("/Vistas/Seguimiento.jsp").forward(request, response);
     }
 
     /**

@@ -20,9 +20,6 @@
             <jsp:include page="/Includes/Navbar.jsp" />
         </header>
         <div class="contenedor">
-            <header>
-                <jsp:include page="/Includes/Navbar.jsp" />
-            </header>
             <div class="home-content">
                 <h5 class="home-title">¡ENTREGA RÁPIDA!</h5>
                 <h5 class="home-title">¡COMUNÍCATE YA!</h5>

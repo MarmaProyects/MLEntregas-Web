@@ -7,3 +7,30 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Author     : MarmaduX
 */
 
+.oculto{
+    display: none;
+}
+
+.error{
+    color: rgb(255,0,0);
+}
+
+.input-error{
+    border: 2px solid red;
+    
+}
+
+body {
+    background-color: rgb(192,192,192);
+}
+
+.button{
+    color: black;
+    border-radius: 5px;
+    background: rgb(255,128, 0, 1);
+    border: none;
+}
+
+.button:hover{
+    background: rgb(255,128, 0, 0.6);
+}
