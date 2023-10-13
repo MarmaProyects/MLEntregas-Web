@@ -16,6 +16,9 @@
         <link rel="icon" href="Images/logo-sm-extra.png" type="image/png">
     </head>
     <body>
+        <header>
+            <jsp:include page="/Includes/Navbar.jsp" />
+        </header>
         <div class="contenedor">
             <header>
                 <jsp:include page="/Includes/Navbar.jsp" />
@@ -48,5 +51,8 @@
                 </div>
             </div> 
         </div>
+        <header>
+            <jsp:include page="/Includes/Footer.jsp" />
+        </header>
     </body>
 </html>
