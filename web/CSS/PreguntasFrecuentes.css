@@ -13,22 +13,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     width: 60%;
 }
 
-.contenedor{
-    margin-top: 70px;
+.acordion{
     display: flex;
-    margin-left: 15%;
-    margin-right: 15%;
+    margin: 30px 15% 0 15%;
     align-items: center;
     justify-content: center;
 }
 
 .accordion-item{
     .accordion-button{
-        background: #666666;
+        background: rgb(192,192,192);
         border: 1px solid black;
     }
     .accordion-body{
-        background: gray;
+        background: white;
         border: 1px solid black;
     }
 }
