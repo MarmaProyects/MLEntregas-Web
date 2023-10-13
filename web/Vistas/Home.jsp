@@ -37,7 +37,7 @@
                     </div>
                     <div class="row">
                         <div class="col-6">
-                            <a href="#" class="btn home-buttons">Rastrear Envío</a>
+                            <a href="/Seguimiento" class="btn home-buttons">Rastrear Envío</a>
                         </div>
                         <div class="col-6">
                             <a href="#" class="btn home-buttons">Tarifas</a>

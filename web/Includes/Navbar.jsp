@@ -18,7 +18,7 @@
                     <a class="nav-link active" aria-current="page" href="#">Tarifas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Rastrear envio</a>
+                    <a class="nav-link active" aria-current="page" href="/Seguimiento">Rastrear envio</a>
                 </li>
                 <li class="nav-itemw">
                     <a class="nav-link active" aria-current="page" href="#">Zonas de reparto</a>
