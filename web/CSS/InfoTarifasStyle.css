@@ -7,35 +7,111 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     Author     : franc
 */
 
-* {
-    margin: 0;
-    padding: 0;
-}
 html {
     font-family: Helvetica, Arial, sans-serif;
-    margin: none;
 }
 
-h1 {
+#divTitulo{
+    text-align: center;
+    background-color: rgb(192,192,192);
+    padding-top: 25px;
+}
+
+#divTitulo h1 {
+    font-size: 50px;
+    margin: 0px;
+    color: black;
+}
+
+header {
     text-align: center;
 }
 
-th{
-    font-size: 1.5rem;
-    border: solid blue;
-    text-align: center;
-    padding: auto;
-    padding: 5px 5px 5px 5px;
+#divTablaNormales, #divTablaEspeciales h2{
+    text-align: left;
 }
 
-td{
+.table {
+    margin: 0px 45px 0px 45px;
+    border: solid grey;
+    border-collapse: collapse;
+}
+
+.table-bordered td, th{
+    border-bottom: 1px solid rgb(0,0,0,0.4);
+}
+
+.table-bordered th{
     font-size: 1.5rem;
-    border:solid green;
+    color: black;
+    text-align: center;
+    padding: 5px 30px 5px 30px;
+    background-color: rgb(192,192,192);
+}
+
+.table-bordered td{
+    color: black;
+    background-color: rgb(192,192,192);
+    font-size: 1.5rem;
     text-align: center;
     padding: 5px 5px 5px 5px;
     margin: 10px 45px 10px 10px;
+    width: 50%;
 }
 
-#divTabla{
-    margin: 90px 70px 0px 70px;
+#cuerpo{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0px auto auto auto;
+    height: 100%;
+    background-color: rgb(192,192,192);
+}
+
+#divTablaNormales, #divTablaEspeciales{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    margin: 30px 497.500px 30px 497.500px;
+    width: 1300px;
+    background-color: rgb(192,192,192);
+}
+
+#divTablaNormales h2{
+    height: 170px;
+    width: 500px;
+    color: black;
+}
+
+#divTablaEspeciales{
+    margin-bottom: 120px;
+}
+
+#divTablaEspeciales h2 {
+    height: 85px;
+    width: 500px;
+    top: 100%;
+    color: black;
+}
+
+@media  (max-width: 500px) {
+    body{
+        height: 30%;
+        width: 100%;   
+    }
+
+    html{
+        background-color: green; 
+    }
+
+    #divTablaNormales, #divTablaEspeciales{
+        margin-top: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 10px;
+        border: solid green;
+    }
+
 }
