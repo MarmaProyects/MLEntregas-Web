@@ -1,0 +1,77 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 12 oct 2023, 20:39:29
+    Author     : MarmaduX
+*/
+
+body {
+    background-color: rgb(192,192,192);
+}
+
+h1, h4 {
+    color:black;
+    text-align: center;
+}
+
+.contenedor{
+    margin-top: 30px;
+}
+
+
+.form-image{
+    display: flex;
+    width: 100%;
+}
+
+.form, .image {
+    width: 50%; 
+    display: flex;
+}
+
+.form-image input{
+    width: 100%;
+    border-radius: 5px;
+}
+
+.form-image label{
+     width: 300px;
+}
+
+.form-image button{
+    margin-top: 40px;
+    width: 100%;
+    color: black;
+    border-radius: 5px;
+    margin-top: 15px;
+    background: rgb(255,128, 0, 1);
+    border: none;
+}
+
+.form-image button:hover{
+    background: rgb(255,128, 0, 0.6);
+}
+
+.form-image form{
+    margin: auto;
+}
+
+.image img{
+    width: 400px;
+    height: auto;
+    margin: auto;
+}
+
+.error-message {
+    height: 1.5em; 
+    margin-top: 0.5em;  
+}
+
+.contenedor-seguimiento{
+    padding: 0 10% 70px 10%;
+}
+
+.contenedor-tabla{
+}

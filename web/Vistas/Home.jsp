@@ -20,9 +20,6 @@
             <jsp:include page="/Includes/Navbar.jsp" />
         </header>
         <div class="contenedor">
-            <header>
-                <jsp:include page="/Includes/Navbar.jsp" />
-            </header>
             <div class="home-content">
                 <h5 class="home-title">¡ENTREGA RÁPIDA!</h5>
                 <h5 class="home-title">¡COMUNÍCATE YA!</h5>
@@ -37,7 +34,7 @@
                     </div>
                     <div class="row">
                         <div class="col-6">
-                            <a href="#" class="btn home-buttons">Rastrear Envío</a>
+                            <a href="/Seguimiento" class="btn home-buttons">Rastrear Envío</a>
                         </div>
                         <div class="col-6">
                             <a href="#" class="btn home-buttons">Tarifas</a>
