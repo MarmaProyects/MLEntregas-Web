@@ -1,0 +1,86 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 12 oct. 2023, 16:18:13
+    Author     : leo
+*/
+body{
+    background-color: rgb(192,192,192);
+}
+
+#Titulo{
+    margin-top: 30px;
+    text-align: center;
+}
+
+#contenedor1 {
+    display: flex;
+    justify-content: center;
+    align-items: center; /*centra verticalmente en conjunto con el display flex*/
+}
+
+#contenedor2 {
+    display: flex;
+    justify-content: center;
+    align-items: center; /*centra verticalmente en conjunto con el display flex*/
+    margin-bottom: 120px;
+}
+
+#DivLogo{
+    margin-right: 20px;
+}
+
+#logo{
+    width: 270px;
+    height: 270px;
+
+}
+
+#texto {
+    text-align: left;
+    max-width: 60%;
+}
+
+#descripcionEmpresa{
+    vertical-align: bottom;
+}
+
+#DivContacto{
+    margin-right: 60px;
+}
+
+#DivMapa{
+    vertical-align: bottom;
+}
+
+.informacion-contacto {
+    text-align: center;
+    width: 25%;
+    background-color: #555;
+    color: #fff;
+    padding: 72px;
+    border-radius: 10px;
+    border: solid #000;
+}
+
+.informacion-contacto h2 {
+    color: white;
+    font-size: 24px;
+    margin: 0;
+}
+
+.informacion-contacto p {
+    margin: 30px 0;
+}
+
+.informacion-contacto a {
+    color: #ff6600;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.informacion-contacto a:hover {
+    color: #ff9900; /* Cambia a un tono más claro de naranja al pasar el mouse */
+}
