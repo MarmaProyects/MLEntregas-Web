@@ -12,14 +12,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import logica.fabrica.Fabrica;
+import logica.interfaces.IAdministracion;
 
 /**
  *
  * @author franc
  */
-@WebServlet(name = "InfoTarifas", urlPatterns = {"/InfoTarifas"})
+@WebServlet(name = "InfoTarifas", urlPatterns = {"/Tarifas"})
 public class InfoTarifas extends HttpServlet {
 
+    public Fabrica fab = Fabrica.getInstancia();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -58,6 +61,8 @@ public class InfoTarifas extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        IAdministracion iA = fab.getControladorTarifa();
+        request.setAttribute("ListaTarifas", iA.listarTarifas());
         RequestDispatcher dispatcher = request.getRequestDispatcher("/Vistas/InfoTarifas.jsp");
         dispatcher.forward(request, response);
     }
