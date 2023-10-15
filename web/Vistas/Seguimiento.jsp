@@ -54,7 +54,7 @@
         <% Envio envio = (Envio) request.getAttribute("envio"); %>
         <% if (envio != null) {%> 
         <div class="contenedor-seguimiento">
-            <h3 id="envio-title">Envio</h3>
+            <h3 id="focus-scroll">Envio</h3>
             <div class="contenedor-tabla">
                 <table class="table">
                     <tbody>

@@ -16,8 +16,8 @@
         <script src="JS/bootstrap.bundle.min.js"></script>
         <title>MLEntregas</title>
         <link rel="icon" href="Images/logo-sm-extra.png" type="image/png">
-        <link rel="stylesheet" type="text/css" href="/CSS/InfoTarifasStyle.css">
         <link href="CSS/Styles.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/CSS/InfoTarifasStyle.css">
     </head>
     <body>
         <header>

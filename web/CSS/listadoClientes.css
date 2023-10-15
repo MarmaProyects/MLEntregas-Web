@@ -1,0 +1,59 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Oct 14, 2023, 8:12:28 PM
+    Author     : franc
+*/
+
+#accordionFlushExample {
+    background: gray;
+    max-width: 60%;
+    width: 60%;
+}
+
+.acordion{
+    display: flex;
+    margin: 30px 30px 50px 30px;
+    align-items: center;
+    justify-content: end;
+    width: 85%;
+}
+
+.accordion-item{
+    .accordion-button{
+        background: rgb(192,192,192);
+        border: 1px solid black;
+    }
+    .accordion-body{
+        background: white;
+        border: 1px solid black;
+    }
+}
+
+.form-acordion {
+    display: flex;
+    flex-direction: row;
+}
+
+.form {
+    margin: 30px 78px 0px 78px;
+    width: 350px;
+    position: fixed;
+    align-items: center;
+}
+
+#nombre-apellido {
+    width: 350px;
+}
+
+.btn {
+    color: black;
+    border-radius: 5px;
+    background: rgb(255,128, 0, 1);
+    border: none; 
+    margin: 5px auto 0px auto;
+    width: 120px;
+    padding: 6px 30px 6px 30px;
+}

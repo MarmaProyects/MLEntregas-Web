@@ -39,8 +39,12 @@ function validarRastreo() {
     return true;
 }
 
+function traerDireccionCliente() {
+    
+}
+
 document.addEventListener('DOMContentLoaded', function () {
-    var titulo = document.getElementById('envio-title');
+    var titulo = document.getElementById('focus-scroll');
 
     var posicion = titulo.getBoundingClientRect();
 

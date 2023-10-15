@@ -63,6 +63,7 @@ public class ListarClientes extends HttpServlet {
             throws ServletException, IOException {
         IAdministracion iA = fab.getControladorCliente();
         request.setAttribute("ListaClientes", iA.obtenerLosClientes());
+        request.setAttribute("ListaEnvios", fab.getControladorEnvio().listaDeEnvios());
         RequestDispatcher dispatcher = request.getRequestDispatcher("/Vistas/ListadoClientes.jsp");
         dispatcher.forward(request, response);
     }
