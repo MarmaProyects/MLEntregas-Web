@@ -1,0 +1,41 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 11 oct 2023, 20:24:48
+    Author     : Angelo
+*/
+
+.formularioRegistro{
+    height: 50%;
+    width: 20%;
+    align-content: center;
+    margin: auto;
+    border-radius: 15px;
+}
+
+#divRegistrarUsuario{
+    margin: auto;
+    text-align: center;
+    width: 384px;
+}
+
+#botonR{
+    width: 385px;
+}
+
+#divTitulo{
+    margin: auto;
+   text-align: center;
+}
+
+.col-auto span{
+    color: red;
+}
+
+.ocultarElemento{
+    display: none;
+}
+
+

@@ -11,12 +11,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     display: none;
 }
 
+.invisible{
+    visibility: hidden;
+}
+
 .error{
     color: rgb(255,0,0);
 }
 
 .input-error{
-    border: 2px solid red;
+    border: 1px solid red;
     
 }
 
@@ -33,6 +37,7 @@ body {
     border-radius: 5px;
     background: rgb(255,128, 0, 1);
     border: none;
+    font-weight: bold;
 }
 
 .button:hover{
@@ -47,4 +52,9 @@ body {
 
 h1 {
     text-align: center;
+}
+
+.error-message {
+    height: 1.5em;
+    margin-top: 0.5em;
 }

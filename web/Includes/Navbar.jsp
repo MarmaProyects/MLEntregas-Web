@@ -29,6 +29,11 @@
                 <li class="nav-itemw">
                     <a class="nav-link active" aria-current="page" href="VerInformacionEmpresa">Sobre nosotros</a>
                 </li>
+                <% if (session.getAttribute("user") != null) {%>
+                <li class="nav-itemw">
+                    <a class="nav-link active" aria-current="page" href="VerInformacionEmpresa"><%= session.getAttribute("user") %></a>
+                </li>
+                <% }%>
             </ul>
         </div>
     </div>

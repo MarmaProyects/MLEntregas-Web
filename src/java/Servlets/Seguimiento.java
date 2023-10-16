@@ -79,7 +79,7 @@ public class Seguimiento extends HttpServlet {
         Envio envio = Fabrica.getInstancia().getControladorEnvio().obtenerCodigoRastreo(codigoRastreo);
         
         if (envio == null) {
-            request.setAttribute("error", "No se encontró el paquete."); // Puedes almacenar el mensaje de error en el atributo de solicitud
+            request.setAttribute("error", "No se encontró el paquete."); 
             request.getRequestDispatcher("/Vistas/Seguimiento.jsp").forward(request, response);
         }
         
