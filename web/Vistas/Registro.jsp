@@ -41,7 +41,7 @@
                     </div>
                     <div class="">
                         <label for="InputNombre" class="form-label">Nombre</label>
-                        <input type="text" onfocus="clearErrors()" class="form-control" id="InputNombre" name="InputNombre" value="<%= request.getAttribute("nombre") != null ? request.getAttribute("nombre") : ""%>">
+                        <input type="text" maxlength="30" onfocus="clearErrors()" class="form-control" id="InputNombre" name="InputNombre" value="<%= request.getAttribute("nombre") != null ? request.getAttribute("nombre") : ""%>">
                     </div>
                     <div class="error-message">
                         <span id="errorNombre" class="error oculto">
@@ -50,7 +50,7 @@
                     </div>
                     <div class="">
                         <label for="InputApellido" class="form-label">Apellido</label>
-                        <input type="text" onfocus="clearErrors()" class="form-control" id="InputApellido" name="InputApellido" value="<%= request.getAttribute("apellido") != null ? request.getAttribute("apellido") : ""%>">
+                        <input type="text" maxlength="30" onfocus="clearErrors()" class="form-control" id="InputApellido" name="InputApellido" value="<%= request.getAttribute("apellido") != null ? request.getAttribute("apellido") : ""%>">
                     </div>
                     <div class="error-message">
                         <span id="errorApellido" class="error oculto">
@@ -59,7 +59,7 @@
                     </div>
                     <div class="">
                         <label for="InputEmail1" class="form-label">Correo Electronico</label>
-                        <input type="email" onfocus="clearErrors()" class="form-control" id="InputCorreo" name="InputCorreo" value="<%= request.getAttribute("correo") != null ? request.getAttribute("correo") : ""%>">
+                        <input type="email" maxlength="40" onfocus="clearErrors()" class="form-control" id="InputCorreo" name="InputCorreo" value="<%= request.getAttribute("correo") != null ? request.getAttribute("correo") : ""%>">
                     </div>
                     <div class="error-message">
                         <span id="errorCorreo" class="error oculto">
@@ -73,7 +73,7 @@
                     </div>
                     <div class="">
                         <label for="InputPassword1" class="form-label">Contraseña</label>
-                        <input type="password" onfocus="clearErrors()" class="form-control" id="InputContrasenia" name="InputContrasenia">
+                        <input type="password" maxlength="40" onfocus="clearErrors()" class="form-control" id="InputContrasenia" name="InputContrasenia">
                     </div>
                     <div class="error-message">
                         <span id="errorContrasenia" class="error oculto">

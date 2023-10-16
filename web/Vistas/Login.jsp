@@ -28,7 +28,7 @@
                 <form action="/Login" method="POST" id="formulearioL" onsubmit="return validarCamposLogin()">
                     <div class=" ">
                         <label for="InputEmail1" class="form-label">Correo Electronico:</label>
-                        <input type="email"  onfocus="clearErrors()" class="form-control" name="InputCorreo" id="InputCorreo" value="<%= request.getAttribute("correo") != null ? request.getAttribute("correo") : ""%>">
+                        <input type="email" maxlength="40" onfocus="clearErrors()" class="form-control" name="InputCorreo" id="InputCorreo" value="<%= request.getAttribute("correo") != null ? request.getAttribute("correo") : ""%>">
                     </div>
                     <div class="error-message">
                         <span id="errorCorreo" class="error oculto">
@@ -42,7 +42,7 @@
                     </div>
                     <div class="">
                         <label for="InputPassword1" class="form-label">Contraseña:</label>
-                        <input type="password" onfocus="clearErrors()" class="form-control" name="InputContrasenia" id="InputContrasenia"  >
+                        <input type="password" maxlength="40" onfocus="clearErrors()" class="form-control" name="InputContrasenia" id="InputContrasenia"  >
                     </div>
                     <div class="error-message">
                         <span id="errorContrasenia" class="oculto">

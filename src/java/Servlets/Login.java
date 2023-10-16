@@ -86,7 +86,6 @@ public class Login extends HttpServlet {
         String correo = request.getParameter("InputCorreo");
         String contrasenia = request.getParameter("InputContrasenia");
 
-        System.out.println("Valor de correo: " + request.getAttribute("InputCorreo"));
         Usuario user = Fabrica.getInstancia().getControladorCliente().obtenerUsuario(correo);
 
         ProtectedUserPassword encryptedPassword = (null);
