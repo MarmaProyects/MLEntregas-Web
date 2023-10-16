@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import logica.clases.Cliente;
 import logica.fabrica.Fabrica;
 import logica.interfaces.IAdministracion;
 
@@ -23,6 +24,7 @@ import logica.interfaces.IAdministracion;
 public class ListarClientes extends HttpServlet {
 
     public Fabrica fab = Fabrica.getInstancia();
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -37,15 +39,7 @@ public class ListarClientes extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ListarClientes</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ListarClientes at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            
         }
     }
 
@@ -62,6 +56,8 @@ public class ListarClientes extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         IAdministracion iA = fab.getControladorCliente();
+        String nomApe = request.getParameter("buscar");
+        request.setAttribute("nomApe", nomApe);
         request.setAttribute("ListaClientes", iA.obtenerLosClientes());
         request.setAttribute("ListaEnvios", fab.getControladorEnvio().listaDeEnvios());
         RequestDispatcher dispatcher = request.getRequestDispatcher("/Vistas/ListadoClientes.jsp");
@@ -79,7 +75,15 @@ public class ListarClientes extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String nomApe = request.getParameter("nombre-apellido");
+        Cliente client = fab.getControladorCliente().traerClientePorNomApe(nomApe);
+
+        if (client == null) {
+            request.setAttribute("error", "No se encontró el cliente");
+            request.getRequestDispatcher("/Vistas/ListadoClientes.jsp").forward(request, response);
+        }
+        request.setAttribute("cliente", client);
+        request.getRequestDispatcher("/Vistas/ListadoClientes.jsp").forward(request, response);
     }
 
     /**
