@@ -4,18 +4,18 @@
     Author     : franc
 --%>
 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.Collections"%>
 <%@page import="logica.clases.Envio"%>
 <%@page import="logica.clases.Cliente"%>
 <%@page import="java.util.ArrayList"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     ArrayList<Cliente> listadoCli = (ArrayList<Cliente>) request.getAttribute("ListaClientes");
     ArrayList<Envio> listadoEnv = (ArrayList<Envio>) request.getAttribute("ListaEnvios");
 %>
 
 <%
-    Collections.sort(listadoCli, ( cliente1,     cliente2) -> cliente1.getNombre().compareTo(cliente2.getNombre()));
+    Collections.sort(listadoCli, ( cliente1,         cliente2) -> cliente1.getNombre().compareTo(cliente2.getNombre()));
 %> <!-- Ordena los nombres alfabéticamente -->
 
 <%
@@ -46,7 +46,7 @@
                         <input onkeypress="pulsar(event)" type="text" oninput="validarInputNomApe(this)" id="nombre-apellido" name="nombre-apellido">
                     </div>
                     <div class=" ">
-                        <button type="submit" onclick="buscarNombre()" class="btn" id="btnBuscar" autofocus>Buscar</button>
+                        <button type="submit" onclick="buscarNombre()" class="btn button" id="btnBuscar" autofocus>Buscar</button>
                     </div>
                 </div>
                 <div class="acordion">
@@ -67,6 +67,29 @@
                                     <p>Cédula: <%= listadoCli.get(i).getCedula()%> </p>
                                     <p>Correo: <%= listadoCli.get(i).getCorreo()%> </p>
                                     <p>Teléfono/Celular: <%= listadoCli.get(i).getTelefono()%> </p>
+                                    <%
+                                        boolean found = false;
+                                        for (int h = 0; h < listadoEnv.size(); h++) {
+                                            if (listadoCli.get(i).getCedula() == listadoEnv.get(h).getClienteEmisor().getCedula()) {
+                                                if (!listadoEnv.get(h).getDireccionOrigen().getCalle().equals("Solano García") && 
+                                                    listadoEnv.get(h).getDireccionOrigen().getNro_puerta() != 1465) {
+                                                    %>
+                                                    <p>Dirección: <%= listadoEnv.get(h).getDireccionOrigen().getCalle()  + " " + 
+                                                            listadoEnv.get(h).getDireccionOrigen().getNro_puerta() + " / " + 
+                                                            listadoEnv.get(h).getDireccionOrigen().getSegunda_calle()%></p>
+                                                    <%
+                                                    found = true;
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                        if (!found) {
+                                            %>
+                                                <p>Dirección: Desconocido</p>
+                                            <%
+                                        }
+                                    %>
+                                    
                                 </div>
                             </div>
                         </div>

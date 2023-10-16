@@ -3,9 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/JavaScript.js to edit this template
  */
 
-
 function traerDireccionCliente() {
-
+    
 }
 
 function buscarNombre() {
@@ -15,7 +14,7 @@ function buscarNombre() {
 
 function validarInputNomApe(input) {
     input.value = input.value.replace(/[0-9\[\]{}]/g, "");
-
+    
     if (input.value.length > 30) {
         input.value = input.value.slice(0, 30);
     }

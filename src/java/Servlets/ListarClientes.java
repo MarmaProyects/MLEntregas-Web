@@ -75,15 +75,7 @@ public class ListarClientes extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String nomApe = request.getParameter("nombre-apellido");
-        Cliente client = fab.getControladorCliente().traerClientePorNomApe(nomApe);
-
-        if (client == null) {
-            request.setAttribute("error", "No se encontró el cliente");
-            request.getRequestDispatcher("/Vistas/ListadoClientes.jsp").forward(request, response);
-        }
-        request.setAttribute("cliente", client);
-        request.getRequestDispatcher("/Vistas/ListadoClientes.jsp").forward(request, response);
+        
     }
 
     /**

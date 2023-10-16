@@ -49,10 +49,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 }
 
 .btn {
-    color: black;
-    border-radius: 5px;
-    background: rgb(255,128, 0, 1);
-    border: none; 
     margin: 5px auto 0px auto;
     width: 120px;
     padding: 6px 30px 6px 30px;
