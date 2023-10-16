@@ -1,0 +1,68 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 15 oct. 2023, 14:46:35
+    Author     : leo
+*/
+
+h1{
+    margin-top: 20px;
+    text-align: center;
+}
+
+#DivTabla{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+tr{
+    text-align: center;
+}
+
+
+td::after {
+    content: "";
+    display: block;
+    width: 1px;
+    background-color: #000; 
+    height: 100%; 
+}
+
+
+
+table {
+    border-collapse: separate;
+    border: 1px solid black;
+    border-spacing: 20px 20px;
+}
+
+td, th {
+    padding: 10px;
+}
+
+button.botonModal{
+    background-color: rgb(146, 146, 146);
+    border-radius: 5px;
+    border-color: lightgray;
+}
+
+.modal-content{
+    background-color: lightgray;
+}
+
+.title-container{
+    margin-left: 100px;
+}
+
+.btn-close{
+    align-self: self-start;
+}
+
+.modal-footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
