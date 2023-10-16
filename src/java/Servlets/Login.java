@@ -6,12 +6,22 @@ package Servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.GeneralSecurityException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.crypto.spec.SecretKeySpec;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import logica.clases.Usuario;
+import logica.fabrica.Fabrica;
+import logica.interfaces.IAdministracion;
 
 /**
  *
@@ -37,7 +47,7 @@ public class Login extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Login</title>");            
+            out.println("<title>Servlet Login</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Login at " + request.getContextPath() + "</h1>");
@@ -73,7 +83,42 @@ public class Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String correo = request.getParameter("InputCorreo");
+        String contrasenia = request.getParameter("InputContrasenia");
+
+        System.out.println("Valor de correo: " + request.getAttribute("InputCorreo"));
+        Usuario user = Fabrica.getInstancia().getControladorCliente().obtenerUsuario(correo);
+
+        ProtectedUserPassword encryptedPassword = (null);
+        String encryptPassword = "";
+
+        if (user != null) {
+            try {
+                encryptedPassword = new ProtectedUserPassword(user.getContrasenia());
+                SecretKeySpec secretKey = new SecretKeySpec(user.getKeyGen(), "AES");
+                encryptPassword = encryptedPassword.decrypt(secretKey);
+            } catch (NoSuchAlgorithmException | InvalidKeySpecException ex) {
+                Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (GeneralSecurityException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            if (contrasenia.equals(encryptPassword)) {
+                HttpSession session = request.getSession(true);
+                session.setAttribute("user", correo);
+                response.sendRedirect("/");
+            } else {
+                request.setAttribute("correo", correo);
+                request.setAttribute("error", "password");
+                request.getRequestDispatcher("/Vistas/Login.jsp").forward(request, response);
+            }
+        } else {
+            request.setAttribute("correo", correo);
+
+            request.setAttribute("error", "user");
+            request.getRequestDispatcher("/Vistas/Login.jsp").forward(request, response);
+        }
+
     }
 
     /**

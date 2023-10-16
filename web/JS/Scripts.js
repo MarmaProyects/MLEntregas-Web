@@ -15,7 +15,7 @@ function validarNumero(input) {
 function validarRastreo() {
     let input = document.getElementById("codigoRastreo");
     let valor = input.value;
-
+    
     let errordigi = document.getElementById("errordigi");
     let errorrastreo = document.getElementById("errorrastreo");
     let errornull = document.getElementById("errornull");
