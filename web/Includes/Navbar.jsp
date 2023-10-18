@@ -21,7 +21,7 @@
                     <a class="nav-link active" aria-current="page" href="/Seguimiento">Rastrear envio</a>
                 </li>
                 <li class="nav-itemw">
-                    <a class="nav-link active" aria-current="page" href="#">Zonas de reparto</a>
+                    <a class="nav-link active" aria-current="page" href="VerZonasDeReparto">Zonas de reparto</a>
                 </li>
                 <li class="nav-itemw">
                     <a class="nav-link active" aria-current="page" href="PreguntasFrecuentes">Preguntas frecuentes</a>
