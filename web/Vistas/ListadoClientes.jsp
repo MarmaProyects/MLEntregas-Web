@@ -62,7 +62,7 @@
                                     <%= listadoCli.get(i).getNombre()%> <%= listadoCli.get(i).getApellido()%>
                                 </button>
                             </h2>
-                            <div id="flush-collapse<%= i%>" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                            <div id="flush-collapse<%= i%>" class="accordion-collapse collapse">
                                 <div class="accordion-body">
                                     <p>Cédula: <%= listadoCli.get(i).getCedula()%> </p>
                                     <p>Correo: <%= listadoCli.get(i).getCorreo()%> </p>

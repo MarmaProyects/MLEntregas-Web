@@ -10,14 +10,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 #accordionFlushExample {
     background: gray;
     max-width: 60%;
-    width: 60%;
+    width: 62.1%;
 }
 
 .acordion{
     display: flex;
     margin: 30px 30px 50px 30px;
     align-items: center;
-    justify-content: end;
+    justify-content: start;
     width: 85%;
 }
 
@@ -40,7 +40,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .form {
     margin: 30px 78px 0px 78px;
     width: 350px;
-    position: fixed;
     align-items: center;
 }
 

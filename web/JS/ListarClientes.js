@@ -13,7 +13,7 @@ function buscarNombre() {
 }
 
 function validarInputNomApe(input) {
-    input.value = input.value.replace(/[0-9\[\]{}]/g, "");
+    input.value = input.value.replace(/[^A-Za-z\-._~!$&'()*+,;=:@]/g, "");
     
     if (input.value.length > 30) {
         input.value = input.value.slice(0, 30);
