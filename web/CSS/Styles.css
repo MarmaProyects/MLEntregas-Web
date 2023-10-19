@@ -58,3 +58,14 @@ h1 {
     height: 1.5em;
     margin-top: 0.5em;
 }
+
+.nav-bar-item{
+    right: 0;
+    display: flex;
+    text-decoration: none;
+    color: white;
+}
+
+.user-profile{ 
+    background-color: #212529;
+}

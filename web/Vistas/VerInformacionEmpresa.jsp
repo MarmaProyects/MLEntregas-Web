@@ -12,6 +12,7 @@
         <script> href = "/JS/bootstrap.bunlde.min.js"</script>
         <title>Informacion de la empresa</title>
         <link rel="stylesheet" href="CSS/bootstrap.min.css"/>
+        <link rel="stylesheet" href="CSS/Styles.css"/>
         <link rel="stylesheet" href="CSS/VerInformacionEmpresa.css"/>
         <script src="JS/bootstrap.bundle.min.js"></script>
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
