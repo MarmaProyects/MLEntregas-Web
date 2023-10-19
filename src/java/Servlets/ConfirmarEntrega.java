@@ -12,7 +12,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import logica.clases.Envio;
 import logica.fabrica.Fabrica;
+import logica.interfaces.IAdministracion;
 import logica.interfaces.IEnvio;
 
 /**
@@ -80,8 +82,12 @@ public class ConfirmarEntrega extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         IEnvio iEnvio = fab.getControladorEnvio();
+        IAdministracion iPago = fab.getControladorPago();
         int idEnvio = Integer.parseInt(request.getParameter("idEnvio"));
+        String tipoPago = request.getParameter("tipoPago");
         iEnvio.crearEstado(idEnvio, "Entregado", "Paquete entregado");
+        Envio envio = iEnvio.verDetallesDelEnvio(idEnvio);
+        iPago.pagarEnvio(envio.getPago().getIdPago(), tipoPago);
         request.setAttribute("ListaEnvios", iEnvio.listaDeEnviosEnCamino());
         RequestDispatcher dispatcher = request.getRequestDispatcher("/Vistas/ConfirmarEntrega.jsp");
         dispatcher.forward(request, response);

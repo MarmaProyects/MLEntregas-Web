@@ -22,6 +22,12 @@ tr{
     text-align: center;
 }
 
+.contenedorQR{
+    display: flex;
+    justify-content: center;
+    padding: 40px 0;
+}
+
 
 td::after {
     content: "";

@@ -16,6 +16,8 @@
         <script src="JS/bootstrap.bundle.min.js"></script>
         <link href="CSS/ConfirmarEntrega.css" rel="stylesheet">
         <script src="JS/jquery.min.js"></script>
+        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+        <script defer src="JS/ConfirmarEntrega.js"></script>
     </head>
     <body>
         <% ArrayList<Envio> listadoEnv = (ArrayList<Envio>) request.getAttribute("ListaEnvios"); %>
@@ -36,14 +38,48 @@
                     <td><%= listadoEnv.get(i).getClienteEmisor().getNombre() + " " + listadoEnv.get(i).getClienteEmisor().getApellido()%></td>
                     <td><%= listadoEnv.get(i).getPaquete().getDescripcion()%></td>
                     <td>
-                        <button type="button" class="botonModal" data-envio-id="<%= i%>" data-bs-toggle="modal" data-bs-target="#exampleModal" data-target-form="<%= listadoEnv.get(i).getIdEnvio()%>">
+                        <button type="button" class="botonModal" data-envio-id="<%= i%>" data-bs-toggle="modal" data-bs-target="#ModalMedioPago" data-target-form="<%= listadoEnv.get(i).getIdEnvio()%>">
                             Confirmar Envío
                         </button>
                     </td>
                 </tr>
                 <%}%>
             </table>
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="ModalMedioPago" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalToggleLabel">MÉTODOS DE PAGO</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Seleccione su método de pago:
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" data-bs-target="#ModalPagarEfectivo"  data-bs-dismiss="modal" data-bs-toggle="modal">Efectivo</button>
+                            <button class="btn btn-secondary" data-bs-target="#exampleModalToggle2" data-bs-dismiss="modal" data-bs-toggle="modal">Crédito</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">PAGO CON CRÉDITO</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="contenedorQR" class="contenedorQR"></div>
+                            Escanee el código QR para realizar el pago.
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="ModalPagarEfectivo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -57,6 +93,7 @@
                             <% if (!listadoEnv.isEmpty()) {%>
                             <form method="post" action="<%= request.getContextPath()%>/ConfirmarEntrega"> 
                                 <input type="hidden" name="idEnvio" value="">
+                                <input type="hidden" name="tipoPago" value="Efectivo">
                                 <input type="submit" value="Confirmar envío">
                             </form>
                             <% }%>
@@ -65,14 +102,6 @@
                 </div>
             </div>
         </div>
-        <script>
-            document.querySelectorAll('button[data-envio-id]').forEach(function (button) {
-                button.addEventListener('click', function () {
-                    let idEnvio = this.getAttribute('data-target-form');
-                    document.querySelector('input[name="idEnvio"]').value = idEnvio;
-                });
-            });
-        </script>
     </body>
 </html>
 
