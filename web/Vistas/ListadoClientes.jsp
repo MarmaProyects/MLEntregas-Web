@@ -41,8 +41,8 @@
             <h1>Listado de clientes</h1>
             <div class="form-acordion">
                 <div class="form">
+                    <label style="margin-right: 20px; font-size: 22px;">Nombre / Apellido</label> <br>
                     <div class=" ">
-                        <label>Nombre / Apellido</label> <br>
                         <input onkeypress="pulsar(event)" type="text" oninput="validarInputNomApe(this)" id="nombre-apellido" name="nombre-apellido">
                     </div>
                     <div class=" ">
@@ -52,9 +52,9 @@
                 <div class="acordion">
                     <div class="accordion accordion-flush" id="accordionFlushExample">
                         <% String nomApe = (String) request.getAttribute("nomApe"); %>
-
-                        <% for (int i = 0; i < listadoCli.size(); i++) {%>
-                        <% if (nomApe == null || nomApe == "" || listadoCli.get(i).getNombre().contains(nomApe) || listadoCli.get(i).getApellido().contains(nomApe)) {%>
+                        <% if (listadoCli.size() != 0) { %>
+                        <% for (int i = 0; i < listadoCli.size(); i++) { %>
+                        <% if (nomApe == null || nomApe.equals("") || listadoCli.get(i).getNombre().contains(nomApe) || listadoCli.get(i).getApellido().contains(nomApe)) {%>
                         <div class="accordion-item">
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -93,6 +93,7 @@
                                 </div>
                             </div>
                         </div>
+                        <% }%>
                         <% }%>
                         <% }%>
                     </div>

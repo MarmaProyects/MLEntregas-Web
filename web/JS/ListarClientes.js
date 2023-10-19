@@ -4,20 +4,15 @@
  */
 
 function traerDireccionCliente() {
-    
+
 }
 
 function buscarNombre() {
     let input = document.getElementById("nombre-apellido").value;
-    window.location.href = "/Listaclientes?buscar=" + input;
-}
-
-function validarInputNomApe(input) {
-    input.value = input.value.replace(/[^A-Za-z\-._~!$&'()*+,;=:@]/g, "");
-    
-    if (input.value.length > 30) {
-        input.value = input.value.slice(0, 30);
+    if (input!= null || !input.equals("")) {
+        input = encodeURIComponent(input);
     }
+    window.location.href = "/Listaclientes?buscar=" + input;
 }
 
 function validarNomApe() {

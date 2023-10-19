@@ -6,12 +6,14 @@ package Servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLDecoder;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import logica.clases.Cliente;
 import logica.fabrica.Fabrica;
 import logica.interfaces.IAdministracion;
@@ -39,7 +41,7 @@ public class ListarClientes extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            
+
         }
     }
 
@@ -57,6 +59,9 @@ public class ListarClientes extends HttpServlet {
             throws ServletException, IOException {
         IAdministracion iA = fab.getControladorCliente();
         String nomApe = request.getParameter("buscar");
+        if (nomApe != null && !nomApe.equals("")) {
+            nomApe = URLDecoder.decode(nomApe, "UTF-8");
+        }
         request.setAttribute("nomApe", nomApe);
         request.setAttribute("ListaClientes", iA.obtenerLosClientes());
         request.setAttribute("ListaEnvios", fab.getControladorEnvio().listaDeEnvios());
@@ -75,7 +80,7 @@ public class ListarClientes extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
     /**
