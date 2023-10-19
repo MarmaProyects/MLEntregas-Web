@@ -20,21 +20,36 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/Seguimiento">Rastrear envio</a>
                 </li>
-                <li class="nav-itemw">
+                <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Zonas de reparto</a>
                 </li>
-                <li class="nav-itemw">
+                <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="PreguntasFrecuentes">Preguntas frecuentes</a>
                 </li>
-                <li class="nav-itemw">
+                <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="VerInformacionEmpresa">Sobre nosotros</a>
                 </li>
-                <% if (session.getAttribute("user") != null) {%>
-                <li class="nav-itemw">
-                    <a class="nav-link active" aria-current="page" href="VerInformacionEmpresa"><%= session.getAttribute("user") %></a>
-                </li>
-                <% }%>
             </ul>
         </div>
+        <% if (session.getAttribute("user") != null) {%>
+        <div class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle user-profile " href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-square" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                    <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z"/>
+                </svg>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                <li><a class="dropdown-item" href="/PerfilUsuario">Ver perfil</a></li>
+                    <% if (session.getAttribute("admin") != null) {%>
+                <li><a class="dropdown-item" href="/PanelAdministracion">Panel de administración</a></li>
+                    <% }%>
+                <li><a class="dropdown-item" href="/CerrarSesion">Cerrar sesión</a></li>
+            </ul>
+        </div>
+        <% } else { %>
+        <a class="nav-bar-item" href="/Login">Iniciar sesión</a>
+        <% }%>
+
     </div>
 </nav>
