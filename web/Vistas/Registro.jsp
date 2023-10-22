@@ -28,6 +28,20 @@
             <div class="formularioRegistro">
                 <form action="/Registro" method="POST" id="formularioL" onsubmit="return verificarCamposVacios()">
                     <div class="">
+                        <label for="InputEmail1" class="form-label">Correo Electronico</label>
+                        <input type="email" maxlength="40" onfocus="clearErrors()" class="form-control" id="InputCorreo" name="InputCorreo" value="<%= request.getAttribute("correo") != null ? request.getAttribute("correo") : ""%>">
+                    </div>
+                    <div class="error-message">
+                        <span id="errorCorreo" class="error oculto">
+                            Debe ingresar su email.
+                        </span>
+                        <% if (request.getAttribute("correo") != null) {%>
+                        <span id="errorCorreoDuplicated" class="error">
+                            Este email ya esta en uso.
+                        </span>
+                        <% }%>
+                    </div>
+                    <div class="">
                         <label for="InputCedula" class="form-label">Cedula</label> 
                         <input type="text" onfocus="clearErrors()" class="form-control" oninput="validarCedula(this)" id="InputCedula" name="InputCedula" value="<%= request.getAttribute("cedula") != null ? request.getAttribute("cedula") : ""%>">
                     </div>
@@ -58,20 +72,6 @@
                         </span>
                     </div>
                     <div class="">
-                        <label for="InputEmail1" class="form-label">Correo Electronico</label>
-                        <input type="email" maxlength="40" onfocus="clearErrors()" class="form-control" id="InputCorreo" name="InputCorreo" value="<%= request.getAttribute("correo") != null ? request.getAttribute("correo") : ""%>">
-                    </div>
-                    <div class="error-message">
-                        <span id="errorCorreo" class="error oculto">
-                            Debe ingresar su email.
-                        </span>
-                        <% if (request.getAttribute("correo") != null) {%>
-                        <span id="errorCorreoDuplicated" class="error">
-                            Este email ya esta en uso.
-                        </span>
-                        <% }%>
-                    </div>
-                    <div class="">
                         <label for="InputPassword1" class="form-label">Contraseña</label>
                         <input type="password" maxlength="40" onfocus="clearErrors()" class="form-control" id="InputContrasenia" name="InputContrasenia">
                     </div>
@@ -83,7 +83,21 @@
                             Debe ingresar 8 o más caracteres.
                         </span>
                     </div>
-                    <br>
+                    <div class="">
+                        <label for="InputPassword2" class="form-label">Confirmar contraseña</label>
+                        <input type="password" maxlength="40" onfocus="clearErrors()" oninput="compararContrasenias()" class="form-control" id="InputContrasenia2" name="InputContrasenia2">
+                    </div>
+                    <div class="error-message">
+                        <span id="errorContrasenia2" class="error oculto">
+                            Debe ingresar su contraseña.
+                        </span>
+                        <span id="errorContraLong2" class="error oculto">
+                            Debe ingresar 8 o más caracteres.
+                        </span>
+                        <span id="errorPwdDesigual" class="error oculto">
+                            Las contraseñas no son iguales.
+                        </span>
+                    </div>
                     <div id="divRegistrarUsuario">
                         <button type="submit" class="btn btn-primary" id="botonR">Registrarme</button>
                     </div>

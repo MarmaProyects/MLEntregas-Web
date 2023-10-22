@@ -97,11 +97,14 @@ function clearErrors() {
     let errorCedula = document.getElementById("errorCedula");
     let errorCedulaLong = document.getElementById("errorCedulaLong");
     let errorContraLong = document.getElementById("errorContraLong");
+    let errorContraLong2 = document.getElementById("errorContraLong2");
     let errorCorreoDuplicated = document.getElementById("errorCorreoDuplicated");
     let errorNombre = document.getElementById("errorNombre");
     let errorApellido = document.getElementById("errorApellido");
     let errorCorreo = document.getElementById("errorCorreo");
     let errorContrasenia = document.getElementById("errorContrasenia");
+    let errorContrasenia2 = document.getElementById("errorContrasenia2");
+    let errorPwdDesigual = document.getElementById("errorPwdDesigual");
 
     let cedula = document.getElementById("InputCedula");
     let nombre = document.getElementById("InputNombre");
@@ -157,7 +160,29 @@ function clearErrors() {
         errorContraLong.classList.add('oculto');
     }
 
+    if (errorContrasenia2) {
+        errorContrasenia.classList.add('oculto');
+    }
+
+    if (errorContraLong2) {
+        errorContraLong.classList.add('oculto');
+    }
+
     if (errorCorreoDuplicated) {
         errorCorreoDuplicated.classList.add('oculto');
+    }
+}
+
+function compararContrasenias() {
+    let contrasenia = document.getElementById("InputContrasenia");
+    let contrasenia2 = document.getElementById("InputContrasenia2");
+    let errorPwdDesigual = document.getElementById("errorPwdDesigual");
+    
+    if (!contrasenia.value.equals(constrasenia2.value)) {
+        errorPwdDesigual.classList.remove('oculto');
+        errorPwdDesigual.classList.add('error');
+    } else {
+        errorPwdDesigual.classList.add('oculto');
+        errorPwdDesigual.classList.remove('error');
     }
 }
