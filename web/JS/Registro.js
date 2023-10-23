@@ -9,18 +9,21 @@ function verificarCamposVacios() {
     let apellido = document.getElementById("InputApellido");
     let correo = document.getElementById("InputCorreo");
     let contrasenia = document.getElementById("InputContrasenia");
+    let contrasenia2 = document.getElementById("InputContrasenia2");
 
     let valorCedula = cedula.value;
     let valorNombre = nombre.value;
     let valorApellido = apellido.value;
     let valorCorreo = correo.value;
     let valorContrasenia = contrasenia.value;
+    let valorContrasenia2 = contrasenia2.value;
 
     let errorCedula = document.getElementById("errorCedula");
     let errorNombre = document.getElementById("errorNombre");
     let errorApellido = document.getElementById("errorApellido");
     let errorCorreo = document.getElementById("errorCorreo");
     let errorContrasenia = document.getElementById("errorContrasenia");
+    let errorContrasenia2 = document.getElementById("errorContrasenia2");
     let errorCedulaLong = document.getElementById("errorCedulaLong");
     let errorContraLong = document.getElementById("errorContraLong");
 
@@ -63,6 +66,13 @@ function verificarCamposVacios() {
     if (valorContrasenia === "") {
         contrasenia.classList.add('input-error');
         errorContrasenia.classList.remove('oculto');
+
+        return false;
+    }
+
+    if (valorContrasenia2 === "") {
+        contrasenia2.classList.add('input-error');
+        errorContrasenia2.classList.remove('oculto');
 
         return false;
     }
@@ -111,6 +121,7 @@ function clearErrors() {
     let apellido = document.getElementById("InputApellido");
     let correo = document.getElementById("InputCorreo");
     let contrasenia = document.getElementById("InputContrasenia");
+    let contrasenia2 = document.getElementById("InputContrasenia2");
 
     if (cedula) {
         cedula.classList.remove('input-error');
@@ -130,6 +141,10 @@ function clearErrors() {
 
     if (contrasenia) {
         contrasenia.classList.remove('input-error');
+    }
+
+    if (contrasenia2) {
+        contrasenia2.classList.remove('input-error');
     }
 
     if (errorCedula) {
@@ -161,7 +176,7 @@ function clearErrors() {
     }
 
     if (errorContrasenia2) {
-        errorContrasenia.classList.add('oculto');
+        errorContrasenia2.classList.add('oculto');
     }
 
     if (errorContraLong2) {
@@ -174,15 +189,15 @@ function clearErrors() {
 }
 
 function compararContrasenias() {
-    let contrasenia = document.getElementById("InputContrasenia");
-    let contrasenia2 = document.getElementById("InputContrasenia2");
+    let contrasenia = document.getElementById("InputContrasenia").value;
+    let contrasenia2 = document.getElementById("InputContrasenia2").value;
     let errorPwdDesigual = document.getElementById("errorPwdDesigual");
+
     
-    if (!contrasenia.value.equals(constrasenia2.value)) {
-        errorPwdDesigual.classList.remove('oculto');
-        errorPwdDesigual.classList.add('error');
-    } else {
+    if (contrasenia === contrasenia2) {
         errorPwdDesigual.classList.add('oculto');
-        errorPwdDesigual.classList.remove('error');
+    } else {
+        errorPwdDesigual.classList.remove('oculto');
     }
+
 }

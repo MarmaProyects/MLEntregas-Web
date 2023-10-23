@@ -91,6 +91,7 @@ public class Registro extends HttpServlet {
         String apellido = request.getParameter("InputApellido");
         String correo = request.getParameter("InputCorreo");
         String contrasenia = request.getParameter("InputContrasenia");
+        String contrasenia2 = request.getParameter("InputContrasenia2");
         Cliente cliente = IA.traerClienteSeleccionado(cedula);
 
         Usuario user = IA.obtenerUsuario(correo);
@@ -111,6 +112,16 @@ public class Registro extends HttpServlet {
             Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        if (!contrasenia.equals(contrasenia2)) {
+            request.setAttribute("correo", correo);
+            request.setAttribute("nombre", nombre);
+            request.setAttribute("cedula", cedula);
+            request.setAttribute("apellido", apellido);
+            request.setAttribute("contrasenia", contrasenia);
+            request.setAttribute("contrasenia2", contrasenia2);
+            request.getRequestDispatcher("/Vistas/Registro.jsp").forward(request, response);
+        } 
+        
         if (user == null) {
             IA.crearUsuario(correo, encryptPassword, encryptedPassword.getKey().getEncoded());
         } else {
