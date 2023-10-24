@@ -33,8 +33,8 @@ td::after {
     content: "";
     display: block;
     width: 1px;
-    background-color: #000; 
-    height: 100%; 
+    background-color: #000;
+    height: 100%;
 }
 
 
@@ -59,16 +59,27 @@ button.botonModal{
     background-color: lightgray;
 }
 
-.title-container{
-    margin-left: 100px;
-}
-
-.btn-close{
-    align-self: self-start;
-}
-
 .modal-footer{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.button{
+    padding: 10px;
+}
+
+.modal-body{
+    display: flex;
+    flex-direction: column-reverse;
+    text-align: center;
+}
+
+.cancel{
+    background: rgb(160, 160, 160);
+}
+
+.modal-header{
+    display: flex;
+    flex-direction: column-reverse;
 }

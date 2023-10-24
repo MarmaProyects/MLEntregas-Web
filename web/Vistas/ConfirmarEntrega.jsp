@@ -14,10 +14,10 @@
         <link href="CSS/bootstrap.min.css" rel="stylesheet">
         <link href="CSS/Styles.css" rel="stylesheet">
         <script src="JS/bootstrap.bundle.min.js"></script>
-        <link href="CSS/ConfirmarEntrega.css" rel="stylesheet">
-        <script src="JS/jquery.min.js"></script>
-        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+        <script defer src="JS/qrcode.min.js"></script>
         <script defer src="JS/ConfirmarEntrega.js"></script>
+        <script src="JS/Scripts.js"></script>
+        <link href="CSS/ConfirmarEntrega.css" rel="stylesheet">
     </head>
     <body>
         <% ArrayList<Envio> listadoEnv = (ArrayList<Envio>) request.getAttribute("ListaEnvios"); %>
@@ -38,7 +38,7 @@
                     <td><%= listadoEnv.get(i).getClienteEmisor().getNombre() + " " + listadoEnv.get(i).getClienteEmisor().getApellido()%></td>
                     <td><%= listadoEnv.get(i).getPaquete().getDescripcion()%></td>
                     <td>
-                        <button type="button" class="botonModal" data-envio-id="<%= i%>" data-bs-toggle="modal" data-bs-target="#ModalMedioPago" data-target-form="<%= listadoEnv.get(i).getIdEnvio()%>">
+                        <button type="button" class="button" id="" data-envio-id="<%= i%>" data-target-precio="<%= listadoEnv.get(i).getPago().getPrecio()%>" data-bs-toggle="modal" data-bs-target="#ModalMedioPago" data-target-form="<%= listadoEnv.get(i).getIdEnvio()%>">
                             Confirmar Envío
                         </button>
                     </td>
@@ -56,17 +56,18 @@
                             Seleccione su método de pago:
                         </div>
                         <div class="modal-footer">
-                            <button class="btn btn-secondary" data-bs-target="#ModalPagarEfectivo"  data-bs-dismiss="modal" data-bs-toggle="modal">Efectivo</button>
-                            <button class="btn btn-secondary" data-bs-target="#exampleModalToggle2" data-bs-dismiss="modal" data-bs-toggle="modal">Crédito</button>
+                            <button class="button" data-bs-target="#ModalPagarEfectivo" data-bs-dismiss="modal" data-bs-toggle="modal">Efectivo</button>
+                            <input type="hidden" id="inputCredito" value="">
+                            <button class="button" id="btnCredito" data-bs-target="#modalPagarCredito" onclick="agregarPrecio()" data-bs-dismiss="modal" data-bs-toggle="modal">Crédito</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+            <div class="modal fade" id="modalPagarCredito" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">PAGO CON CRÉDITO</h1>
+                            <h1 class="modal-title fs-5" id="tituloModalPagoCredito"></h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -74,7 +75,13 @@
                             Escanee el código QR para realizar el pago.
                         </div>
                         <div class="modal-footer">
-                            <button class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+                            <% if (!listadoEnv.isEmpty()) {%>
+                            <form method="post" action="<%= request.getContextPath()%>/ConfirmarEntrega"> 
+                                <input type="hidden" id="creditoIdEnvio" name="idEnvio" value="">
+                                <input type="hidden" name="tipoPago" value="Credito">
+                                <input class="button" type="submit" value="Confirmar envío">
+                            </form>
+                            <% }%>
                         </div>
                     </div>
                 </div>
@@ -89,12 +96,12 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="button" class="button cancel" data-bs-dismiss="modal">Cancelar</button>
                             <% if (!listadoEnv.isEmpty()) {%>
                             <form method="post" action="<%= request.getContextPath()%>/ConfirmarEntrega"> 
-                                <input type="hidden" name="idEnvio" value="">
+                                <input type="hidden" id="efectivoIdEnvio" name="idEnvio" value="">
                                 <input type="hidden" name="tipoPago" value="Efectivo">
-                                <input type="submit" value="Confirmar envío">
+                                <input class="button" type="submit" value="Confirmar envío">
                             </form>
                             <% }%>
                         </div>

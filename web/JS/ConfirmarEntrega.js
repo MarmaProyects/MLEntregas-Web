@@ -6,11 +6,12 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('button[data-envio-id]').forEach(function (button) {
         button.addEventListener('click', function () {
             let idEnvio = this.getAttribute('data-target-form');
-            let codigoQRRandom = 'este es un codigo qr de prueba';
-            document.querySelector('input[name="idEnvio"]').value = idEnvio;
+            document.getElementById('creditoIdEnvio').value = idEnvio;
+            document.getElementById('inputCredito').value = idEnvio;
+            document.getElementById('efectivoIdEnvio').value = idEnvio;
         });
     });
 });
 
 const contenedorQR = document.getElementById('contenedorQR');
-new QRCode(contenedorQR, 'codigoQRRandom');
+new QRCode(contenedorQR, 'https://mpago.la/pos/79869461');
