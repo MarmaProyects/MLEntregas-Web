@@ -30,7 +30,7 @@
                             <a href="/Login" class="btn home-buttons">Ingresar</a>
                         </div>
                         <div class="col-6">
-                            <a href="/Registro" class="btn home-buttons">Registraté</a>
+                            <a href="/Registro" class="btn home-buttons">Registrate</a>
                         </div>
                     </div>
                     <div class="row">

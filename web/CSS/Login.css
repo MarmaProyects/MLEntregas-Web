@@ -23,12 +23,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 }
 
 #botonIniciarS{
-    width: 385px;
-}
-
-#divTitulo{
-   margin: auto;
-   text-align: center;
+    width: 99%;
 }
 
 .col-auto span{

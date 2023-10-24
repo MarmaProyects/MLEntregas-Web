@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="CSS/Registro.css">
         <script src="JS/bootstrap.bundle.min.js"></script>
         <script src="JS/Registro.js"></script>
+        <script src="JS/Scripts.js"></script>
         <title>Registro</title>
     </head>
     <body>
@@ -69,6 +70,18 @@
                         </span>
                     </div>
                     <div class="">
+                        <label for="InputTelefono" class="form-label">Teléfono/Celular</label>
+                        <input type="text" maxlength="9" onfocus="clearErrors()" oninput="validarDigitos(this)" class="form-control" id="InputTelefono" name="InputTelefono" value="<%= request.getAttribute("telefono") != null ? request.getAttribute("telefono") : ""%>">
+                    </div>
+                    <div class="error-message">
+                        <span id="errorTelefono" class="error oculto">
+                            Debe ingresar su número
+                        </span>
+                        <span id="errorTelefonoLong" class="error oculto">
+                            Debe ingresar un número válido (8 o 9 dígitos).
+                        </span>
+                    </div>
+                    <div class="">
                         <label for="InputPassword1" class="form-label">Contraseña</label>
                         <input type="password" maxlength="40" onfocus="clearErrors()" class="form-control" id="InputContrasenia" name="InputContrasenia" value="<%= request.getAttribute("contrasenia") != null ? request.getAttribute("contrasenia") : ""%>">
                     </div>
@@ -95,7 +108,7 @@
                         
                     </div>
                     <div id="divRegistrarUsuario">
-                        <button type="submit" class="btn btn-primary" id="botonR">Registrarme</button>
+                        <button type="submit" class="btn btn-primary button" id="botonR">Registrarme</button>
                     </div>
                 </form>
             </div>

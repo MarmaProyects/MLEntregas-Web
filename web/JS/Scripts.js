@@ -12,6 +12,10 @@ function validarNumero(input) {
     }
 }
 
+function validarDigitos(input) {
+    input.value = input.value.replace(/[^0-9]/g, "");
+}
+
 function validarRastreo() {
     let input = document.getElementById("codigoRastreo");
     let valor = input.value;

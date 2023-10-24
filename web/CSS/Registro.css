@@ -8,11 +8,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 */
 
 .formularioRegistro{
-    height: 50%;
-    width: 20%;
+    display: flex;
     align-content: center;
     margin: auto;
+    margin-bottom: 40px;
     border-radius: 15px;
+}
+
+#formularioL{
+    margin: auto;
+    width: 50   vh;
 }
 
 #divRegistrarUsuario{
