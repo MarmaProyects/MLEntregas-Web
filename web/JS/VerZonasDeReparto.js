@@ -10,6 +10,14 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
+/*Porvenir*/
+L.circle([-32.394138571410764, -57.968147645564244], {radius: 800}).addTo(map);
+/*Esperanza*/
+L.circle([-32.352018863236104, -57.95293900242489], {radius: 800}).addTo(map);
+/*Constancia*/
+L.circle([-32.206848031246125, -58.00667987754964], {radius: 800}).addTo(map);
+
+
 document.querySelectorAll('.coord-link').forEach(function (link) {
     link.addEventListener('click', function (e) {
         e.preventDefault();
@@ -19,7 +27,7 @@ document.querySelectorAll('.coord-link').forEach(function (link) {
         let marker = L.marker([lat, lng]).addTo(map);
         map.flyTo([lat, lng], zoom);
         
-        L.circle([lat, lng], {radius: 800}).addTo(map);
+        
 
     })
 })
