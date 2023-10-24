@@ -13,10 +13,13 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 document.querySelectorAll('.coord-link').forEach(function (link) {
     link.addEventListener('click', function (e) {
         e.preventDefault();
-        let lat =this.getAttribute('data-lat');
-        let lng =this.getAttribute('data-lng');
+        let lat = this.getAttribute('data-lat');
+        let lng = this.getAttribute('data-lng');
         let zoom = this.getAttribute('data-zoom');
         let marker = L.marker([lat, lng]).addTo(map);
-        map.flyTo([lat, lng],zoom);
+        map.flyTo([lat, lng], zoom);
+        
+        L.circle([lat, lng], {radius: 800}).addTo(map);
+
     })
 })
