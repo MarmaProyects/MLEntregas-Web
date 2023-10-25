@@ -5,7 +5,7 @@
 --%>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/"><img src="Images/logo-sm-extra.png" alt="Descripci髇 del icono"></a>
+        <a class="navbar-brand" href="/"><img src="Images/logo-sm-extra.png" alt="Descripci贸n del icono"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -20,8 +20,8 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/Seguimiento">Rastrear envio</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Zonas de reparto</a>
+                <li class="nav-itemw">
+                    <a class="nav-link active" aria-current="page" href="VerZonasDeReparto">Zonas de reparto</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="PreguntasFrecuentes">Preguntas frecuentes</a>
@@ -42,13 +42,13 @@
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                 <li><a class="dropdown-item" href="/PerfilUsuario">Ver perfil</a></li>
                     <% if (session.getAttribute("admin") != null) {%>
-                <li><a class="dropdown-item" href="/PanelAdministracion">Panel de administraci髇</a></li>
+                <li><a class="dropdown-item" href="/PanelAdministracion">Panel de administraci贸n</a></li>
                     <% }%>
-                <li><a class="dropdown-item" href="/CerrarSesion">Cerrar sesi髇</a></li>
+                <li><a class="dropdown-item" href="/CerrarSesion">Cerrar sesi贸n</a></li>
             </ul>
         </div>
         <% } else { %>
-        <a class="nav-bar-item" href="/Login">Iniciar sesi髇</a>
+        <a class="nav-bar-item" href="/Login">Iniciar sesi贸n</a>
         <% }%>
 
     </div>
