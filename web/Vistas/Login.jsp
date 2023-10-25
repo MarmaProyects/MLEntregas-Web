@@ -21,13 +21,11 @@
             <jsp:include page="/Includes/Navbar.jsp" />
         </header>
         <div class="contenedor">
-            <div id="divTitulo">
-                <h1>¡Bienvenido!</h1>
-            </div>
+            <h1>¡Bienvenido!</h1>
             <div class="formularioLogin">
                 <form action="/Login" method="POST" id="formulearioL" onsubmit="return validarCamposLogin()">
                     <div class=" ">
-                        <label for="InputEmail1" class="form-label">Correo Electronico:</label>
+                        <label for="InputEmail1" class="form-label">Correo Electrónico:</label>
                         <input type="email" maxlength="40" onfocus="clearErrors()" class="form-control" name="InputCorreo" id="InputCorreo" value="<%= request.getAttribute("correo") != null ? request.getAttribute("correo") : ""%>">
                     </div>
                     <div class="error-message">
@@ -56,7 +54,7 @@
                     </div>
                     <br>
                     <div id="divInicioSesion">
-                        <button type="submit" class="btn button" id="botonIniciarS">Iniciar Sesion</button>
+                        <button type="submit" class="btn button" id="botonIniciarS">Iniciar sesión</button>
                     </div>
                     <a href="/Registro" class="link">¿No tienes cuenta?</a>
                     <a href="#" class="link-right">¿Olvidó su contraseña?</a>

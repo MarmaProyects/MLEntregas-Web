@@ -90,7 +90,9 @@ public class Registro extends HttpServlet {
         String nombre = request.getParameter("InputNombre");
         String apellido = request.getParameter("InputApellido");
         String correo = request.getParameter("InputCorreo");
+        int telefono = Integer.parseInt(request.getParameter("InputTelefono"));
         String contrasenia = request.getParameter("InputContrasenia");
+        String contrasenia2 = request.getParameter("InputContrasenia2");
         Cliente cliente = IA.traerClienteSeleccionado(cedula);
 
         Usuario user = IA.obtenerUsuario(correo);
@@ -110,7 +112,7 @@ public class Registro extends HttpServlet {
         } catch (GeneralSecurityException ex) {
             Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         if (user == null) {
             IA.crearUsuario(correo, encryptPassword, encryptedPassword.getKey().getEncoded());
         } else {
@@ -118,13 +120,15 @@ public class Registro extends HttpServlet {
             request.setAttribute("nombre", nombre);
             request.setAttribute("cedula", cedula);
             request.setAttribute("apellido", apellido);
+            request.setAttribute("telefono", telefono);
             request.getRequestDispatcher("/Vistas/Registro.jsp").forward(request, response);
+            return;
+            
         }
-
         if (cliente != null) {
-            IA.editarClienteSeleccionado(cedula, nombre, apellido, 0, correo);
+            IA.editarClienteSeleccionado(cedula, nombre, apellido, telefono, correo);
         } else {
-            IA.agregarCliente(cedula, nombre, apellido, 0, correo);
+            IA.agregarCliente(cedula, nombre, apellido, telefono, correo);
         }
         HttpSession session = request.getSession(true);
         session.setAttribute("user", correo);
