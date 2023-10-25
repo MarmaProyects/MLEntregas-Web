@@ -23,12 +23,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 }
 
 #botonIniciarS{
-    width: 385px;
-}
-
-#divTitulo{
-   margin: auto;
-   text-align: center;
+    width: 99%;
 }
 
 .col-auto span{
@@ -40,13 +35,23 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
    text-align: center;
 }
 
+.link:hover{
+   color:   rgb(255,128, 0, 1);
+}
+
+.link-right:hover{
+   color:   rgb(255,128, 0, 1);
+}
+
 .link{
    text-decoration: none;
-   color: red;
+   color:  rgb(100, 103, 112);
+   font-weight: bold;
 }
 
 .link-right{
    text-decoration: none;
-   color: red;
+   color:  rgb(100, 103, 112);
    float: right;
+   font-weight: bold;
 }
