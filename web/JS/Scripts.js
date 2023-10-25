@@ -19,7 +19,7 @@ function validarDigitos(input) {
 function validarRastreo() {
     let input = document.getElementById("codigoRastreo");
     let valor = input.value;
-    
+
     let errordigi = document.getElementById("errordigi");
     let errorrastreo = document.getElementById("errorrastreo");
     let errornull = document.getElementById("errornull");
@@ -44,12 +44,32 @@ function validarRastreo() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    var titulo = document.getElementById('envio-title');
-
-    var posicion = titulo.getBoundingClientRect();
-
-    window.scrollTo({
-        top: posicion.top + window.scrollY,
-        behavior: 'smooth'
-    });
+    let titulo = document.getElementById('envio-title');
+    if (titulo != null) {
+        let posicion = titulo.getBoundingClientRect();
+        window.scrollTo({
+            top: posicion.top + window.scrollY,
+            behavior: 'smooth'
+        });
+    }
 });
+
+function agregarPrecio() {
+    let idEnvio = document.getElementById("inputCredito").value;
+    const baseUrl = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port;
+    fetch(baseUrl + "/Envio?idEnvio=" + idEnvio, {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ${accessToken}',
+            'Content-Type': 'application/json'
+        }
+    }).then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    }).then(data => {
+        let tituloPagoCredito = document.getElementById('tituloModalPagoCredito');
+        tituloPagoCredito.textContent = "PAGO CON CRÉDITO : $" + data.pago.precio;
+    })
+}

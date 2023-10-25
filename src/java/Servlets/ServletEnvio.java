@@ -6,25 +6,23 @@ package Servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import logica.clases.Envio;
 import logica.fabrica.Fabrica;
-import logica.interfaces.IAdministracion;
 import logica.interfaces.IEnvio;
+import logica.clases.Envio;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 /**
  *
  * @author leo
  */
-@WebServlet(name = "ConfirmarEntrega", urlPatterns = {"/ConfirmarEntrega"})
-public class ConfirmarEntrega extends HttpServlet {
-
-    public Fabrica fab = Fabrica.getInstancia();
+@WebServlet(name = "Envio", urlPatterns = {"/Envio"})
+public class ServletEnvio extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,10 +41,10 @@ public class ConfirmarEntrega extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ConfirmarEntrega</title>");
+            out.println("<title>Servlet Envio</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ConfirmarEntrega at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Envio at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -64,11 +62,14 @@ public class ConfirmarEntrega extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        int idEnvio = Integer.parseInt(request.getParameter("idEnvio"));
+        Fabrica fab = Fabrica.getInstancia();
         IEnvio iEnvio = fab.getControladorEnvio();
-        IAdministracion iAdmin = fab.getControladorCliente();
-        request.setAttribute("ListaEnvios", iEnvio.listaDeEnviosEnCamino());
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/Vistas/ConfirmarEntrega.jsp");
-        dispatcher.forward(request, response);
+        Envio envio = iEnvio.verDetallesDelEnvio(idEnvio);
+        String json = new Gson().toJson(envio);
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write(json);
     }
 
     /**
@@ -82,16 +83,7 @@ public class ConfirmarEntrega extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        IEnvio iEnvio = fab.getControladorEnvio();
-        IAdministracion iPago = fab.getControladorPago();
-        int idEnvio = Integer.parseInt(request.getParameter("idEnvio"));
-        String tipoPago = request.getParameter("tipoPago");
-        iEnvio.crearEstado(idEnvio, "Entregado", "Paquete entregado");
-        Envio envio = iEnvio.verDetallesDelEnvio(idEnvio);
-        iPago.pagarEnvio(envio.getPago().getIdPago(), tipoPago);
-        request.setAttribute("ListaEnvios", iEnvio.listaDeEnviosEnCamino());
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/Vistas/ConfirmarEntrega.jsp");
-        dispatcher.forward(request, response);
+        processRequest(request, response);
     }
 
     /**
