@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="CSS/Login.css">
         <script src="JS/bootstrap.bundle.min.js"></script>
         <script src="JS/login.js"></script>
-        <title>Login</title>
+        <title>MLEntregas</title>
     </head>
     <body>
         <header>
@@ -25,7 +25,7 @@
             <div class="formularioLogin">
                 <form action="/Login" method="POST" id="formulearioL" onsubmit="return validarCamposLogin()">
                     <div class=" ">
-                        <label for="InputEmail1" class="form-label">Correo Electrónico:</label>
+                        <label for="InputCorreo" class="form-label">Correo Electrónico:</label>
                         <input type="email" maxlength="40" onfocus="clearErrors()" class="form-control" name="InputCorreo" id="InputCorreo" value="<%= request.getAttribute("correo") != null ? request.getAttribute("correo") : ""%>">
                     </div>
                     <div class="error-message">
@@ -39,7 +39,7 @@
                         <% }%>
                     </div>
                     <div class="">
-                        <label for="InputPassword1" class="form-label">Contraseña:</label>
+                        <label for="InputContrasenia" class="form-label">Contraseña:</label>
                         <input type="password" maxlength="40" onfocus="clearErrors()" class="form-control" name="InputContrasenia" id="InputContrasenia"  >
                     </div>
                     <div class="error-message">
