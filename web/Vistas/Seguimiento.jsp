@@ -51,7 +51,6 @@
                     <img src="Images/paquete lupa.png" alt="Descripción del icono">
                 </div> 
             </div>
-        </div>
         <% Envio envio = (Envio) request.getAttribute("envio"); %>
         <% if (envio != null) {%> 
         <div class="contenedor-seguimiento">
@@ -123,15 +122,15 @@
             </div>
             <div id="divComentarioDelEnvio">
                 <div id="divEstrellasValoracion">
-                <% Valoracion valoracion = (Valoracion) request.getAttribute("valoracion"); %>
-                <% if (valoracion != null) {%>
-                <%int i;%>
-                <% for (i = 0; i < valoracion.getPuntaje(); i++) { %>
-                <label id="estrellaValoracion">&#9733;</label>
-                <% }%>
-                <% for (; i < 5; i++) { %>
-                <label id="estrellas_restantes">&#9733;</label>
-                <% }%>
+                    <% Valoracion valoracion = (Valoracion) request.getAttribute("valoracion"); %>
+                    <% if (valoracion != null) {%>
+                    <%int i;%>
+                    <% for (i = 0; i < valoracion.getPuntaje(); i++) { %>
+                    <label id="estrellaValoracion">&#9733;</label>
+                    <% }%>
+                    <% for (; i < 5; i++) { %>
+                    <label id="estrellas_restantes">&#9733;</label>
+                    <% }%>
                 </div>
                 <h1><%= valoracion.getPuntaje()%></h1>
                 <p id="comentarioValoracion"><%= valoracion.getComentario()%></p>
@@ -143,6 +142,7 @@
             <% }%>
         </div>
         <% }%>
+        </div>
         <header>
             <jsp:include page="/Includes/Footer.jsp" />
         </header>
