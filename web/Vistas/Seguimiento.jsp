@@ -4,6 +4,7 @@
     Author     : MarmaduX
 --%>
 
+<%@page import="logica.clases.Valoracion"%>
 <%@page import="logica.dataTypes.TipoEstado"%>
 <%@page import="logica.clases.Envio"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -13,8 +14,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="CSS/bootstrap.min.css" rel="stylesheet">
         <script src="JS/bootstrap.bundle.min.js"></script>
-        <link href="CSS/seguimiento.css" rel="stylesheet">
         <link href="CSS/Styles.css" rel="stylesheet">
+        <link href="CSS/seguimiento.css" rel="stylesheet">
         <script src="JS/Scripts.js"></script>
         <title>MLEntregas</title>
         <link rel="icon" href="Images/logo-sm-extra.png" type="image/png">
@@ -120,8 +121,27 @@
                     </tbody>
                 </table>
             </div>
+            <div id="divComentarioDelEnvio">
+                <div id="divEstrellasValoracion">
+                <% Valoracion valoracion = (Valoracion) request.getAttribute("valoracion"); %>
+                <% if (valoracion != null) {%>
+                <%int i;%>
+                <% for (i = 0; i < valoracion.getPuntaje(); i++) { %>
+                <label id="estrellaValoracion">&#9733;</label>
+                <% }%>
+                <% for (; i < 5; i++) { %>
+                <label id="estrellas_restantes">&#9733;</label>
+                <% }%>
+                </div>
+                <h1><%= valoracion.getPuntaje()%></h1>
+                <p id="comentarioValoracion"><%= valoracion.getComentario()%></p>
+                <% } else {%>
+            </div>
+            <div>
+                <jsp:include page="/Includes/Valoracion.jsp" />
+            </div>
+            <% }%>
         </div>
-                        
         <% }%>
         <header>
             <jsp:include page="/Includes/Footer.jsp" />

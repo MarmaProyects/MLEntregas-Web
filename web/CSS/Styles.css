@@ -108,3 +108,12 @@ input[type="radio"]:checked ~ label {
     width: 400px;
     margin: auto;
 }
+
+#estrellaValoracion{
+    color: orange;
+}
+
+#divBotonC{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}

@@ -6,7 +6,6 @@ package Servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,14 +13,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import logica.clases.Envio;
 import logica.fabrica.Fabrica;
-import logica.clases.Valoracion;
 
 /**
  *
- * @author MarmaduX
+ * @author Angelo
  */
-@WebServlet(name = "Seguimiento", urlPatterns = {"/Seguimiento"})
-public class Seguimiento extends HttpServlet {
+@WebServlet(name = "Valoracion", urlPatterns = {"/Valoracion"})
+public class Valoracion extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +38,10 @@ public class Seguimiento extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Seguimiento</title>");
+            out.println("<title>Servlet Valoracion</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Seguimiento at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Valoracion at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,8 +59,7 @@ public class Seguimiento extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/Vistas/Seguimiento.jsp");
-        dispatcher.forward(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -76,19 +73,14 @@ public class Seguimiento extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int codigoRastreo = Integer.parseInt(request.getParameter("codigoRastreo"));
+        int codigoRastreo = Integer.parseInt(request.getParameter("codigoRastreoValoracion"));
         Envio envio = Fabrica.getInstancia().getControladorEnvio().obtenerCodigoRastreo(codigoRastreo);
         
-        if (envio == null) {
-            request.setAttribute("error", "No se encontró el paquete."); 
-            request.getRequestDispatcher("/Vistas/Seguimiento.jsp").forward(request, response);
-        }
-        Valoracion valo = Fabrica.getInstancia().getControladorEnvio().buscarValoracionId(envio.getIdEnvio());
-        if(valo != null && valo.getenvio().getIdEnvio() == envio.getIdEnvio()){
-        request.setAttribute("valoracion", valo);
-        }
-        request.setAttribute("envio", envio);
-        request.getRequestDispatcher("/Vistas/Seguimiento.jsp").forward(request, response);
+        int puntaje = Integer.parseInt(request.getParameter("puntaje"));
+        String comentario = request.getParameter("campo_comentario");
+        Fabrica.getInstancia().getControladorEnvio().crearValoracion(envio.getIdEnvio(), puntaje, comentario);
+        request.setAttribute("envio",envio);
+        response.sendRedirect(request.getHeader("Referer"));  
     }
 
     /**
