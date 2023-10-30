@@ -4,9 +4,9 @@
  */
 package Servlets;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,13 +17,16 @@ import logica.clases.Cliente;
 import logica.clases.Usuario;
 import logica.fabrica.Fabrica;
 import logica.interfaces.IAdministracion;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
 
 /**
  *
  * @author MarmaduX
  */
-@WebServlet(name = "Perfil", urlPatterns = {"/Perfil"})
-public class Perfil extends HttpServlet {
+@WebServlet(name = "ImageUpload", urlPatterns = {"/ImageUpload"})
+public class ImageUpload extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,10 +45,10 @@ public class Perfil extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Perfil</title>");
+            out.println("<title>Servlet ImageUpload</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Perfil at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ImageUpload at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -63,16 +66,7 @@ public class Perfil extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession(true);
-        String correo = (String) session.getAttribute("user");
-        IAdministracion IA = Fabrica.getInstancia().getControladorCliente();
-        Cliente client = IA.obtenerCliente(correo);
-        request.setAttribute("cliente", client);
-        session.setAttribute("cliente", client);
-        Usuario user = IA.obtenerUsuario(correo);
-        session.setAttribute("fotoPerfil", user.getIdFoto());
-
-        request.getRequestDispatcher("/Vistas/Perfil.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -86,39 +80,36 @@ public class Perfil extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        StringBuilder sb = new StringBuilder();
+        BufferedReader reader = request.getReader();
+        String line;
+        while ((line = reader.readLine()) != null) {
+            sb.append(line);
+        }
+        String data = sb.toString();
+        String idFoto = "";
+        int startIndex = data.indexOf("\"idFoto\"");
+
+        if (startIndex != -1) {
+            // Encontrar la posición del primer comienzo de comillas después de "idFoto"
+            int valueStartIndex = data.indexOf('"', startIndex + 8);
+
+            if (valueStartIndex != -1) {
+                // Encontrar la posición del primer final de comillas después del valor
+                int valueEndIndex = data.indexOf('"', valueStartIndex + 1);
+
+                if (valueEndIndex != -1) {
+                    // Extraer el valor entre comillas
+                    idFoto = data.substring(valueStartIndex + 1, valueEndIndex);
+                }
+            }
+        }
         IAdministracion IA = Fabrica.getInstancia().getControladorCliente();
         HttpSession session = request.getSession(true);
         String correo_in_session = (String) session.getAttribute("user");
-        String idFoto = (String) session.getAttribute("fotoPerfil");
-        int cedula = Integer.parseInt(request.getParameter("cedula"));
-        String nombre = request.getParameter("nombre");
-        String apellido = request.getParameter("apellido");
-        String correo = request.getParameter("correo");
-        int telefono = Integer.parseInt(request.getParameter("telefono"));
-        Usuario user = IA.obtenerUsuario(correo);
-        Cliente cliente = IA.traerClienteSeleccionado(cedula);
-        Cliente clienteViejo = (Cliente) session.getAttribute("cliente");
-        if ((user == null || user.getCorreo().equals(correo_in_session) ) && (cliente == null || cliente.getCedula() == clienteViejo.getCedula())) {
-            IA.editarClienteSeleccionado(cedula, clienteViejo.getCedula(), nombre, apellido, telefono, correo);
-            IA.editarUsuario(correo, idFoto, correo_in_session);
-        } else {
-            request.setAttribute("correo", correo);
-            request.setAttribute("nombre", nombre);
-            request.setAttribute("cedula", cedula);
-            request.setAttribute("apellido", apellido);
-            request.setAttribute("telefono", telefono);
-            request.setAttribute("error", correo);
-            
-            request.getRequestDispatcher("/Vistas/Perfil.jsp").forward(request, response);
-            return;
-        }  
-        Cliente client = IA.obtenerCliente(correo);
-        request.setAttribute("cliente", client);
-        session.setAttribute("cliente", client);
-        session.setAttribute("user", correo);
-        session.setAttribute("fotoPerfil", idFoto);
-
-        request.getRequestDispatcher("/Vistas/Perfil.jsp").forward(request, response);
+        IA.editarUsuario(correo_in_session, idFoto, correo_in_session );
+        response.sendRedirect("/Perfil");
     }
 
     /**

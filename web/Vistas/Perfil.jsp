@@ -14,7 +14,9 @@
         <link rel="stylesheet" href="CSS/bootstrap.min.css">
         <link rel="stylesheet" href="CSS/Styles.css">
         <link rel="stylesheet" href="CSS/perfil.css">
-        <script src="JS/bootstrap.bundle.min.js"></script> 
+        <script src="JS/bootstrap.bundle.min.js"></script>
+        <script src="JS/jquery-3.7.1.min.js"></script>  
+        <script src="JS/perfil.js"></script> 
         <title>MLEntregas</title>
     </head>
     <body>
@@ -22,56 +24,123 @@
             <jsp:include page="/Includes/Navbar.jsp" />
         </header>
         <div class="contenedor">
-            <% Cliente client = (Cliente) request.getAttribute("cliente"); %>
-            <div class="container emp-profile">
-                <form method="post">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="profile-img">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
-                                <div class="file btn btn-lg btn-primary boton-file">
-                                    Cambiar foto
-                                    <input class="boton-file" type="file" name="file"/>
-                                </div>
+            <% Cliente client = (Cliente) request.getAttribute("cliente");%>
+            <% String idfoto = (String) session.getAttribute("fotoPerfil");%>
+            <div class="container emp-profile"> 
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-img">
+                            <% if (idfoto != null && !idfoto.equals("null") ) { %>
+                            <img src="https://i.imgur.com/<%= idfoto %>.png" class='image' title="source: imgur.com" />
+                            <% }else{ %> 
+                            <img src="https://i.imgur.com/xqRjqEX.png" class='image' title="source: imgur.com" />
+                            <% } %> 
+                            <div class="file btn btn-lg btn-primary boton-file">
+                                Cambiar foto
+                                <input class="boton-file" id='fileToUpload' type="file" name="file" accept=".png, .jpg, .jpeg"/>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="profile-head">
-                                <h5>
-                                    <%= client.getNombre() + " " +  client.getApellido() %>
-                                </h5> 
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Editar Perfil"/>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="profile-work">
-                                <p>OPERACIONES</p>
-                                <a href="">Website Link</a><br/>
-                                <a href="">Bootsnipp Profile</a><br/>
-                                <a href="">Bootply Profile</a> 
+                    <div class="col-md-6">
+                        <div class="profile-head">
+                            <h5>
+                                <%= client.getNombre() + " " + client.getApellido() %>
+                            </h5> 
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="button" class="profile-edit-btn button" id="btnEdit" value="Editar Perfil">Editar Perfil</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-work">
+                            <p>OPERACIONES</p>
+                            <a href="">Website Link</a><br/>
+                            <a href="">Bootsnipp Profile</a><br/>
+                            <a href="">Bootply Profile</a> 
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="tab-content profile-tab " id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Cédula de Identidad</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><%= client.getCedula()%></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Nombre Completo</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><%= client.getNombre() + " " + client.getApellido()%></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Email</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><%= client.getCorreo()%></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Teléfono</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><%=  client.getTelefono()%></p>
+                                    </div>
+                                </div> 
                             </div>
                         </div>
-                        <div class="col-md-8">
-                            <div class="tab-content profile-tab" id="myTabContent">
-                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="tab-content profile-tab oculto" id="contentEdit"> 
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <form action="/Perfil" method='POST' onsubmit="return validateFields()">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label>Cédula de Identidad</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p><%= client.getCedula() %></p>
+                                            <input class="input-edit" onfocus="clearErrors()" name='cedula'  id='cedula' oninput="validarCedula(this)" type="text" value="<%= client.getCedula()%>"/>
+                                            <div class="error-message">
+                                                <span id="errorCedula" class="error oculto">
+                                                    Debe ingresar su cédula sin puntos ni guión.
+                                                </span>
+                                                <span id="errorCedulaLong" class="error oculto">
+                                                    Debe ingresar el total de su cédula.
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label>Nombre Completo</label>
+                                            <label>Nombre</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p><%= client.getNombre() + " " +  client.getApellido() %></p>
+                                            <input class="input-edit" onfocus="clearErrors()" name='nombre' id='nombre' type="text" value="<%= client.getNombre()%>"/>
+                                            <div class="error-message">
+                                                <span id="errorNombre" class="error oculto">
+                                                    Debe ingresar su nombre.
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Apellido</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input class="input-edit" onfocus="clearErrors()" name='apellido' id='apellido' type="text" value="<%= client.getApellido()%>"/>
+                                            <div class="error-message">
+                                                <span id="errorApellido" class="error oculto">
+                                                    Debe ingresar su apellido.
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -79,70 +148,47 @@
                                             <label>Email</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p><%= client.getCorreo() %></p>
+                                            <input class="input-edit" onfocus="clearErrors()"  name='correo' id='correo' type="text" value="<%= client.getCorreo()%>"/>
+                                            <div class="error-message">
+                                                <span id="errorCorreo" class="error oculto">
+                                                    Debe ingresar su email.
+                                                </span>
+                                                <% if (request.getAttribute("correo") != null) {%>
+                                                <span id="errorCorreoDuplicated" class="error">
+                                                    Este email ya esta en uso.
+                                                </span>
+                                                <% }%>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label>Teléfono</label>
-                                        </div>
+                                        </div> 
                                         <div class="col-md-6">
-                                            <p><%=  client.getTelefono() %></p>
-                                        </div>
-                                    </div> 
-                                </div>
-                                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label>Experience</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p>Expert</p>
+                                            <input class="input-edit" onfocus="clearErrors()" name='telefono' id="telefono" type="text" value="<%= client.getTelefono()%>"/>
+                                            <div class="error-message">
+                                                <span id="errorTelefono" class="error oculto">
+                                                    Debe ingresar su número
+                                                </span>
+                                                <span id="errorTelefonoLong" class="error oculto">
+                                                    Debe ingresar un número válido (8 o 9 dígitos).
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6">
-                                            <label>Hourly Rate</label>
+                                        <div class="col-md-9"> 
                                         </div>
-                                        <div class="col-md-6">
-                                            <p>10$/hr</p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label>Total Projects</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p>230</p>
+                                        <div class="col-md-3">
+                                            <input class='btn button button-edit' type="submit" value="Guardar" />
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label>English Level</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p>Expert</p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label>Availability</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p>6 months</p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <label>Your Bio</label><br/>
-                                            <p>Your detail description</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
-                </form>           
+                </div>         
             </div>
         </div>
         <header>

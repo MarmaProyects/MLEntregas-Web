@@ -18,8 +18,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     text-align: center;
 }
 .profile-img img{
-    width: 70%;
+    max-width: 70%;
     height: 100%;
+    max-height: 300px;
 }
 .profile-img .file {
     position: relative;
@@ -49,7 +50,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     width: 70%;
     padding: 2%;
     font-weight: 600;
-    color: #6c757d;
     cursor: pointer;
 }
 .proile-rating{
@@ -102,3 +102,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 .boton-file:hover{
     cursor: pointer;
 }
+
+.input-edit{
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.button-edit{
+    width: 100%;
+}
+
+.gris{
+    background-color: gray;
+}
+ 
