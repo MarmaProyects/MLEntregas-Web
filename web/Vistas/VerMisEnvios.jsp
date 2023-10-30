@@ -15,6 +15,7 @@
         <link href="CSS/bootstrap.min.css" rel="stylesheet">
         <link href="CSS/Styles.css" rel="stylesheet">
         <link href="CSS/VerMisEnvios.css" rel="stylesheet">
+        <script src="https://sdk.mercadopago.com/js/v2"></script>
         <title>JSP Page</title>
     </head>
     <body>
