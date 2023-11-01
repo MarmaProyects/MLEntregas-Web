@@ -66,7 +66,7 @@ public class Perfil extends HttpServlet {
         HttpSession session = request.getSession(true);
         String correo = (String) session.getAttribute("user");
         IAdministracion IA = Fabrica.getInstancia().getControladorCliente();
-        Cliente client = IA.obtenerCliente(correo);
+        Cliente client = IA.traerClientePorCorreo(correo);
         request.setAttribute("cliente", client);
         session.setAttribute("cliente", client);
         Usuario user = IA.obtenerUsuario(correo);
@@ -96,14 +96,15 @@ public class Perfil extends HttpServlet {
         String correo = request.getParameter("correo");
         int telefono = Integer.parseInt(request.getParameter("telefono"));
         Usuario user = IA.obtenerUsuario(correo);
-        Cliente cliente = IA.traerClienteSeleccionado(cedula);
+        Cliente cliente = IA.traerClientePorCorreo(correo);
+        Cliente cliente_cedula = IA.traerClienteSeleccionado(cedula);
         Cliente clienteViejo = (Cliente) session.getAttribute("cliente");
         request.setAttribute("cliente", clienteViejo);
         session.setAttribute("cliente", clienteViejo);
         session.setAttribute("user", correo_in_session);
         session.setAttribute("fotoPerfil", idFoto);
-        
-        if ((user == null || user.getCorreo().equals(correo_in_session) ) && (cliente == null || cliente.getCedula() == clienteViejo.getCedula())) {
+
+        if ((user == null || user.getCorreo().equals(correo_in_session)) && (cliente_cedula == null || cliente_cedula.getCedula() == clienteViejo.getCedula()) && (cliente == null || cliente.getCorreo().equals(clienteViejo.getCorreo()))) {
             IA.editarClienteSeleccionado(cedula, clienteViejo.getCedula(), nombre, apellido, telefono, correo);
             IA.editarUsuario(correo, idFoto, correo_in_session);
         } else {
@@ -113,13 +114,15 @@ public class Perfil extends HttpServlet {
             request.setAttribute("apellido", apellido);
             request.setAttribute("telefono", telefono);
             request.setAttribute("error", "correo");
-            if(!(cliente == null || cliente.getCedula() == clienteViejo.getCedula())){ 
+            if (!(cliente == null || cliente_cedula.getCedula() == clienteViejo.getCedula())) {
                 request.setAttribute("error", "Cedula");
+            } else if (!(cliente == null || cliente.getCorreo() == clienteViejo.getCorreo())) {
+                request.setAttribute("error", "correo");
             }
             request.getRequestDispatcher("/Vistas/Perfil.jsp").forward(request, response);
             return;
-        }  
-        Cliente client = IA.obtenerCliente(correo);
+        }
+        Cliente client = IA.traerClientePorCorreo(correo);
         request.setAttribute("cliente", client);
         session.setAttribute("cliente", client);
         session.setAttribute("user", correo);
