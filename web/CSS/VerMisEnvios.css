@@ -1,0 +1,58 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 25 oct. 2023, 21:07:06
+    Author     : leo
+*/
+
+.TablaEnvio{
+    display: flex;
+    justify-content: center;
+}
+
+#divDatosClientes{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+
+#divDatosEnvio{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+
+#contenedorEnvio{
+    margin-top: 25px;
+    margin-bottom: 30px;
+    border: 1px solid #ff6600;
+    border-collapse: separate;
+    border-spacing: 20px 20px;
+    border-radius: 15px;
+
+}
+
+#contenedorDatosEnvio{
+    display: flex;
+    justify-content: space-between;
+    min-width: 800px;
+    padding: 20px;
+    padding-bottom: 0px;
+}
+
+#contenedorBotonesEnvio{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+#EnvioPagoTexto{
+    margin-bottom: 0px;
+    border: 1px solid #ff6600;
+    padding: 2px;
+    color: black;
+    border-radius: 5px;
+    font-weight: 700;
+}
