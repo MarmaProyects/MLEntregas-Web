@@ -98,6 +98,11 @@ public class Perfil extends HttpServlet {
         Usuario user = IA.obtenerUsuario(correo);
         Cliente cliente = IA.traerClienteSeleccionado(cedula);
         Cliente clienteViejo = (Cliente) session.getAttribute("cliente");
+        request.setAttribute("cliente", clienteViejo);
+        session.setAttribute("cliente", clienteViejo);
+        session.setAttribute("user", correo_in_session);
+        session.setAttribute("fotoPerfil", idFoto);
+        
         if ((user == null || user.getCorreo().equals(correo_in_session) ) && (cliente == null || cliente.getCedula() == clienteViejo.getCedula())) {
             IA.editarClienteSeleccionado(cedula, clienteViejo.getCedula(), nombre, apellido, telefono, correo);
             IA.editarUsuario(correo, idFoto, correo_in_session);
@@ -107,8 +112,10 @@ public class Perfil extends HttpServlet {
             request.setAttribute("cedula", cedula);
             request.setAttribute("apellido", apellido);
             request.setAttribute("telefono", telefono);
-            request.setAttribute("error", correo);
-            
+            request.setAttribute("error", "correo");
+            if(!(cliente == null || cliente.getCedula() == clienteViejo.getCedula())){ 
+                request.setAttribute("error", "Cedula");
+            }
             request.getRequestDispatcher("/Vistas/Perfil.jsp").forward(request, response);
             return;
         }  

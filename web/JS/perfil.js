@@ -138,6 +138,7 @@ function validarCedula(input) {
 
 function clearErrors() {
     let errorCedula = document.getElementById("errorCedula");
+    let errorCedulaDuplicated = document.getElementById("errorCedulaDuplicated");
     let errorCedulaLong = document.getElementById("errorCedulaLong");
     let errorCorreoDuplicated = document.getElementById("errorCorreoDuplicated");
     let errorNombre = document.getElementById("errorNombre");
@@ -200,6 +201,10 @@ function clearErrors() {
 
     if (errorTelefonoLong) {
         errorTelefonoLong.classList.add('oculto');
+    }
+    
+    if (errorCedulaDuplicated) {
+        errorCedulaDuplicated.classList.add('oculto');
     }
 
     if (errorCorreoDuplicated) {

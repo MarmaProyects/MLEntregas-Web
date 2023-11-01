@@ -48,9 +48,15 @@
                             </h5> 
                         </div>
                     </div>
+                    <% if (request.getAttribute("error") != null) {%>
+                    <div class="col-md-2">
+                        <button type="button" class="profile-edit-btn button gris" id="btnEdit" value="Editar Perfil">Cancelar</button>
+                    </div>
+                    <% }else{ %>
                     <div class="col-md-2">
                         <button type="button" class="profile-edit-btn button" id="btnEdit" value="Editar Perfil">Editar Perfil</button>
                     </div>
+                    <% } %>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
@@ -62,7 +68,8 @@
                         </div>
                     </div>
                     <div class="col-md-8">
-                        <div class="tab-content profile-tab " id="myTabContent">
+                        <% String oculto = "oculto"; %> 
+                        <div class="tab-content profile-tab <%= (request.getAttribute("error") != null) ? oculto : "" %>" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -98,7 +105,7 @@
                                 </div> 
                             </div>
                         </div>
-                        <div class="tab-content profile-tab oculto" id="contentEdit"> 
+                        <div class="tab-content profile-tab <%= (request.getAttribute("error") == null) ? oculto : "" %>" id="contentEdit"> 
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                 <form action="/Perfil" method='POST' onsubmit="return validateFields()">
                                     <div class="row">
@@ -114,6 +121,11 @@
                                                 <span id="errorCedulaLong" class="error oculto">
                                                     Debe ingresar el total de su cédula.
                                                 </span>
+                                                <% if (request.getAttribute("error") == "Cedula") {%>
+                                                <span id="errorCedulaDuplicated" class="error">
+                                                    Esa cédula ya esta en uso.
+                                                </span>
+                                                <% }%>
                                             </div>
                                         </div>
                                     </div>
@@ -153,9 +165,9 @@
                                                 <span id="errorCorreo" class="error oculto">
                                                     Debe ingresar su email.
                                                 </span>
-                                                <% if (request.getAttribute("correo") != null) {%>
+                                                <% if (request.getAttribute("error") == "correo") {%>
                                                 <span id="errorCorreoDuplicated" class="error">
-                                                    Este email ya esta en uso.
+                                                    Ese email ya esta en uso.
                                                 </span>
                                                 <% }%>
                                             </div>
