@@ -178,7 +178,7 @@
                                             <label>Teléfono</label>
                                         </div> 
                                         <div class="col-md-6">
-                                            <input class="input-edit" onfocus="clearErrors()" name='telefono' id="telefono" type="text" value="<%= client.getTelefono()%>"/>
+                                            <input class="input-edit" onfocus="clearErrors()" max="999999999" name='telefono' id="telefono" type="text" value="<%= client.getTelefono()%>"/>
                                             <div class="error-message">
                                                 <span id="errorTelefono" class="error oculto">
                                                     Debe ingresar su número
