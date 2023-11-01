@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Filter.java to edit this template
  */
-package Servlets;
+package Filtros;
 
 import java.io.IOException;
 import java.io.PrintStream;
@@ -23,70 +23,30 @@ import javax.servlet.http.HttpSession;
  *
  * @author MarmaduX
  */
-@WebFilter(filterName = "RequestAdminFilter", urlPatterns = {"/ConfirmarEnvio"})
-public class RequestAdminFilter implements Filter {
-    
+@WebFilter(filterName = "RequestLoggingFilter", urlPatterns = {"/Perfil"})
+public class RequestLoggingFilter implements Filter {
+
     private static final boolean debug = true;
 
-    // The filter configuration object we are associated with.  If
-    // this value is null, this filter instance is not currently
-    // configured. 
     private FilterConfig filterConfig = null;
-    
-    public RequestAdminFilter() {
-    }    
-    
+
+    public RequestLoggingFilter() {
+    }
+
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
-            log("RequestAdminFilter:DoBeforeProcessing");
+            log("RequestLoggingFilter:DoBeforeProcessing");
         }
 
-        // Write code here to process the request and/or response before
-        // the rest of the filter chain is invoked.
-        // For example, a logging filter might log items on the request object,
-        // such as the parameters.
-        /*
-	for (Enumeration en = request.getParameterNames(); en.hasMoreElements(); ) {
-	    String name = (String)en.nextElement();
-	    String values[] = request.getParameterValues(name);
-	    int n = values.length;
-	    StringBuffer buf = new StringBuffer();
-	    buf.append(name);
-	    buf.append("=");
-	    for(int i=0; i < n; i++) {
-	        buf.append(values[i]);
-	        if (i < n-1)
-	            buf.append(",");
-	    }
-	    log(buf.toString());
-	}
-         */
-    }    
-    
+    }
+
     private void doAfterProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
-            log("RequestAdminFilter:DoAfterProcessing");
+            log("RequestLoggingFilter:DoAfterProcessing");
         }
 
-        // Write code here to process the request and/or response after
-        // the rest of the filter chain is invoked.
-        // For example, a logging filter might log the attributes on the
-        // request object after the request has been processed. 
-        /*
-	for (Enumeration en = request.getAttributeNames(); en.hasMoreElements(); ) {
-	    String name = (String)en.nextElement();
-	    Object value = request.getAttribute(name);
-	    log("attribute: " + name + "=" + value.toString());
-
-	}
-         */
-        // For example, a filter might append something to the response.
-        /*
-	PrintWriter respOut = new PrintWriter(response.getWriter());
-	respOut.println("<P><B>This has been appended by an intrusive filter.</B>");
-         */
     }
 
     /**
@@ -106,7 +66,7 @@ public class RequestAdminFilter implements Filter {
 
         HttpSession session = httpRequest.getSession(false); 
 
-        if (session != null && session.getAttribute("user") != null &&  session.getAttribute("admin") != null &&(Boolean) session.getAttribute("admin")) {
+        if (session != null && session.getAttribute("user") != null) {
             chain.doFilter(request, response); 
         } else {
             httpResponse.sendRedirect("/");
@@ -132,17 +92,17 @@ public class RequestAdminFilter implements Filter {
     /**
      * Destroy method for this filter
      */
-    public void destroy() {        
+    public void destroy() {
     }
 
     /**
      * Init method for this filter
      */
-    public void init(FilterConfig filterConfig) {        
+    public void init(FilterConfig filterConfig) {
         this.filterConfig = filterConfig;
         if (filterConfig != null) {
-            if (debug) {                
-                log("RequestAdminFilter:Initializing filter");
+            if (debug) {
+                log("RequestLoggingFilter:Initializing filter");
             }
         }
     }
@@ -153,27 +113,27 @@ public class RequestAdminFilter implements Filter {
     @Override
     public String toString() {
         if (filterConfig == null) {
-            return ("RequestAdminFilter()");
+            return ("RequestLoggingFilter()");
         }
-        StringBuffer sb = new StringBuffer("RequestAdminFilter(");
+        StringBuffer sb = new StringBuffer("RequestLoggingFilter(");
         sb.append(filterConfig);
         sb.append(")");
         return (sb.toString());
     }
-    
+
     private void sendProcessingError(Throwable t, ServletResponse response) {
-        String stackTrace = getStackTrace(t);        
-        
+        String stackTrace = getStackTrace(t);
+
         if (stackTrace != null && !stackTrace.equals("")) {
             try {
                 response.setContentType("text/html");
                 PrintStream ps = new PrintStream(response.getOutputStream());
-                PrintWriter pw = new PrintWriter(ps);                
+                PrintWriter pw = new PrintWriter(ps);
                 pw.print("<html>\n<head>\n<title>Error</title>\n</head>\n<body>\n"); //NOI18N
 
                 // PENDING! Localize this for next official release
-                pw.print("<h1>The resource did not process correctly</h1>\n<pre>\n");                
-                pw.print(stackTrace);                
+                pw.print("<h1>The resource did not process correctly</h1>\n<pre>\n");
+                pw.print(stackTrace);
                 pw.print("</pre></body>\n</html>"); //NOI18N
                 pw.close();
                 ps.close();
@@ -190,7 +150,7 @@ public class RequestAdminFilter implements Filter {
             }
         }
     }
-    
+
     public static String getStackTrace(Throwable t) {
         String stackTrace = null;
         try {
@@ -204,9 +164,9 @@ public class RequestAdminFilter implements Filter {
         }
         return stackTrace;
     }
-    
+
     public void log(String msg) {
-        filterConfig.getServletContext().log(msg);        
+        filterConfig.getServletContext().log(msg);
     }
-    
+
 }

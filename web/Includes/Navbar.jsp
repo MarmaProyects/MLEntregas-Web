@@ -40,15 +40,12 @@
                 </svg>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                <li><a class="dropdown-item" href="/PerfilUsuario">Ver perfil</a></li>
-                    <% if (session.getAttribute("admin") != null) {%>
-                <li><a class="dropdown-item" href="/PanelAdministracion">Panel de administraciÃ³n</a></li>
-                    <% }%>
-                <li><a class="dropdown-item" href="/CerrarSesion">Cerrar sesiÃ³n</a></li>
+                <li><a class="dropdown-item" href="/Perfil">Ver perfil</a></li>
+                <li><a class="dropdown-item" href="/CerrarSesion">Cerrar sesión</a></li>
             </ul>
         </div>
         <% } else { %>
-        <a class="nav-bar-item" href="/Login">Iniciar sesiÃ³n</a>
+        <a class="nav-bar-item" href="/Login">Iniciar sesión</a>
         <% }%>
 
     </div>

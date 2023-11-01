@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Filter.java to edit this template
  */
-package Servlets;
+package Filtros;
 
 import java.io.IOException;
 import java.io.PrintStream;
@@ -23,8 +23,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author MarmaduX
  */
-@WebFilter(filterName = "RequestGuestFilter", urlPatterns = {"/Registro", "/Login"})
-public class RequestGuestFilter implements Filter {
+@WebFilter(filterName = "RequestAdminFilter", urlPatterns = {"/ConfirmarEnvio"})
+public class RequestAdminFilter implements Filter {
     
     private static final boolean debug = true;
 
@@ -33,13 +33,13 @@ public class RequestGuestFilter implements Filter {
     // configured. 
     private FilterConfig filterConfig = null;
     
-    public RequestGuestFilter() {
+    public RequestAdminFilter() {
     }    
     
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
-            log("RequestGuestFilter:DoBeforeProcessing");
+            log("RequestAdminFilter:DoBeforeProcessing");
         }
 
         // Write code here to process the request and/or response before
@@ -67,7 +67,7 @@ public class RequestGuestFilter implements Filter {
     private void doAfterProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
-            log("RequestGuestFilter:DoAfterProcessing");
+            log("RequestAdminFilter:DoAfterProcessing");
         }
 
         // Write code here to process the request and/or response after
@@ -105,8 +105,8 @@ public class RequestGuestFilter implements Filter {
         HttpServletResponse httpResponse = (HttpServletResponse) response;
 
         HttpSession session = httpRequest.getSession(false); 
-        
-       if (session == null || session.getAttribute("user") == null) {
+
+        if (session != null && session.getAttribute("user") != null &&  session.getAttribute("admin") != null &&(Boolean) session.getAttribute("admin")) {
             chain.doFilter(request, response); 
         } else {
             httpResponse.sendRedirect("/");
@@ -142,7 +142,7 @@ public class RequestGuestFilter implements Filter {
         this.filterConfig = filterConfig;
         if (filterConfig != null) {
             if (debug) {                
-                log("RequestGuestFilter:Initializing filter");
+                log("RequestAdminFilter:Initializing filter");
             }
         }
     }
@@ -153,9 +153,9 @@ public class RequestGuestFilter implements Filter {
     @Override
     public String toString() {
         if (filterConfig == null) {
-            return ("RequestGuestFilter()");
+            return ("RequestAdminFilter()");
         }
-        StringBuffer sb = new StringBuffer("RequestGuestFilter(");
+        StringBuffer sb = new StringBuffer("RequestAdminFilter(");
         sb.append(filterConfig);
         sb.append(")");
         return (sb.toString());
