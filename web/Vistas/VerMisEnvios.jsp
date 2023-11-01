@@ -43,18 +43,25 @@
                                 <p>Estado: <%= listadoEnv.get(i).getEstados().get(J - 1).getTipo().getEstado()%></p>
                             </div>
                         </div>
+                        <% boolean cancelado = false;%>
+                        <% for (int f = 0; f < listadoEnv.get(i).getEstados().size(); f++) { %>
+                        <%if (listadoEnv.get(i).getEstados().get(f).getTipo().equals(TipoEstado.Cancelado)) {%>
+                        <% cancelado = true;%>
+                        <%}%>
+                        <%}%>
+                        <% if (!cancelado) { %>
                         <div id="contenedorBotonesEnvio">
                             <% if (listadoEnv.get(i).getPago().getFecha() != null) {%>
-                                <p id="EnvioPagoTexto"> ENVIO PAGO </p>
-                                <%}%>
+                            <p id="EnvioPagoTexto"> ENVIO PAGO </p>
+                            <%} else {%>
                             <div id="divBotonesEnvio">
-                                <% if (listadoEnv.get(i).getPago().getFecha() == null) {%>
                                 <button class="button" type="button" class="botonModal" data-envio-id="<%= i%>" data-bs-toggle="modal" data-bs-target="#exampleModal" data-target-form="<%= listadoEnv.get(i).getIdEnvio()%>">
                                     PAGAR ENVIO
                                 </button>
-                                <%}%>
                             </div>
+                            <%}%>
                         </div>
+                        <%}%>
                     </div>
                 </table>
             </div>
