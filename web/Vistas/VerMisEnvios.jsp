@@ -13,6 +13,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="CSS/bootstrap.min.css" rel="stylesheet">
+        <script src="JS/bootstrap.bundle.min.js"></script> 
+        <script src="JS/Script.js"></script>
         <link href="CSS/Styles.css" rel="stylesheet">
         <link href="CSS/VerMisEnvios.css" rel="stylesheet">
         <script src="https://sdk.mercadopago.com/js/v2"></script>

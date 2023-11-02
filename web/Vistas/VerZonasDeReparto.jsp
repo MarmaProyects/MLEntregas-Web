@@ -12,7 +12,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="CSS/bootstrap.min.css">
+        <link rel="stylesheet" href="CSS/bootstrap.min.css"> 
+        <script src="JS/bootstrap.bundle.min.js"></script>  
         <link href="CSS/Styles.css" rel="stylesheet">
         <title>MLEntregas</title>
         <link rel="icon" href="Images/logo-sm-extra.png" type="image/png">

@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author MarmaduX
  */
-@WebFilter(filterName = "RequestLoggingFilter", urlPatterns = {"/Perfil"})
+@WebFilter(filterName = "RequestLoggingFilter", urlPatterns = {"/Perfil", "/VerMisEnvios"})
 public class RequestLoggingFilter implements Filter {
 
     private static final boolean debug = true;

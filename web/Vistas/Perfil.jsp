@@ -62,9 +62,8 @@
                     <div class="col-md-4">
                         <div class="profile-work">
                             <p>OPERACIONES</p>
-                            <a href="">Website Link</a><br/>
-                            <a href="">Bootsnipp Profile</a><br/>
-                            <a href="">Bootply Profile</a> 
+                            <a href="/VerMisEnvios">Ver envios</a><br/>
+                            <a href="/Seguimiento">Buscar envio</a><br/> 
                         </div>
                     </div>
                     <div class="col-md-8">
