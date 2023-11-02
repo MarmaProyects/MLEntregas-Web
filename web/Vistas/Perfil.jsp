@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="CSS/Styles.css">
         <link rel="stylesheet" href="CSS/perfil.css">
         <script src="JS/bootstrap.bundle.min.js"></script>
+        <link rel="icon" href="Images/logo-sm-extra.png" type="image/png">
         <script src="JS/jquery-3.7.1.min.js"></script>  
         <script src="JS/perfil.js"></script> 
         <title>MLEntregas</title>

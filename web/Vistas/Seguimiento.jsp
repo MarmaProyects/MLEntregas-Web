@@ -56,7 +56,7 @@
         <div class="contenedor-seguimiento">
             <h3 id="focus-scroll">Envio</h3>
             <div class="contenedor-tabla">
-                <table class="table">
+                <table class="table table-dark">
                     <tbody>
                         <tr>
                             <th>Numero de rastreo:</th>
@@ -100,7 +100,7 @@
 
             <h3>Historial de estados</h3>
             <div class="contenedor-tabla">
-                <table class="table" >
+                <table class="table table-dark" >
                     <thead>
                         <tr> 
                             <th>Fecha</th>

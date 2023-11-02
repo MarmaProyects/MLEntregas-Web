@@ -26,42 +26,53 @@
         <div class="contenedor">
             <h1>Tarifas</h1>
             <div id="cuerpo">
-
-                <div id="divTablaNormales">
-                    <h2>Tarifas normales</h2>
-                    <table class="table table-bordered">
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Precio base</th>
-                        </tr>
-                        <% for (int i = 0; i < listadoTar.size(); i++) {%>
-                        <% if (listadoTar.get(i).getIdTarifa() <= 3) {%>
-                        <tr>
-                            <td><%= listadoTar.get(i).getNombre()%></td>
-                            <td>$<%= listadoTar.get(i).getPrecio()%></td>
-                        </tr>
-                        <% } %>
-                        <% }%>
+                <div class='table_tarifa'>
+                    <h4 class="subtitle">Tarifas normales</h4>
+                    <table class="table table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">NOMBRE</th>
+                                <th scope="col">PRECIO BASE</th> 
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for (int h = 0; h < listadoTar.size(); h++) {%>
+                            <% if (listadoTar.get(h).getIdTarifa() <= 3) {%>
+                            <tr>
+                                <th><%= h + 1%> </th>
+                                <th><%= listadoTar.get(h).getNombre()%></th>
+                                <th>$<%= listadoTar.get(h).getPrecio()%></th>
+                            </tr>
+                            <% }%>
+                            <% }%> 
+                        </tbody>
                     </table>
-                </div>
-
-                <div id="divTablaEspeciales">
-                    <table class="table table-bordered">
-                        <h2>Tarifas especiales</h2>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Precio base</th>
-                        </tr>
-                        <% for (int h = 0; h < listadoTar.size(); h++) {%>
-                        <% if (listadoTar.get(h).getIdTarifa() > 3) {%>
-                        <tr>
-                            <td><%= listadoTar.get(h).getNombre()%></td>
-                            <td>$<%= listadoTar.get(h).getPrecio()%></td>
-                        </tr>
-                        <% }%>
-                        <% }%>
+                </div>   
+                <div class='table_tarifa'>
+                    <h4 class="subtitle">Tarifas especiales</h4>
+                    <table class="table table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">NOMBRE</th>
+                                <th scope="col">PRECIO BASE</th> 
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for (int h = 0; h < listadoTar.size(); h++) {%>
+                            <% if (listadoTar.get(h).getIdTarifa() > 3) {%>
+                            <tr>
+                                <th><%= h + 1%> </th>
+                                <th><%= listadoTar.get(h).getNombre()%></th>
+                                <th>$<%= listadoTar.get(h).getPrecio()%></th>
+                            </tr>
+                            <% }%>
+                            <% }%> 
+                        </tbody>
                     </table>
-                </div>
+                </div> 
+
             </div>
         </div>
         <header>

@@ -9,54 +9,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 
 h2 {
     text-align: center;
-}
-
-.table {
-    border: solid grey;
-    border-collapse: collapse;
-    margin-bottom: 0px;
-}
-
-.table-bordered td, th{
-    border-bottom: 1px solid rgb(0,0,0,0.4);
-}
-
-.table-bordered th{
-    font-size: 1.5rem;
-    color: black;
-    text-align: center;
-    padding: 5px 30px 5px 30px;
-    background-color: rgb(192,192,192);
-}
-
-.table-bordered td{
-    color: black;
-    background-color: rgb(192,192,192);
-    font-size: 1.5rem;
-    text-align: center;
-    padding: 5px 5px 5px 5px;
-    width: 50%;
-}
-
-#tablaPay{
-    width: 550px;
-}
-
-#tablasDatos{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: row;
-}
-
+}  
+ 
 #DivMapa{
     height: 500px;
     width: 700px;
 }
-
-.table-bordered a{
-    color: black;
-}
+ 
 
 #contenido{
     display: flex;
@@ -65,7 +24,12 @@ h2 {
     align-items: center;
     margin-bottom: 30px;
 }
+  
+.coord-link{ 
+    color: white;
+}
 
 .table{
-    width: 800px;
+    width: 40%; 
+       position: relative;
 }

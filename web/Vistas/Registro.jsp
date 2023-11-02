@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="CSS/Registro.css">
         <script src="JS/bootstrap.bundle.min.js"></script>
         <script src="JS/Registro.js"></script>
+        <link rel="icon" href="Images/logo-sm-extra.png" type="image/png">
         <script src="JS/Scripts.js"></script>
         <title>Registro</title>
     </head>
