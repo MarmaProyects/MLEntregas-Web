@@ -78,14 +78,10 @@ public class Seguimiento extends HttpServlet {
             throws ServletException, IOException {
         int codigoRastreo = Integer.parseInt(request.getParameter("codigoRastreo"));
         Envio envio = Fabrica.getInstancia().getControladorEnvio().obtenerCodigoRastreo(codigoRastreo);
-        
+
         if (envio == null) {
-            request.setAttribute("error", "No se encontró el paquete."); 
+            request.setAttribute("error", "No se encontró el paquete.");
             request.getRequestDispatcher("/Vistas/Seguimiento.jsp").forward(request, response);
-        }
-        Valoracion valo = Fabrica.getInstancia().getControladorEnvio().buscarValoracionId(envio.getIdEnvio());
-        if(valo != null && valo.getenvio().getIdEnvio() == envio.getIdEnvio()){
-        request.setAttribute("valoracion", valo);
         }
         request.setAttribute("envio", envio);
         request.getRequestDispatcher("/Vistas/Seguimiento.jsp").forward(request, response);

@@ -16,3 +16,13 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 })
+
+function validarEstrellas (){
+    
+    let puntaje = document.getElementById("input_puntaje");
+    if(puntaje.value > 0){
+        return true;
+    }
+    alert("Debe ingresar al menos una estrella para continuar");
+    return false;
+}

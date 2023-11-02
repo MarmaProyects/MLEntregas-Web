@@ -1,0 +1,39 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 2 nov 2023, 18:25:27
+    Author     : Angelo
+*/
+
+label:hover,
+label:hover ~ label {
+  color: rgb(33, 37, 41); /* Cambia el color de las estrellas al pasar el mouse por encima */
+}
+
+#divComentarioDelEnvio{
+    text-align: center;
+    background: #323232;
+    width: 30%;
+    margin: auto;
+    border-radius: 6px;
+    padding: 15px;
+}
+
+#divComentarioDelEnvio h1, #comentarioValoracion, #divComentarioDelEnvio #sinComentario{
+    font-size: 30px;
+    color: orange;
+}
+
+.rating{
+    background: #323232;
+    width: 70%;
+    margin: auto;
+    border-radius: 6px;
+    padding: 15px;
+}
+
+.rating h1, .rating h2, .rating p{
+    color: orange;
+}

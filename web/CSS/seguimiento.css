@@ -67,17 +67,3 @@ h1, h4 {
 .contenedor-seguimiento{
     padding: 0 10% 70px 10%;
 }
-
-label:hover,
-label:hover ~ label {
-  color: rgb(33, 37, 41); /* Cambia el color de las estrellas al pasar el mouse por encima */
-}
-
-#divComentarioDelEnvio{
-    text-align: center;
-    width: auto;
-}
-
-#comentarioValoracion{
-    font-size: 20px;
-}

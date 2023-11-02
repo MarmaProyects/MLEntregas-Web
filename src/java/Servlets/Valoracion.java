@@ -6,6 +6,7 @@ package Servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,7 +39,7 @@ public class Valoracion extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Valoracion</title>");            
+            out.println("<title>Servlet Valoracion</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Valoracion at " + request.getContextPath() + "</h1>");
@@ -59,7 +60,18 @@ public class Valoracion extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        int idEnvio = request.getParameter("idEnvio") != null ? Integer.parseInt(request.getParameter("idEnvio")) : 0;
+        Envio envio = Fabrica.getInstancia().getControladorEnvio().verDetallesDelEnvio(idEnvio);
+        if (idEnvio > 0 && envio != null) {
+            logica.clases.Valoracion valo = Fabrica.getInstancia().getControladorEnvio().buscarValoracionId(idEnvio);
+            if (valo != null && valo.getenvio().getIdEnvio() == idEnvio) {
+                request.setAttribute("valoracion", valo);
+            }
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/Vistas/Valoracion.jsp");
+            dispatcher.forward(request, response);
+        } else {
+            response.sendRedirect("/");
+        }
     }
 
     /**
@@ -73,14 +85,12 @@ public class Valoracion extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int codigoRastreo = Integer.parseInt(request.getParameter("codigoRastreoValoracion"));
-        Envio envio = Fabrica.getInstancia().getControladorEnvio().obtenerCodigoRastreo(codigoRastreo);
-        
+        int idEnvio = Integer.parseInt(request.getParameter("inputIdEnvio"));
+
         int puntaje = Integer.parseInt(request.getParameter("puntaje"));
         String comentario = request.getParameter("campo_comentario");
-        Fabrica.getInstancia().getControladorEnvio().crearValoracion(envio.getIdEnvio(), puntaje, comentario);
-        request.setAttribute("envio",envio);
-        response.sendRedirect(request.getHeader("Referer"));  
+        Fabrica.getInstancia().getControladorEnvio().crearValoracion(idEnvio, puntaje, comentario);
+        response.sendRedirect("/");
     }
 
     /**
