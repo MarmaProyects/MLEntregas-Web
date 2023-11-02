@@ -16,6 +16,7 @@
         <link href="CSS/Styles.css" rel="stylesheet">
         <link href="CSS/VerMisEnvios.css" rel="stylesheet">
         <script src="https://sdk.mercadopago.com/js/v2"></script>
+        <link rel="icon" href="Images/logo-sm-extra.png" type="image/png">
         <title>JSP Page</title>
     </head>
     <body>

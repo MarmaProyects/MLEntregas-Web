@@ -11,6 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script> href = "/JS/bootstrap.bunlde.min.js"</script>
         <title>Informacion de la empresa</title>
+        <link rel="icon" href="Images/logo-sm-extra.png" type="image/png">
         <link rel="stylesheet" href="CSS/bootstrap.min.css"/>
         <link rel="stylesheet" href="CSS/Styles.css"/>
         <link rel="stylesheet" href="CSS/VerInformacionEmpresa.css"/>

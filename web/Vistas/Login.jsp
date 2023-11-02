@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="CSS/Login.css">
         <script src="JS/bootstrap.bundle.min.js"></script>
         <script src="JS/login.js"></script>
+        <link rel="icon" href="Images/logo-sm-extra.png" type="image/png">
         <title>MLEntregas</title>
     </head>
     <body>

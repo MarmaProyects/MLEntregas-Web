@@ -18,6 +18,7 @@
         <script defer src="JS/ConfirmarEntrega.js"></script>
         <script src="JS/Scripts.js"></script>
         <link href="CSS/ConfirmarEntrega.css" rel="stylesheet">
+        <link rel="icon" href="Images/logo-sm-extra.png" type="image/png">
     </head>
     <body>
         <% ArrayList<Envio> listadoEnv = (ArrayList<Envio>) request.getAttribute("ListaEnvios"); %>

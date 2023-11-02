@@ -10,10 +10,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="CSS/bootstrap.min.css"/>
-        <link rel="stylesheet" href="CSS/PreguntasFrecuentes.css"/>
         <link rel="stylesheet" href="CSS/Styles.css"/>
+        <link rel="stylesheet" href="CSS/Preguntas.css"/>
         <script src="JS/bootstrap.bundle.min.js"></script>
         <title>Preguntas Frecuentes</title>
+        <link rel="icon" href="Images/logo-sm-extra.png" type="image/png">
     </head>
     <body>
         <header>
@@ -21,50 +22,62 @@
         </header>
         <div class="contenedor">
             <h1>Preguntas Frecuentes</h1>
-            <div class="acordion">
-                <div class="accordion accordion-flush" id="accordionFlushExample">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                ¿Cuál es nuestro horario?
-                            </button>
-                        </h2>
-                        <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">El horario de atención está comprendido entre -- y --, mientras que el de envío entre -- y --.</div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                ¿Qué paquetes se pueden enviar?
-                            </button>
-                        </h2>
-                        <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">Cualquier paquete que no supere el peso limite excluyendo cartas.</div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                                ¿Qué métodos de pago puedo utilizar?
-                            </button>
-                        </h2>
-                        <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">Aceptamos credito, debito y efectivo; Contamos tambien con Mercado Pago, para pagar al tanto en fisico como desde nuestro sitio web.</div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-                                ¿Una vez que solicito un envio, cuanto tarda en llegar?
-                            </button>
-                        </h2>
-                        <div id="flush-collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">Depende del tiempo que tarde en llegar a Paysandú si es importado, y en caso de ser local suele tardar entre 1 y 3 dias.</div>
-                        </div>
-                    </div>
+            <div class='cuerpo'> 
+                <div class='preguntas'>
+                    <h4>¿Cómo hago un envío?</h4>
+                    <hr>
+                    <p>Telefónicamente solicitando el retiro del envío en domicilio.</p>
+                    <p>Presencial en sucursales o agencias.</p>
+                    <br>
+                    <h5>Todos los envíos para su procesamiento deben estar correctamente embalados y rotulados con la siguiente información:</h5>
+                    <ul>
+                        <li>Nombre completo de destinatario</li>
+                        <li>Si retira en agencia (agencia en la cual retira)</li>
+                        <li>Si es entrega en domicilio (domicilio completo, localidad)</li>
+                        <li>Teléfono del destinatario (en ambos casos)</li>
+                    </ul>
+
                 </div>
+                <div class='preguntas'>
+                    <h4>¿Cuál es nuestro horario?</h4>
+                    <hr>
+                    <p>El horario de atención está comprendido entre -- y --, mientras que el de envío entre -- y --.</p>
+                </div>
+                <div class='preguntas'>
+                    <h4>¿Puede pagar el destinatario?</h4>
+                    <hr>
+                    <p>Sí, se puede pagar el envío al recibir en domicilio o retirar en nuestras sucursales.</p>
+                </div>
+                <div class='preguntas'>
+                    <h4>¿Qué paquetes se pueden enviar?</h4>
+                    <hr>
+                    <p>Cualquier paquete que no supere el peso limite excluyendo cartas.</p>
+                    <p>Por mas informacion visite el listado de <a href="/Tarifas">tarifas</a>.</p>
+                </div>
+
+                <div class='preguntas'>
+                    <h4> ¿Puede ir otra persona a retirar mi paquete?</h4>
+                    <hr>
+                    <p>Nuestro tiempo de entrega es de 24 a 48 horas hábiles a partir de la recepción del envío por parte de MLEntregas. 
+                        Existe un porcentaje menor de localidades en el interior en las cuales nuestro tiempo de entrega puede llegar a ser 72 horas hábiles.</p>
+                </div>
+                <div class='preguntas'>
+                    <h4>¿Qué métodos de pago puedo utilizar?</h4>
+                    <hr>
+                    <p>Aceptamos credito, debito y efectivo; Contamos tambien con Mercado Pago, para pagar al tanto en fisico como desde nuestro sitio web.</p>
+                </div>
+                <div class='preguntas'>
+                    <h4>¿Una vez que solicito un envio, cuanto tarda en llegar?</h4>
+                    <hr>
+                    <p>Depende del tiempo que tarde en llegar a Paysandú si es importado, y en caso de ser local suele tardar entre 1 y 3 dias hábiles.</p>
+                </div> 
+                <div class='preguntas'>
+                    <h4>¿Ubicación de nuestras agencias y sucursales?</h4>
+                    <hr>
+                    <p>Podés ver todos los horarios y las direcciones de nuestra sucursal en <a href="/VerInformacionEmpresa">MLEntregas</a>.</p>
+                </div> 
             </div>
+
         </div>
         <header>
             <jsp:include page="/Includes/Footer.jsp" />
