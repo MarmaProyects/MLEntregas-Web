@@ -90,13 +90,14 @@ label {
   font-size: 1.5em;
 }
 
-label:hover,
-label:hover ~ label {
-  color: orange; /* Cambia el color de las estrellas al pasar el mouse por encima */
+.labelPuntearEstrellas:hover,
+.labelPuntearEstrellas:hover ~ .labelPuntearEstrellas
+{
+  color: orange; 
 }
 
-input[type="radio"]:checked ~ label {
-  color: orange; /* Cambia el color de las estrellas calificadas */
+.inputPuntearEstrellas[type="radio"]:checked ~ .labelPuntearEstrellas {
+  color: orange; 
 }
 
 .rating-text {

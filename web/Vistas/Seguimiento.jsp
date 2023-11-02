@@ -51,6 +51,7 @@
                     <img src="Images/paquete lupa.png" alt="Descripción del icono">
                 </div> 
             </div>
+<<<<<<< HEAD
         <% Envio envio = (Envio) request.getAttribute("envio"); %>
         <% if (envio != null) {%> 
         <div class="contenedor-seguimiento">
@@ -131,17 +132,81 @@
                     <% for (; i < 5; i++) { %>
                     <label id="estrellas_restantes">&#9733;</label>
                     <% }%>
+
+            <% Envio envio = (Envio) request.getAttribute("envio"); %>
+            <% if (envio != null) {%> 
+            <div class="contenedor-seguimiento">
+                <h3 id="focus-scroll">Envio</h3>
+                <div class="contenedor-tabla">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th>Numero de rastreo:</th>
+                                <td><%= envio.getCodigoRastreo()%></td>
+                            </tr>
+                            <tr>
+                                <th>Descripcion:</th>
+                                <td><%= envio.getPaquete().getDescripcion()%></td>
+                            </tr>
+                            <tr>
+                                <th>Peso:</th>
+                                <td><%= envio.getPaquete().getPeso()%> kg</td>
+                            </tr>
+                            <tr>
+                                <th>Fragil:</th> 
+                                    <% if (envio.getPaquete().isEsFragil()) { %>
+                                <td>Si</td>
+                                <% } else { %>
+                                <td>No</td>
+                                <% } %>
+                            </tr>
+                            <tr>
+                                <th>Especial:</th>
+                                    <% if (envio.getPaquete().isEsEspecial()) { %>
+                                <td>Si</td>
+                                <% } else { %>
+                                <td>No</td>
+                                <% } %>
+                            </tr>
+                            <tr>
+                                <th>Tipo envío:</th>
+                                    <% if (envio.getDireccionDestino().getIdDireccion() == 1) { %>
+                                <td>Retiro agencia</td>
+                                <% } else { %>
+                                <td>Envio a domicilio</td>
+                                <% } %>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <h1><%= valoracion.getPuntaje()%></h1>
-                <p id="comentarioValoracion"><%= valoracion.getComentario()%></p>
-                <% } else {%>
-            </div>
-            <div>
-                <jsp:include page="/Includes/Valoracion.jsp" />
+
+                <h3>Historial de estados</h3>
+                <div class="contenedor-tabla">
+                    <table class="table" >
+                        <thead>
+                            <tr> 
+                                <th>Fecha</th>
+                                <th>Estado</th>
+                                <th>Comentario</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for (int h = envio.getEstados().size() - 1; h >= 0; h--) {%>
+                            <tr>
+                                <td><%= envio.getEstados().get(h).getFecha()%></td>
+                                <td><%= envio.getEstados().get(h).getTipo().getEstado()%></td>
+                                <td><%= envio.getEstados().get(h).getComentario()%></td>
+                            </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <jsp:include page="/Includes/Valoracion.jsp" />
+>>>>>>> e13d403 (fix Valoracion estrellas)
+                </div>
             </div>
             <% }%>
-        </div>
-        <% }%>
         </div>
         <header>
             <jsp:include page="/Includes/Footer.jsp" />
