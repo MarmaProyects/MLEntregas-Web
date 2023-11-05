@@ -46,7 +46,7 @@
                         <input onkeypress="pulsar(event)" type="text" oninput="validarInputNomApe(this)" id="nombre-apellido" name="nombre-apellido">
                     </div>
                     <div class=" ">
-                        <button type="submit" onclick="buscarNombre()" class="btn button" id="btnBuscar" autofocus>Buscar</button>
+                        <button type="submit" onclick="buscarNombre()" class="btn search button" id="btnBuscar" autofocus>Buscar</button>
                     </div>
                 </div>
                 <div class="acordion">
