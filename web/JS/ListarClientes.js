@@ -3,9 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/JavaScript.js to edit this template
  */
 
-function traerDireccionCliente() {
-
-}
 
 function buscarNombre() {
     let input = document.getElementById("nombre-apellido").value;

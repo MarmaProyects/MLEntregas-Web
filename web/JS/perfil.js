@@ -48,7 +48,7 @@ $(document).ready(function () {
                             method: "POST",
                             body: jsonString,
                             sheaders: {
-                                "Content-Type": "application/json" 
+                                "Content-Type": "application/json"
                             },
                         };
                         fetch(servletURL, settings)
@@ -202,7 +202,7 @@ function clearErrors() {
     if (errorTelefonoLong) {
         errorTelefonoLong.classList.add('oculto');
     }
-    
+
     if (errorCedulaDuplicated) {
         errorCedulaDuplicated.classList.add('oculto');
     }
@@ -211,3 +211,19 @@ function clearErrors() {
         errorCorreoDuplicated.classList.add('oculto');
     }
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    let checkbox = document.getElementById("notisEmail");
+    checkbox.addEventListener("change", function () {
+        const baseUrl = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port;
+        fetch(baseUrl + "/Perfil?notisEmail=" + checkbox.checked, {
+            method: 'PUT'
+        }).then(response=>{
+           if (response.ok) {
+               console.log("Correcto");
+           } 
+        }).catch(error => {
+            console.error("error", error);
+        });
+    });
+});

@@ -71,10 +71,25 @@ public class Perfil extends HttpServlet {
         session.setAttribute("cliente", client);
         Usuario user = IA.obtenerUsuario(correo);
         session.setAttribute("fotoPerfil", user.getIdFoto());
-
+        request.setAttribute("notisEmail", user.getNotisEmail());
+        
         request.getRequestDispatcher("/Vistas/Perfil.jsp").forward(request, response);
     }
-
+    
+    @Override
+    protected void doPut(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        IAdministracion IA = Fabrica.getInstancia().getControladorCliente();
+        HttpSession session = request.getSession(true);
+        String correo = (String) session.getAttribute("user");
+        String checkbox = (String) request.getParameter("notisEmail");
+        boolean notisEmail = checkbox.contains("true");
+        IA.cambiarNotisEmail(correo, notisEmail);
+        
+        request.getRequestDispatcher("/Vistas/Perfil.jsp").forward(request, response);
+    }
+    
     /**
      * Handles the HTTP <code>POST</code> method.
      *

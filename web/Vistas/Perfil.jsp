@@ -31,11 +31,11 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
-                            <% if (idfoto != null && !idfoto.equals("null") ) { %>
-                            <img src="https://i.imgur.com/<%= idfoto %>.png" class='image' title="source: imgur.com" />
-                            <% }else{ %> 
+                            <% if (idfoto != null && !idfoto.equals("null")) {%>
+                            <img src="https://i.imgur.com/<%= idfoto%>.png" class='image' title="source: imgur.com" />
+                            <% } else { %> 
                             <img src="https://i.imgur.com/xqRjqEX.png" class='image' title="source: imgur.com" />
-                            <% } %> 
+                            <% }%> 
                             <div class="file btn btn-lg btn-primary boton-file">
                                 Cambiar foto
                                 <input class="boton-file" id='fileToUpload' type="file" name="file" accept=".png, .jpg, .jpeg"/>
@@ -45,7 +45,7 @@
                     <div class="col-md-6">
                         <div class="profile-head">
                             <h5>
-                                <%= client.getNombre() + " " + client.getApellido() %>
+                                <%= client.getNombre() + " " + client.getApellido()%>
                             </h5> 
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                     <div class="col-md-2">
                         <button type="button" class="profile-edit-btn button gris" id="btnEdit" value="Editar Perfil">Cancelar</button>
                     </div>
-                    <% }else{ %>
+                    <% } else { %>
                     <div class="col-md-2">
                         <button type="button" class="profile-edit-btn button" id="btnEdit" value="Editar Perfil">Editar Perfil</button>
                     </div>
@@ -64,12 +64,14 @@
                         <div class="profile-work">
                             <p>OPERACIONES</p>
                             <a href="/VerMisEnvios">Ver envios</a><br/>
-                            <a href="/Seguimiento">Buscar envio</a><br/> 
+                            <a href="/Seguimiento">Buscar envio</a><br/>
+                            <label class=" " for="notifEmail">Notificaciones de estados</label><br>
+                            <input type="checkbox" id="notisEmail" name="notifEmail" value="<% request.getAttribute("notisEmails"); %>" onclick="">
                         </div>
                     </div>
                     <div class="col-md-8">
-                        <% String oculto = "oculto"; %> 
-                        <div class="tab-content profile-tab <%= (request.getAttribute("error") != null) ? oculto : "" %>" id="myTabContent">
+                        <% String oculto = "oculto";%> 
+                        <div class="tab-content profile-tab <%= (request.getAttribute("error") != null) ? oculto : ""%>" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -105,7 +107,7 @@
                                 </div> 
                             </div>
                         </div>
-                        <div class="tab-content profile-tab <%= (request.getAttribute("error") == null) ? oculto : "" %>" id="contentEdit"> 
+                        <div class="tab-content profile-tab <%= (request.getAttribute("error") == null) ? oculto : ""%>" id="contentEdit"> 
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                 <form action="/Perfil" method='POST' onsubmit="return validateFields()">
                                     <div class="row">
