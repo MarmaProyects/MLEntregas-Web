@@ -19,6 +19,7 @@
         <link href="CSS/VerMisEnvios.css" rel="stylesheet">
         <script src="https://sdk.mercadopago.com/js/v2"></script>
         <link rel="icon" href="Images/logo-sm-extra.png" type="image/png">
+        <script>href="JS/VerMisEnvios.js"</script>
         <title>JSP Page</title>
     </head>
     <body>
@@ -58,9 +59,59 @@
                             <p id="EnvioPagoTexto"> ENVIO PAGO </p>
                             <%} else {%>
                             <div id="divBotonesEnvio">
-                                <button class="button" type="button" class="botonModal" data-envio-id="<%= i%>" data-bs-toggle="modal" data-bs-target="#exampleModal" data-target-form="<%= listadoEnv.get(i).getIdEnvio()%>">
-                                    PAGAR ENVIO
-                                </button>
+                                <form id="wallet_container_form">
+                                    <button type="submit" class="button" data-envio-id="<%= i%> data-target-form="<%= listadoEnv.get(i).getIdEnvio()%>">PAGAR ENVIO</button>
+                                </form>
+                                <div id="wallet_container"></div>
+                                <!-- Carga el script de Mercado Pago -->
+                                <script src="https://sdk.mercadopago.com/js/v2"></script>
+                                <script>
+                                    // Public key (credencial de la aplicación MP)
+                                    const publicKey = "TEST-4a59c665-1f53-49e5-8ed9-c9d2687b543b"
+                                    const mp = new MercadoPago(publicKey)
+                                    const bricksBuilder = mp.bricks()
+
+                                    const el = document.querySelector("#wallet_container_form")
+
+                                    const handleSubmit = async function (e) {
+                                        e.preventDefault()
+
+                                        const formData = new FormData(e.target)
+                                        const url = "/createPayment"
+
+                                        // Acá se hace una petición post al "doPost" del servlet
+                                        // Pidiendo el id de la preferencia
+
+                                        // const result = await fetch(url, {
+                                        //   method: "post",
+                                        //   headers: {
+                                        //     "Content-Type": "application/json",
+                                        //     "Accept": "application/json"
+                                        //   },
+                                        //   body: JSON.stringify({
+                                        //     title: "Nombre del producto",
+                                        //     // Acá pueden ir más datos
+                                        //   })
+                                        // })
+
+                                        // if (result.status !== 200) {
+                                        //   alert("Something went wrong")
+                                        //   return
+                                        // }
+
+                                        // const data = await result.json()
+                                        // const { id } = data
+
+                                        mp.bricks().create("wallet", "wallet_container", {
+                                            initialization: {
+                                                // Usar id obtenido
+                                                preferenceId: "1523556454-bc9b5c6f-e167-42fb-990c-429b124a7356",
+                                                redirectMode: "modal",
+                                            },
+                                        })
+                                    }
+                                    el.addEventListener("submit", handleSubmit)
+                                </script>
                             </div>
                             <%}%>
                         </div>
