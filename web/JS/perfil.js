@@ -18,12 +18,12 @@ $(document).ready(function () {
         }
     });
     $('#fileToUpload').on('change', function () {
-        const url_api = "https://api.imgur.com/3/image";
+        const url_api = "https://imgur-8mef.vercel.app/upload";
         const client_id = '75618ba7b147238';
-        const selectedFile = this.files[0];
+        const selectedFile = this.files[0]; 
         if (selectedFile) {
-            const formData = new FormData();
-            formData.append('image', selectedFile);
+            const file = new FormData(); 
+            file.append('file', selectedFile);
             const settings = {
                 contentType: false,
                 processData: false,
@@ -34,7 +34,7 @@ $(document).ready(function () {
                 headers: {
                     Authorization: "Client-ID 75618ba7b147238"
                 },
-                data: formData
+                data: file
             };
             $.ajax(settings)
                     .done(function (data) {
@@ -48,13 +48,13 @@ $(document).ready(function () {
                             method: "POST",
                             body: jsonString,
                             sheaders: {
-                                "Content-Type": "application/json" 
+                                "Content-Type": "application/json"
                             },
                         };
                         fetch(servletURL, settings)
                                 .then(function (response) {
                                     if (response.ok) {
-                                        window.location.href = "/Perfil";
+                                        console.log(response)
                                     } else {
                                         console.error("Error en la solicitud:", response.statusText);
                                     }
@@ -202,7 +202,7 @@ function clearErrors() {
     if (errorTelefonoLong) {
         errorTelefonoLong.classList.add('oculto');
     }
-    
+
     if (errorCedulaDuplicated) {
         errorCedulaDuplicated.classList.add('oculto');
     }
