@@ -6,7 +6,6 @@ package Servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,10 +19,10 @@ import logica.interfaces.IAdministracion;
 
 /**
  *
- * @author MarmaduX
+ * @author franc
  */
-@WebServlet(name = "Perfil", urlPatterns = {"/Perfil"})
-public class Perfil extends HttpServlet {
+@WebServlet(name = "NotisEmail", urlPatterns = {"/NotisEmail"})
+public class ServletNotisEmail extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,10 +41,10 @@ public class Perfil extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Perfil</title>");
+            out.println("<title>Servlet NotisEmail</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Perfil at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet NotisEmail at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -63,19 +62,9 @@ public class Perfil extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession(true);
-        String correo = (String) session.getAttribute("user");
-        IAdministracion IA = Fabrica.getInstancia().getControladorCliente();
-        Cliente client = IA.traerClientePorCorreo(correo);
-        request.setAttribute("cliente", client);
-        session.setAttribute("cliente", client);
-        Usuario user = IA.obtenerUsuario(correo);
-        session.setAttribute("fotoPerfil", user.getIdFoto());
-        request.setAttribute("notisEmail", user.getNotisEmail());
-        
-        request.getRequestDispatcher("/Vistas/Perfil.jsp").forward(request, response);
+        processRequest(request, response);
     }
-    
+
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -87,48 +76,20 @@ public class Perfil extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         IAdministracion IA = Fabrica.getInstancia().getControladorCliente();
         HttpSession session = request.getSession(true);
-        String correo_in_session = (String) session.getAttribute("user");
-        String idFoto = (String) session.getAttribute("fotoPerfil");
-        int cedula = Integer.parseInt(request.getParameter("cedula"));
-        String nombre = request.getParameter("nombre");
-        String apellido = request.getParameter("apellido");
-        String correo = request.getParameter("correo");
-        int telefono = Integer.parseInt(request.getParameter("telefono"));
-        Usuario user = IA.obtenerUsuario(correo);
-        Cliente cliente = IA.traerClientePorCorreo(correo);
-        Cliente cliente_cedula = IA.traerClienteSeleccionado(cedula);
-        Cliente clienteViejo = (Cliente) session.getAttribute("cliente");
-        request.setAttribute("cliente", clienteViejo);
-        session.setAttribute("cliente", clienteViejo);
-        session.setAttribute("user", correo_in_session);
-        session.setAttribute("fotoPerfil", idFoto);
-
-        if ((user == null || user.getCorreo().equals(correo_in_session)) && (cliente_cedula == null || cliente_cedula.getCedula() == clienteViejo.getCedula()) && (cliente == null || cliente.getCorreo().equals(clienteViejo.getCorreo()))) {
-            IA.editarClienteSeleccionado(cedula, clienteViejo.getCedula(), nombre, apellido, telefono, correo);
-            IA.editarUsuario(correo, idFoto, correo_in_session);
-        } else {
-            request.setAttribute("correo", correo);
-            request.setAttribute("nombre", nombre);
-            request.setAttribute("cedula", cedula);
-            request.setAttribute("apellido", apellido);
-            request.setAttribute("telefono", telefono);
-            request.setAttribute("error", "correo");
-            if (!(cliente == null || cliente_cedula.getCedula() == clienteViejo.getCedula())) {
-                request.setAttribute("error", "Cedula");
-            } else if (!(cliente == null || cliente.getCorreo() == clienteViejo.getCorreo())) {
-                request.setAttribute("error", "correo");
-            }
-            request.getRequestDispatcher("/Vistas/Perfil.jsp").forward(request, response);
-            return;
-        }
+        String correo = (String) session.getAttribute("user");
+        String checkbox = (String) request.getParameter("notisEmail");
+        boolean notisEmail = checkbox.contains("true");
+        IA.cambiarNotisEmail(correo, notisEmail);
         Cliente client = IA.traerClientePorCorreo(correo);
         request.setAttribute("cliente", client);
         session.setAttribute("cliente", client);
-        session.setAttribute("user", correo);
-        session.setAttribute("fotoPerfil", idFoto);
-
+        Usuario user = IA.obtenerUsuario(correo);
+        session.setAttribute("fotoPerfil", user.getIdFoto());
+        request.setAttribute("notisEmail", user.getNotisEmail());
+        
         request.getRequestDispatcher("/Vistas/Perfil.jsp").forward(request, response);
     }
 

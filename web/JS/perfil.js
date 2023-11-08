@@ -216,12 +216,15 @@ document.addEventListener('DOMContentLoaded', function () {
     let checkbox = document.getElementById("notisEmail");
     checkbox.addEventListener("change", function () {
         const baseUrl = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port;
-        fetch(baseUrl + "/Perfil?notisEmail=" + checkbox.checked, {
-            method: 'PUT'
-        }).then(response=>{
-           if (response.ok) {
-               console.log("Correcto");
-           } 
+        const url = baseUrl + "/NotisEmail?notisEmail=" + checkbox.checked; 
+        fetch(url, {
+            method: 'POST'
+        }).then(response => {
+            if (response.ok) {
+                console.log("Correcto");
+            } else {
+                console.log("La solicitud no fue exitosa");
+            }
         }).catch(error => {
             console.error("error", error);
         });

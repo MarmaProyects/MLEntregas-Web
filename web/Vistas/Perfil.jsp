@@ -65,8 +65,10 @@
                             <p>OPERACIONES</p>
                             <a href="/VerMisEnvios">Ver envios</a><br/>
                             <a href="/Seguimiento">Buscar envio</a><br/>
-                            <label class=" " for="notifEmail">Notificaciones de estados</label><br>
-                            <input type="checkbox" id="notisEmail" name="notifEmail" value="<% request.getAttribute("notisEmails"); %>" onclick="">
+                            <label for="notifEmail" style="color: white;">Notificaciones de estados</label>
+                            <% Boolean valueNotisEmail = (Boolean) request.getAttribute("notisEmails");  %>
+                            <input type="checkbox" id="notisEmail" name="notifEmail" value="<% request.getAttribute("notisEmails"); %>"
+                                   <% if ((Boolean) request.getAttribute("notisEmail")) { %> checked <% } %>>
                         </div>
                     </div>
                     <div class="col-md-8">
