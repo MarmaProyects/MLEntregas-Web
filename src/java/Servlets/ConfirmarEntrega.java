@@ -12,7 +12,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import logica.clases.Cliente;
 import logica.clases.Envio;
+import logica.clases.Usuario;
 import logica.fabrica.Fabrica;
 import logica.interfaces.IAdministracion;
 import logica.interfaces.IEnvio;
@@ -86,8 +89,15 @@ public class ConfirmarEntrega extends HttpServlet {
         IAdministracion iPago = fab.getControladorPago();
         int idEnvio = Integer.parseInt(request.getParameter("idEnvio"));
         String tipoPago = request.getParameter("tipoPago");
-        iEnvio.crearEstado(idEnvio, "Entregado", "Paquete entregado");
+        int idEstado = iEnvio.crearEstado(idEnvio, "Entregado", "Paquete entregado");
+        HttpSession session = request.getSession(true);
+        String correo = (String) session.getAttribute("user");
+        Usuario user =fab.getControladorCliente().obtenerUsuario(correo);
         Envio envio = iEnvio.verDetallesDelEnvio(idEnvio);
+        Cliente client = fab.getControladorCliente().traerClientePorCorreo(correo);
+        if (user.getNotisEmail() && fab.getControladorCliente().crearMail(client, envio, idEstado)) {
+            fab.getControladorCliente().enviarMail();
+        }
         iPago.pagarEnvio(envio.getPago().getIdPago(), tipoPago);
         request.setAttribute("ListaEnvios", iEnvio.listaDeEnviosEnCamino());
         RequestDispatcher dispatcher = request.getRequestDispatcher("/Vistas/ConfirmarEntrega.jsp");
