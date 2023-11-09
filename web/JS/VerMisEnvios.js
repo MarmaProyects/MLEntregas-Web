@@ -4,7 +4,7 @@
  */
 document.addEventListener('DOMContentLoaded', function () {
     // Configura la credencial de prueba
-    MercadoPago.setPublishableKey('TEST-4a59c665-1f53-49e5-8ed9-c9d2687b543b');
+    MercadoPago.setPublishableKey('TEST-8ce2d69e-43f0-446c-a482-75eb6c1d3fb3');
 
     // Crea una preferencia de pago
     const preference = {

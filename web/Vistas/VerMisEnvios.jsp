@@ -21,6 +21,9 @@
         <link rel="icon" href="Images/logo-sm-extra.png" type="image/png">
         <script>href="JS/VerMisEnvios.js"</script>
         <title>JSP Page</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://www.paypalobjects.com/api/checkout.js"></script>
     </head>
     <body>
         <% ArrayList<Envio> listadoEnv = (ArrayList<Envio>) request.getAttribute("ListaEnvios"); %>
@@ -66,51 +69,51 @@
                                 <!-- Carga el script de Mercado Pago -->
                                 <script src="https://sdk.mercadopago.com/js/v2"></script>
                                 <script>
-                                    // Public key (credencial de la aplicación MP)
-                                    const publicKey = "TEST-4a59c665-1f53-49e5-8ed9-c9d2687b543b"
-                                    const mp = new MercadoPago(publicKey)
-                                    const bricksBuilder = mp.bricks()
+            // Public key (credencial de la aplicación MP)
+            const publicKey = "TEST-8ce2d69e-43f0-446c-a482-75eb6c1d3fb3"
+            const mp = new MercadoPago(publicKey)
+            const bricksBuilder = mp.bricks()
 
-                                    const el = document.querySelector("#wallet_container_form")
+            const el = document.querySelector("#wallet_container_form")
 
-                                    const handleSubmit = async function (e) {
-                                        e.preventDefault()
+            const handleSubmit = async function (e) {
+                e.preventDefault()
 
-                                        const formData = new FormData(e.target)
-                                        const url = "/createPayment"
+                const formData = new FormData(e.target)
+                const url = "/createPayment"
 
-                                        // Acá se hace una petición post al "doPost" del servlet
-                                        // Pidiendo el id de la preferencia
+                // Acá se hace una petición post al "doPost" del servlet
+                // Pidiendo el id de la preferencia
 
-                                        // const result = await fetch(url, {
-                                        //   method: "post",
-                                        //   headers: {
-                                        //     "Content-Type": "application/json",
-                                        //     "Accept": "application/json"
-                                        //   },
-                                        //   body: JSON.stringify({
-                                        //     title: "Nombre del producto",
-                                        //     // Acá pueden ir más datos
-                                        //   })
-                                        // })
+                // const result = await fetch(url, {
+                //   method: "post",
+                //   headers: {
+                //     "Content-Type": "application/json",
+                //     "Accept": "application/json"
+                //   },
+                //   body: JSON.stringify({
+                //     title: "Nombre del producto",
+                //     // Acá pueden ir más datos
+                //   })
+                // })
 
-                                        // if (result.status !== 200) {
-                                        //   alert("Something went wrong")
-                                        //   return
-                                        // }
+                // if (result.status !== 200) {
+                //   alert("Something went wrong")
+                //   return
+                // }
 
-                                        // const data = await result.json()
-                                        // const { id } = data
+                // const data = await result.json()
+                // const { id } = data
 
-                                        mp.bricks().create("wallet", "wallet_container", {
-                                            initialization: {
-                                                // Usar id obtenido
-                                                preferenceId: "1523556454-bc9b5c6f-e167-42fb-990c-429b124a7356",
-                                                redirectMode: "modal",
-                                            },
-                                        })
-                                    }
-                                    el.addEventListener("submit", handleSubmit)
+                mp.bricks().create("wallet", "wallet_container", {
+                    initialization: {
+                        // Usar id obtenido
+                        preferenceId: "1523556454-bc9b5c6f-e167-42fb-990c-429b124a7356",
+                        redirectMode: "modal",
+                    },
+                })
+            }
+            el.addEventListener("submit", handleSubmit)
                                 </script>
                             </div>
                             <%}%>
@@ -122,6 +125,50 @@
             <%}%>
             <% }%>
         </div>
+        <div id="paypal-button-container"></div>
+
+        <script>
+            paypal.Button.render({
+
+                env: 'sandbox', // sandbox | production
+
+                // PayPal Client IDs - replace with your own
+                // Create a PayPal app: https://developer.paypal.com/developer/applications/create
+                client: {
+                    sandbox: 'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
+                    production: '<insert production client id>'
+                },
+
+                // Show the buyer a 'Pay Now' button in the checkout flow
+                commit: true,
+
+                // payment() is called when the button is clicked
+                payment: function (data, actions) {
+
+                    // Make a call to the REST api to create the payment
+                    return actions.payment.create({
+                        payment: {
+                            transactions: [
+                                {
+                                    amount: {total: '0.01', currency: 'USD'}
+                                }
+                            ]
+                        }
+                    });
+                },
+
+                // onAuthorize() is called when the buyer approves the payment
+                onAuthorize: function (data, actions) {
+
+                    // Make a call to the REST api to execute the payment
+                    return actions.payment.execute().then(function () {
+                        window.alert('Payment Complete!');
+                    });
+                }
+
+            }, '#paypal-button-container');
+
+        </script>
         <header>
             <jsp:include page="/Includes/Footer.jsp" />
         </header>
