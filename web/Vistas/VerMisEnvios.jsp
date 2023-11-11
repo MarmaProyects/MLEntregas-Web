@@ -19,14 +19,16 @@
         <link href="CSS/VerMisEnvios.css" rel="stylesheet">
         <script src="https://sdk.mercadopago.com/js/v2"></script>
         <link rel="icon" href="Images/logo-sm-extra.png" type="image/png">
-        <script>href="JS/VerMisEnvios.js"</script>
         <title>JSP Page</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="JS/VerMisEnvios.js"></script>
+        <script src="JS/bootstrap.bundle.min.js"></script>
     </head>
     <body>
         <% ArrayList<Envio> listadoEnv = (ArrayList<Envio>) request.getAttribute("ListaEnvios"); %>
+        <% Integer posicion = 0; %>
         <header>
             <jsp:include page="/Includes/Navbar.jsp" />
         </header>
@@ -63,9 +65,8 @@
                             <%} else {%>
                             <div id="divBotonesEnvio">
                                 <form id="wallet_container_form">
-                                    <button type="submit" class="button" data-envio-id="<%= i%> data-target-form="<%= listadoEnv.get(i).getIdEnvio()%>">PAGAR ENVIO</button>
+                                    <button type="submit" data-bs-toggle="modal" data-bs-target="#ModalMedioPago" class="button" data-envio-id="<%= i%> data-target-form="<%= listadoEnv.get(i).getIdEnvio()%>">PAGAR ENVIO</button>
                                 </form>
-                                <div id="wallet_container"></div>
                                 <!-- Carga el script de Mercado Pago -->
                                 <script src="https://sdk.mercadopago.com/js/v2"></script>
                                 <script>
@@ -73,38 +74,11 @@
             const publicKey = "TEST-8ce2d69e-43f0-446c-a482-75eb6c1d3fb3"
             const mp = new MercadoPago(publicKey)
             const bricksBuilder = mp.bricks()
-
             const el = document.querySelector("#wallet_container_form")
-
             const handleSubmit = async function (e) {
                 e.preventDefault()
-
                 const formData = new FormData(e.target)
                 const url = "/createPayment"
-
-                // Acá se hace una petición post al "doPost" del servlet
-                // Pidiendo el id de la preferencia
-
-                // const result = await fetch(url, {
-                //   method: "post",
-                //   headers: {
-                //     "Content-Type": "application/json",
-                //     "Accept": "application/json"
-                //   },
-                //   body: JSON.stringify({
-                //     title: "Nombre del producto",
-                //     // Acá pueden ir más datos
-                //   })
-                // })
-
-                // if (result.status !== 200) {
-                //   alert("Something went wrong")
-                //   return
-                // }
-
-                // const data = await result.json()
-                // const { id } = data
-
                 mp.bricks().create("wallet", "wallet_container", {
                     initialization: {
                         // Usar id obtenido
@@ -124,51 +98,26 @@
             </div>
             <%}%>
             <% }%>
+            <div id="paypal-button-container"></div>
+            <div class="modal fade" id="ModalMedioPago" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalToggleLabel">MÉTODOS DE PAGO</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Seleccione su método de pago:
+                        </div>
+                        <div class="modal-footer">
+                            <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+                            <div id="paypal-button-container"></div>
+                            <div id="wallet_container"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="paypal-button-container"></div>
-
-        <script>
-            paypal.Button.render({
-
-                env: 'sandbox', // sandbox | production
-
-                // PayPal Client IDs - replace with your own
-                // Create a PayPal app: https://developer.paypal.com/developer/applications/create
-                client: {
-                    sandbox: 'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
-                    production: '<insert production client id>'
-                },
-
-                // Show the buyer a 'Pay Now' button in the checkout flow
-                commit: true,
-
-                // payment() is called when the button is clicked
-                payment: function (data, actions) {
-
-                    // Make a call to the REST api to create the payment
-                    return actions.payment.create({
-                        payment: {
-                            transactions: [
-                                {
-                                    amount: {total: '0.01', currency: 'USD'}
-                                }
-                            ]
-                        }
-                    });
-                },
-
-                // onAuthorize() is called when the buyer approves the payment
-                onAuthorize: function (data, actions) {
-
-                    // Make a call to the REST api to execute the payment
-                    return actions.payment.execute().then(function () {
-                        window.alert('Payment Complete!');
-                    });
-                }
-
-            }, '#paypal-button-container');
-
-        </script>
         <header>
             <jsp:include page="/Includes/Footer.jsp" />
         </header>
