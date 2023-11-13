@@ -45,7 +45,7 @@ function validarRastreo() {
 
 document.addEventListener('DOMContentLoaded', function () {
     let titulo = document.getElementById('envio-title');
-    if (titulo != null) {
+    if (titulo !== null) {
         let posicion = titulo.getBoundingClientRect();
         window.scrollTo({
             top: posicion.top + window.scrollY,

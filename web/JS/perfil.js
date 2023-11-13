@@ -38,8 +38,7 @@ $(document).ready(function () {
                         const imageUrl = data.data.url;
                         const regex = /https:\/\/i\.imgur\.com\/([a-zA-Z0-9]+)(\.[a-z]+)$/;
                         const match = imageUrl.match(regex);
-                        const imageId = match ? match[1] : null;
-                        console.log("ID de la imagen:", data); 
+                        const imageId = match ? match[1] : null; 
                         let servletURL = "/ImageUpload";
                         let dataImage = {
                             idFoto: imageId
@@ -47,8 +46,8 @@ $(document).ready(function () {
                         let jsonString = JSON.stringify(dataImage);
 
                         return fetch(servletURL, {
-                            method: "POST",
-                            headers: {
+                            method: "POST", 
+                            headers: { 
                                 "Content-Type": "application/json"
                             },
                             body: jsonString
@@ -209,3 +208,22 @@ function clearErrors() {
         errorCorreoDuplicated.classList.add('oculto');
     }
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    let checkbox = document.getElementById("notisEmail");
+    checkbox.addEventListener("change", function () {
+        const baseUrl = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port;
+        const url = baseUrl + "/NotisEmail?notisEmail=" + checkbox.checked; 
+        fetch(url, {
+            method: 'POST'
+        }).then(response => {
+            if (response.ok) {
+                console.log("Correcto");
+            } else {
+                console.log("La solicitud no fue exitosa");
+            }
+        }).catch(error => {
+            console.error("error", error);
+        });
+    });
+});
