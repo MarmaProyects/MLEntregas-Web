@@ -4,7 +4,6 @@
     Author     : MarmaduX
 --%>
 
-<%@page import="logica.clases.Valoracion"%>
 <%@page import="logica.dataTypes.TipoEstado"%>
 <%@page import="logica.clases.Envio"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -14,8 +13,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="CSS/bootstrap.min.css" rel="stylesheet">
         <script src="JS/bootstrap.bundle.min.js"></script>
-        <link href="CSS/Styles.css" rel="stylesheet">
         <link href="CSS/seguimiento.css" rel="stylesheet">
+        <link href="CSS/Styles.css" rel="stylesheet">
         <script src="JS/Scripts.js"></script>
         <title>MLEntregas</title>
         <link rel="icon" href="Images/logo-sm-extra.png" type="image/png">
@@ -51,77 +50,79 @@
                     <img src="Images/paquete lupa.png" alt="Descripción del icono">
                 </div> 
             </div>
-            <% Envio envio = (Envio) request.getAttribute("envio"); %>
-            <% if (envio != null) {%> 
-            <div class="contenedor-seguimiento">
-                <h3 id="focus-scroll">Envio</h3>
-                <div class="contenedor-tabla">
-                    <table class="table">
-                        <tbody>
-                            <tr>
-                                <th>Numero de rastreo:</th>
-                                <td><%= envio.getCodigoRastreo()%></td>
-                            </tr>
-                            <tr>
-                                <th>Descripcion:</th>
-                                <td><%= envio.getPaquete().getDescripcion()%></td>
-                            </tr>
-                            <tr>
-                                <th>Peso:</th>
-                                <td><%= envio.getPaquete().getPeso()%> kg</td>
-                            </tr>
-                            <tr>
-                                <th>Fragil:</th> 
-                                    <% if (envio.getPaquete().isEsFragil()) { %>
-                                <td>Si</td>
-                                <% } else { %>
-                                <td>No</td>
-                                <% } %>
-                            </tr>
-                            <tr>
-                                <th>Especial:</th>
-                                    <% if (envio.getPaquete().isEsEspecial()) { %>
-                                <td>Si</td>
-                                <% } else { %>
-                                <td>No</td>
-                                <% } %>
-                            </tr>
-                            <tr>
-                                <th>Tipo envío:</th>
-                                    <% if (envio.getDireccionDestino().getIdDireccion() == 1) { %>
-                                <td>Retiro agencia</td>
-                                <% } else { %>
-                                <td>Envio a domicilio</td>
-                                <% } %>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h3>Historial de estados</h3>
-                <div class="contenedor-tabla">
-                    <table class="table" >
-                        <thead>
-                            <tr> 
-                                <th>Fecha</th>
-                                <th>Estado</th>
-                                <th>Comentario</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <% for (int h = envio.getEstados().size() - 1; h >= 0; h--) {%>
-                            <tr>
-                                <td><%= envio.getEstados().get(h).getFecha()%></td>
-                                <td><%= envio.getEstados().get(h).getTipo().getEstado()%></td>
-                                <td><%= envio.getEstados().get(h).getComentario()%></td>
-                            </tr>
-                            <% } %>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <% }%>
         </div>
+        <% Envio envio = (Envio) request.getAttribute("envio"); %>
+        <% if (envio != null) {%> 
+        <div class="contenedor-seguimiento">
+            <h3 id="focus-scroll">Envio</h3>
+            <div class="contenedor-tabla">
+                <table class="table table-dark">
+                    <tbody>
+                        <tr>
+                            <th>Numero de rastreo:</th>
+                            <td><%= envio.getCodigoRastreo()%></td>
+                        </tr>
+                        <tr>
+                            <th>Descripcion:</th>
+                            <td><%= envio.getPaquete().getDescripcion()%></td>
+                        </tr>
+                        <tr>
+                            <th>Peso:</th>
+                            <td><%= envio.getPaquete().getPeso()%> kg</td>
+                        </tr>
+                        <tr>
+                            <th>Fragil:</th> 
+                                <% if (envio.getPaquete().isEsFragil()) { %>
+                            <td>Si</td>
+                            <% } else { %>
+                            <td>No</td>
+                            <% } %>
+                        </tr>
+                        <tr>
+                            <th>Especial:</th>
+                                <% if (envio.getPaquete().isEsEspecial()) { %>
+                            <td>Si</td>
+                            <% } else { %>
+                            <td>No</td>
+                            <% } %>
+                        </tr>
+                        <tr>
+                            <th>Tipo envío:</th>
+                                <% if (envio.getDireccionDestino().getIdDireccion() == 1) { %>
+                            <td>Retiro agencia</td>
+                            <% } else { %>
+                            <td>Envio a domicilio</td>
+                            <% } %>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Historial de estados</h3>
+            <div class="contenedor-tabla">
+                <table class="table table-dark" >
+                    <thead>
+                        <tr> 
+                            <th>Fecha</th>
+                            <th>Estado</th>
+                            <th>Comentario</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (int h = envio.getEstados().size() - 1; h >= 0; h--) {%>
+                        <tr>
+                            <td><%= envio.getEstados().get(h).getFecha()%></td>
+                            <td><%= envio.getEstados().get(h).getTipo().getEstado()%></td>
+                            <td><%= envio.getEstados().get(h).getComentario()%></td>
+                        </tr>
+                        <% } %>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+                        
+        <% }%>
         <header>
             <jsp:include page="/Includes/Footer.jsp" />
         </header>
