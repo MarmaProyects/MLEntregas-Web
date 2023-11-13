@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import logica.clases.Envio;
 import logica.fabrica.Fabrica;
+import logica.interfaces.IAdministracion;
 import logica.interfaces.IEnvio;
 
 /**
@@ -81,7 +83,15 @@ public class VerMisEnvios extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        IEnvio iEnvio = fab.getControladorEnvio();
+        IAdministracion iPago = fab.getControladorPago();
+        int idEnvio = Integer.parseInt(request.getParameter("idEnvio"));
+        String tipoPago = request.getParameter("tipoPago");
+        Envio envio = iEnvio.verDetallesDelEnvio(idEnvio);
+        iPago.pagarEnvio(envio.getPago().getIdPago(), tipoPago);
+        request.setAttribute("ListaEnvios", iEnvio.listaDeEnviosEnCamino());
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/Vistas/VerMisEnvios.jsp");
+        dispatcher.forward(request, response);
     }
 
     /**
