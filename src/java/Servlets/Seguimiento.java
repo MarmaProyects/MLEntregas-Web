@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import logica.clases.Envio;
 import logica.fabrica.Fabrica;
-import logica.clases.Valoracion;
 
 /**
  *
@@ -78,11 +77,12 @@ public class Seguimiento extends HttpServlet {
             throws ServletException, IOException {
         int codigoRastreo = Integer.parseInt(request.getParameter("codigoRastreo"));
         Envio envio = Fabrica.getInstancia().getControladorEnvio().obtenerCodigoRastreo(codigoRastreo);
-
+        
         if (envio == null) {
-            request.setAttribute("error", "No se encontró el paquete.");
+            request.setAttribute("error", "No se encontró el paquete."); 
             request.getRequestDispatcher("/Vistas/Seguimiento.jsp").forward(request, response);
         }
+        
         request.setAttribute("envio", envio);
         request.getRequestDispatcher("/Vistas/Seguimiento.jsp").forward(request, response);
     }
