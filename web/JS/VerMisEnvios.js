@@ -3,14 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/JavaScript.js to edit this template
  */
 let precio;
+let idEnvio;
 
 document.addEventListener('DOMContentLoaded', function () {
     // Configura la credencial de prueba
     document.querySelectorAll('button[data-envio-id]').forEach(function (button) {
         button.addEventListener('click', function () {
-            let idEnvio = this.getAttribute('data-target-form');
-            precio = idEnvio;
-            mostrarBotonPaypal();
+            idEnvio = this.getAttribute('data-target-form');
+            precio = this.getAttribute('data-envio-precio');
+            precio = Math.floor(precio/40);
         });
     });
 });
@@ -36,7 +37,7 @@ function mostrarBotonPaypal() {
                 payment: {
                     transactions: [
                         {
-                            amount: {total: '2', currency: 'USD'}
+                            amount: {total: precio, currency: 'USD'}
                         }
                     ]
                 }
@@ -48,7 +49,7 @@ function mostrarBotonPaypal() {
             // Make a call to the REST api to execute the payment
             return actions.payment.execute().then(function () {
                 const baseUrl = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port;
-                fetch(baseUrl + "/VerMisEnvios?idEnvio=2&tipoPago=Credito", {
+                fetch(baseUrl + "/VerMisEnvios?idEnvio="+ idEnvio + "&tipoPago=Credito", {
                     method: 'POST'
                 }).then(response => {
                     if (!response.ok) {
@@ -60,6 +61,7 @@ function mostrarBotonPaypal() {
         }
 
     }, '#paypal-button-container');
+    return true;
 }
 
 

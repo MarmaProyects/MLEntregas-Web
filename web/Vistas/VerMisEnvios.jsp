@@ -13,18 +13,18 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="CSS/bootstrap.min.css" rel="stylesheet">
-        <script src="JS/bootstrap.bundle.min.js"></script> 
+        <script src="JS/bootstrap.bundle.min.js"></script>
         <script src="JS/Script.js"></script>
         <link href="CSS/Styles.css" rel="stylesheet">
         <link href="CSS/VerMisEnvios.css" rel="stylesheet">
         <script src="https://sdk.mercadopago.com/js/v2"></script>
         <link rel="icon" href="Images/logo-sm-extra.png" type="image/png">
-        <title>JSP Page</title>
+        <title>MLEntregas</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="JS/VerMisEnvios.js"></script>
-        <script src="JS/bootstrap.bundle.min.js"></script>
+        <script src="https://www.paypalobjects.com/api/checkout.js"></script>
     </head>
     <body>
         <% ArrayList<Envio> listadoEnv = (ArrayList<Envio>) request.getAttribute("ListaEnvios"); %>
@@ -64,8 +64,8 @@
                             <p id="EnvioPagoTexto"> ENVIO PAGO </p>
                             <%} else {%>
                             <div id="divBotonesEnvio">
-                                <form id="wallet_container_form">
-                                    <button type="submit" data-bs-toggle="modal" data-bs-target="#ModalMedioPago" class="button" data-envio-id="<%= i%> data-target-form="<%= listadoEnv.get(i).getIdEnvio()%>">PAGAR ENVIO</button>
+                                <form id="wallet_container_form" onsubmit="return mostrarBotonPaypal()">
+                                    <button type="submit" data-bs-toggle="modal" data-bs-target="#ModalMedioPago" class="button" data-envio-precio="<%= listadoEnv.get(i).getPago().getPrecio()%>" data-envio-id="<%= i%>" data-target-form=<%= listadoEnv.get(i).getIdEnvio()%>>PAGAR ENVIO</button>
                                 </form>
                                 <!-- Carga el script de Mercado Pago -->
                                 <script src="https://sdk.mercadopago.com/js/v2"></script>
@@ -100,7 +100,7 @@
             <% }%>
             <div id="paypal-button-container"></div>
             <div class="modal fade" id="ModalMedioPago" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-                <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h1 class="modal-title fs-5" id="exampleModalToggleLabel">MÉTODOS DE PAGO</h1>
@@ -110,7 +110,6 @@
                             Seleccione su método de pago:
                         </div>
                         <div class="modal-footer">
-                            <script src="https://www.paypalobjects.com/api/checkout.js"></script>
                             <div id="paypal-button-container"></div>
                             <div id="wallet_container"></div>
                         </div>
