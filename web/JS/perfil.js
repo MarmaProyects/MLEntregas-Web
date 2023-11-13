@@ -20,51 +20,49 @@ $(document).ready(function () {
     $('#fileToUpload').on('change', function () {
         const url_api = "https://imgur-8mef.vercel.app/upload";
         const client_id = '75618ba7b147238';
-        const selectedFile = this.files[0]; 
+        const selectedFile = this.files[0];
+
         if (selectedFile) {
-            const file = new FormData(); 
-            file.append('file', selectedFile);
-            const settings = {
-                contentType: false,
-                processData: false,
-                crossDomain: true,
-                type: "POST",
-                dataType: "json",
-                url: url_api,
+            const formData = new FormData();
+            formData.append('file', selectedFile);
+
+            fetch(url_api, {
+                method: "POST",
                 headers: {
-                    Authorization: "Client-ID 75618ba7b147238"
+                    Authorization: "Client-ID " + client_id
                 },
-                data: file
-            };
-            $.ajax(settings)
-                    .done(function (data) {
-                        let idFoto = data['data']['id'];
+                body: formData
+            })
+                    .then(response => response.json())
+                    .then(data => {
+                        const imageUrl = data.data.url;
+                        const regex = /https:\/\/i\.imgur\.com\/([a-zA-Z0-9]+)(\.[a-z]+)$/;
+                        const match = imageUrl.match(regex);
+                        const imageId = match ? match[1] : null;
+                        console.log("ID de la imagen:", data); 
                         let servletURL = "/ImageUpload";
                         let dataImage = {
-                            idFoto: idFoto
+                            idFoto: imageId
                         };
                         let jsonString = JSON.stringify(dataImage);
-                        let settings = {
+
+                        return fetch(servletURL, {
                             method: "POST",
-                            body: jsonString,
-                            sheaders: {
+                            headers: {
                                 "Content-Type": "application/json"
                             },
-                        };
-                        fetch(servletURL, settings)
-                                .then(function (response) {
-                                    if (response.ok) {
-                                        console.log(response)
-                                    } else {
-                                        console.error("Error en la solicitud:", response.statusText);
-                                    }
-                                })
-                                .catch(function (error) {
-                                    console.error("Error:", error);
-                                });
+                            body: jsonString
+                        });
                     })
-                    .fail(function (error) {
-                        console.error('Error al cargar el archivo a Imgur:', error);
+                    .then(response => {
+                        if (response.ok) {
+                             window.location.href = "/Perfil";
+                        } else {
+                            console.error("Error en la segunda solicitud:", response.statusText);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error en la solicitud:', error);
                     });
         }
     });
