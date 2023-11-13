@@ -6,6 +6,7 @@ package Servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -86,11 +87,15 @@ public class Valoracion extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int idEnvio = Integer.parseInt(request.getParameter("inputIdEnvio"));
-
-        int puntaje = Integer.parseInt(request.getParameter("puntaje"));
-        String comentario = request.getParameter("campo_comentario");
-        Fabrica.getInstancia().getControladorEnvio().crearValoracion(idEnvio, puntaje, comentario);
-        response.sendRedirect("/");
+        logica.clases.Valoracion valo = Fabrica.getInstancia().getControladorEnvio().buscarValoracionId(idEnvio);
+        if (valo != null && valo.getenvio().getIdEnvio() == idEnvio) {
+            response.sendRedirect("/");
+        } else {
+            int puntaje = Integer.parseInt(request.getParameter("puntaje"));
+            String comentario = request.getParameter("campo_comentario");
+            Fabrica.getInstancia().getControladorEnvio().crearValoracion(idEnvio, puntaje, comentario);
+            response.sendRedirect("/");
+        }
     }
 
     /**
