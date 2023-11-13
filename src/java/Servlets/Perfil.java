@@ -71,10 +71,11 @@ public class Perfil extends HttpServlet {
         session.setAttribute("cliente", client);
         Usuario user = IA.obtenerUsuario(correo);
         session.setAttribute("fotoPerfil", user.getIdFoto());
-
+        request.setAttribute("notisEmail", user.getNotisEmail());
+        
         request.getRequestDispatcher("/Vistas/Perfil.jsp").forward(request, response);
     }
-
+    
     /**
      * Handles the HTTP <code>POST</code> method.
      *
