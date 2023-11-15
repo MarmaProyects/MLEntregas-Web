@@ -88,7 +88,7 @@ public class ValorarEnvio extends HttpServlet {
             throws ServletException, IOException {
         int idEnvio = Integer.parseInt(request.getParameter("inputIdEnvio"));
         Valoracion valo = Fabrica.getInstancia().getControladorEnvio().buscarValoracionId(idEnvio);
-        if (valo != null && valo.getenvio().getIdEnvio() == idEnvio) {
+        if (valo != null) {
             response.sendRedirect("/");
         } else {
             int puntaje = Integer.parseInt(request.getParameter("puntaje"));
