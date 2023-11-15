@@ -16,8 +16,7 @@
         <script src="JS/bootstrap.bundle.min.js"></script>
         <script src="JS/Script.js"></script>
         <link href="CSS/Styles.css" rel="stylesheet">
-        <link href="CSS/VerMisEnvios.css" rel="stylesheet">
-        <script src="https://sdk.mercadopago.com/js/v2"></script>
+        <link href="CSS/VerMisEnvios.css" rel="stylesheet"> 
         <link rel="icon" href="Images/logo-sm-extra.png" type="image/png">
         <title>MLEntregas</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -25,6 +24,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="JS/VerMisEnvios.js"></script>
         <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+        <script src="https://sdk.mercadopago.com/js/v2"></script>
     </head>
     <body>
         <% ArrayList<Envio> listadoEnv = (ArrayList<Envio>) request.getAttribute("ListaEnvios"); %>
@@ -64,31 +64,9 @@
                             <p id="EnvioPagoTexto"> ENVIO PAGO </p>
                             <%} else {%>
                             <div id="divBotonesEnvio">
-                                <form id="wallet_container_form" onsubmit="return mostrarBotonPaypal()">
+                                <form id="wallet_container_form" >
                                     <button type="submit" data-bs-toggle="modal" data-bs-target="#ModalMedioPago" class="button" data-envio-precio="<%= listadoEnv.get(i).getPago().getPrecio()%>" data-envio-id="<%= i%>" data-target-form=<%= listadoEnv.get(i).getIdEnvio()%>>PAGAR ENVIO</button>
-                                </form>
-                                <!-- Carga el script de Mercado Pago -->
-                                <script src="https://sdk.mercadopago.com/js/v2"></script>
-                                <script>
-            // Public key (credencial de la aplicación MP)
-            const publicKey = "TEST-8ce2d69e-43f0-446c-a482-75eb6c1d3fb3"
-            const mp = new MercadoPago(publicKey)
-            const bricksBuilder = mp.bricks()
-            const el = document.querySelector("#wallet_container_form")
-            const handleSubmit = async function (e) {
-                e.preventDefault()
-                const formData = new FormData(e.target)
-                const url = "/createPayment"
-                mp.bricks().create("wallet", "wallet_container", {
-                    initialization: {
-                        // Usar id obtenido
-                        preferenceId: "1523556454-bc9b5c6f-e167-42fb-990c-429b124a7356",
-                        redirectMode: "modal",
-                    },
-                })
-            }
-            el.addEventListener("submit", handleSubmit)
-                                </script>
+                                </form> 
                             </div>
                             <%}%>
                         </div>
@@ -97,8 +75,7 @@
                 </table>
             </div>
             <%}%>
-            <% }%>
-            <div id="paypal-button-container"></div>
+            <% }%> 
             <div class="modal fade" id="ModalMedioPago" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
                 <div class="modal-dialog modal-lg modal-dialog-centered">
                     <div class="modal-content">
@@ -109,14 +86,15 @@
                         <div class="modal-body">
                             Seleccione su método de pago:
                         </div>
-                        <div class="modal-footer">
+                        <div class="modal-footer " style='
+                             flex-direction: column;'>
+                            <div id="paymentBrick_container"></div> 
                             <div id="paypal-button-container"></div>
-                            <div id="wallet_container"></div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div>  
         <header>
             <jsp:include page="/Includes/Footer.jsp" />
         </header>
