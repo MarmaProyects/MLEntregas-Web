@@ -26,11 +26,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 
 #contenedorEnvio{
     margin-top: 25px;
-    margin-bottom: 30px;
-    border: 1px solid #ff6600;
+    margin-bottom: 30px; 
     border-collapse: separate;
     border-spacing: 20px 20px;
     border-radius: 15px;
+    color: white;
+    background-color: #212529;
 
 }
 
@@ -52,7 +53,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     margin-bottom: 0px;
     border: 1px solid #ff6600;
     padding: 2px;
-    color: black;
-    border-radius: 5px;
-    font-weight: 700;
+    color: white; 
+    border-radius: 5px; 
+}
+
+.paypal-button{
+    height: 150px;
 }
