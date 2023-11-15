@@ -6,7 +6,6 @@ package Servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import static java.lang.System.out;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import logica.clases.Envio;
+import logica.clases.Valoracion;
 import logica.fabrica.Fabrica;
 
 /**
@@ -21,7 +21,7 @@ import logica.fabrica.Fabrica;
  * @author Angelo
  */
 @WebServlet(name = "Valoracion", urlPatterns = {"/Valoracion"})
-public class Valoracion extends HttpServlet {
+public class ValorarEnvio extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -64,7 +64,7 @@ public class Valoracion extends HttpServlet {
         int idEnvio = request.getParameter("idEnvio") != null ? Integer.parseInt(request.getParameter("idEnvio")) : 0;
         Envio envio = Fabrica.getInstancia().getControladorEnvio().verDetallesDelEnvio(idEnvio);
         if (idEnvio > 0 && envio != null) {
-            logica.clases.Valoracion valo = Fabrica.getInstancia().getControladorEnvio().buscarValoracionId(idEnvio);
+            Valoracion valo = Fabrica.getInstancia().getControladorEnvio().buscarValoracionId(idEnvio);
             if (valo != null && valo.getenvio().getIdEnvio() == idEnvio) {
                 request.setAttribute("valoracion", valo);
             }
@@ -87,7 +87,7 @@ public class Valoracion extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int idEnvio = Integer.parseInt(request.getParameter("inputIdEnvio"));
-        logica.clases.Valoracion valo = Fabrica.getInstancia().getControladorEnvio().buscarValoracionId(idEnvio);
+        Valoracion valo = Fabrica.getInstancia().getControladorEnvio().buscarValoracionId(idEnvio);
         if (valo != null && valo.getenvio().getIdEnvio() == idEnvio) {
             response.sendRedirect("/");
         } else {
