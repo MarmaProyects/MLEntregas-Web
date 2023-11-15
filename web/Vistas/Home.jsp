@@ -43,7 +43,7 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <a href="#" class="btn home-buttons">Contáctanos</a>
+                            <a href="mailto:mlentregas@gmail.com" class="btn home-buttons">Contáctanos</a>
                         </div>
                     </div>
                 </div>

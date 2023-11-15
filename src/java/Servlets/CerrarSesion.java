@@ -60,6 +60,7 @@ public class CerrarSesion extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         session.removeAttribute("user");
+        session.removeAttribute("admin");
  
         response.sendRedirect("/");
     }

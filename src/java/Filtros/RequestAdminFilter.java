@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author MarmaduX
  */
-@WebFilter(filterName = "RequestAdminFilter", urlPatterns = {"/ConfirmarEnvio"})
+@WebFilter(filterName = "RequestAdminFilter", urlPatterns = {"/ConfirmarEntrega", "/Listaclientes"})
 public class RequestAdminFilter implements Filter {
     
     private static final boolean debug = true;
