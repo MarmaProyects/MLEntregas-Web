@@ -64,7 +64,7 @@
                             <p id="EnvioPagoTexto"> ENVIO PAGO </p>
                             <%} else {%>
                             <div id="divBotonesEnvio">
-                                <form id="wallet_container_form" >
+                                <form class="wallet_container_form" >
                                     <button type="submit" data-bs-toggle="modal" data-bs-target="#ModalMedioPago" class="button" data-envio-precio="<%= listadoEnv.get(i).getPago().getPrecio()%>" data-envio-id="<%= i%>" data-target-form=<%= listadoEnv.get(i).getIdEnvio()%>>PAGAR ENVIO</button>
                                 </form> 
                             </div>

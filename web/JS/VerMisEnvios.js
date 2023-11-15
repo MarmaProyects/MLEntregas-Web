@@ -14,12 +14,14 @@ document.addEventListener('DOMContentLoaded', function () {
             amount = precio / 40;
         });
     });
-    const modal = document.querySelector("#wallet_container_form");
+    const modal = document.getElementsByClassName("wallet_container_form");
     const handleSubmit = async function (e) {
         e.preventDefault();
         createPreferenceId();
     }
-    modal.addEventListener("submit", handleSubmit);
+    for (var i = 0; i < modal.length; i++) {
+        modal[i].addEventListener("submit", handleSubmit)
+    }
     mostrarBotonPaypal()
 });
 
@@ -99,8 +101,7 @@ function createPreferenceId() {
                     });
                 })
                 .catch(error => console.error('Error:', error));
-    }
-
+    } 
 }
 
 function mostrarBotonPaypal() {
