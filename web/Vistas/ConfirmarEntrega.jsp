@@ -27,16 +27,21 @@
         </header>
         <h1>Listado de envíos</h1>
         <div id="DivTabla">
-            <table>
+            <table class="table table-dark table-envio">
                 <tr>
                     <th>Dirección destino</th>
-                    <th>Cliente emisor</th>
+                    <th>Cliente Emisor</th>
+                    <th>Cliente Receptor</th>
                     <th>Descripción</th>
+                    <th><button class="button" id=" " data-bs-target="#modalQR" data-bs-dismiss="modal" data-bs-toggle="modal">QR Mercado Pago</button>
+                    </th>
                 </tr>
                 <% for (int i = 0; i < listadoEnv.size(); i++) {%>
                 <tr>
-                    <td><%= listadoEnv.get(i).getDireccionDestino().getCalle()%></td>
+                    <% String segunda_calle = listadoEnv.get(i).getDireccionDestino().getSegunda_calle();%>
+                    <td><%= listadoEnv.get(i).getDireccionDestino().getCalle() + " Nro Puerta " + listadoEnv.get(i).getDireccionDestino().getNro_puerta()%><%= segunda_calle.isBlank() ? "" : ", esquina " + segunda_calle%></td>
                     <td><%= listadoEnv.get(i).getClienteEmisor().getNombre() + " " + listadoEnv.get(i).getClienteEmisor().getApellido()%></td>
+                    <td><%= listadoEnv.get(i).getClienteReceptor().getNombre() + " " + listadoEnv.get(i).getClienteReceptor().getApellido()%></td>
                     <td><%= listadoEnv.get(i).getPaquete().getDescripcion()%></td>
                     <td>
                         <button type="button" class="button" id="" data-envio-id="<%= i%>" data-target-precio="<%= listadoEnv.get(i).getPago().getPrecio()%>" data-bs-toggle="modal" data-bs-target="#ModalMedioPago" data-target-form="<%= listadoEnv.get(i).getIdEnvio()%>">
@@ -106,6 +111,16 @@
                             </form>
                             <% }%>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modalQR" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content"> 
+                        <div class="modal-body">
+                            <div id="contenedorQR2" class="contenedorQR"></div>
+                            Escanee el código QR para realizar el pago.
+                        </div> 
                     </div>
                 </div>
             </div>

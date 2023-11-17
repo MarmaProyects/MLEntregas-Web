@@ -13,7 +13,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="CSS/bootstrap.min.css">
         <link rel="stylesheet" href="CSS/Styles.css">
-        <link rel="stylesheet" href="CSS/perfil.css">
+        <link rel="stylesheet" href="CSS/perfil.css"> 
         <script src="JS/bootstrap.bundle.min.js"></script>
         <link rel="icon" href="Images/logo-sm-extra.png" type="image/png">
         <script src="JS/jquery-3.7.1.min.js"></script>  
@@ -109,14 +109,13 @@
                                 </div> 
                             </div>
                         </div>
-                        <div class="tab-content profile-tab <%= (request.getAttribute("error") == null) ? oculto : ""%>" id="contentEdit"> 
+                        <div class="form-perfil <%= (request.getAttribute("error") == null) ? oculto : ""%>" id="contentEdit"> 
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                 <form action="/Perfil" method='POST' onsubmit="return validateFields()">
-                                    <div class="row">
+                                    <div class="row"> 
+                                        <div class="col-md-3"></div>
                                         <div class="col-md-6">
-                                            <label>Cédula de Identidad</label>
-                                        </div>
-                                        <div class="col-md-6">
+                                            <label class="labelPerfil">Cédula de Identidad</label>
                                             <input class="input-edit" onfocus="clearErrors()" name='cedula'  id='cedula' oninput="validarCedula(this)" type="text" value="<%= client.getCedula()%>"/>
                                             <div class="error-message">
                                                 <span id="errorCedula" class="error oculto">
@@ -133,11 +132,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row"> 
+                                        <div class="col-md-3"></div>
                                         <div class="col-md-6">
-                                            <label>Nombre</label>
-                                        </div>
-                                        <div class="col-md-6">
+                                            <label class="labelPerfil">Nombre</label>
                                             <input class="input-edit" onfocus="clearErrors()" name='nombre' id='nombre' type="text" value="<%= client.getNombre()%>"/>
                                             <div class="error-message">
                                                 <span id="errorNombre" class="error oculto">
@@ -146,11 +144,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row"> 
+                                        <div class="col-md-3"></div>
                                         <div class="col-md-6">
-                                            <label>Apellido</label>
-                                        </div>
-                                        <div class="col-md-6">
+                                            <label class="labelPerfil">Apellido</label>
                                             <input class="input-edit" onfocus="clearErrors()" name='apellido' id='apellido' type="text" value="<%= client.getApellido()%>"/>
                                             <div class="error-message">
                                                 <span id="errorApellido" class="error oculto">
@@ -159,11 +156,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row"> 
+                                        <div class="col-md-3"></div>
                                         <div class="col-md-6">
-                                            <label>Email</label>
-                                        </div>
-                                        <div class="col-md-6">
+                                            <label class="labelPerfil">Email</label>
                                             <input class="input-edit" onfocus="clearErrors()"  name='correo' id='correo' type="text" value="<%= client.getCorreo()%>"/>
                                             <div class="error-message">
                                                 <span id="errorCorreo" class="error oculto">
@@ -177,11 +173,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row"> 
+                                        <div class="col-md-3"></div>
                                         <div class="col-md-6">
-                                            <label>Teléfono</label>
-                                        </div> 
-                                        <div class="col-md-6">
+                                            <label class="labelPerfil">Teléfono</label>
                                             <input class="input-edit" onfocus="clearErrors()" max="999999999" name='telefono' id="telefono" type="text" value="<%= client.getTelefono()%>"/>
                                             <div class="error-message">
                                                 <span id="errorTelefono" class="error oculto">
@@ -194,9 +189,9 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-9"> 
+                                        <div class="col-md-3"> 
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-6">
                                             <input class='btn button button-edit' type="submit" value="Guardar" />
                                         </div>
                                     </div>
