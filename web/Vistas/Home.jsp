@@ -21,9 +21,10 @@
             <jsp:include page="/Includes/Navbar.jsp" />
         </header>
         <div class="contenedor">
-            <div class="home-content">
-                <h5 class="home-title">¡ENTREGA RÁPIDA!</h5>
-                <h5 class="home-title">¡COMUNÍCATE YA!</h5>
+            <div class="home-content , border border-4">
+                <div id="divLogo">
+                    <img src="/Images/Logo_Paginas.png" alt="logoHome" width="250px" height="250px">
+                </div>
                 <div class="container">
                     <div class="row">
                         <div class="col-6">
