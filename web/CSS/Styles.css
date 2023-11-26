@@ -121,5 +121,6 @@ label {
 
 .image-navbar-perfil{
     max-width: 70px;
-    border-radius: 10px
+    max-height: 46px;
+    border-radius: 3px
 }
