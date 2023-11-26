@@ -15,3 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 const contenedorQR = document.getElementById('contenedorQR');
 new QRCode(contenedorQR, 'https://mpago.la/pos/79869461');
+
+const contenedorQR2 = document.getElementById('contenedorQR2');
+new QRCode(contenedorQR2, 'https://mpago.la/pos/79869461');
+

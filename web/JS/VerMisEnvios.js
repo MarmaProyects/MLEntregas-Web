@@ -101,35 +101,44 @@ function createPreferenceId() {
                     });
                 })
                 .catch(error => console.error('Error:', error));
-    } 
+    }
 }
 
 function mostrarBotonPaypal() {
     paypal.Button.render({
-        env: 'sandbox',
+
+        env: 'sandbox', // sandbox | production
+
+        // PayPal Client IDs - replace with your own
+        // Create a PayPal app: https://developer.paypal.com/developer/applications/create
         client: {
             sandbox: 'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
             production: '<insert production client id>'
         },
-        style: {
-            label: 'checkout',
-            size: 'large', // small | medium | large | responsive
-            shape: 'rect', // pill | rect
-            color: 'blue'      // gold | blue | silver | black
+        style: { 
+            size: 'medium', // small | medium | large | responsive 
+            color: 'gold'      // gold | blue | silver | black
         },
+
+        // Show the buyer a 'Pay Now' button in the checkout flow
         commit: true,
 
+        // payment() is called when the button is clicked
         payment: function (data, actions) {
+
+            // Make a call to the REST api to create the payment
             return actions.payment.create({
                 payment: {
                     transactions: [
                         {
-                            amount: {total: amount.toFixed(2), currency: 'USD'}
+                            amount: {total: '0.01', currency: 'USD'}
                         }
                     ]
                 }
             });
         },
+
+        // onAuthorize() is called when the buyer approves the payment
         onAuthorize: function (data, actions) {
             // Make a call to the REST api to execute the payment
             return actions.payment.execute().then(function () {
@@ -146,6 +155,7 @@ function mostrarBotonPaypal() {
         }
 
     }, '#paypal-button-container');
+     
     return true;
 }
 

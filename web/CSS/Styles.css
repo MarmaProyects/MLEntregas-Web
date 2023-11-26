@@ -118,3 +118,9 @@ label {
     padding-top: 20px;
     padding-bottom: 20px;
 }
+
+.image-navbar-perfil{
+    max-width: 70px;
+    max-height: 46px;
+    border-radius: 3px
+}

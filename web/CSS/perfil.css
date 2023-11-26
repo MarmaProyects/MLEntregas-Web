@@ -22,7 +22,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     height: 100%;
     max-height: 300px;
     border-radius: 10px;
-    border: 3px solid orange;
+    border: 3px solid rgb(255,128, 0, 1);
 }
 .profile-img .file {
     position: relative;
@@ -81,7 +81,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 }
 .profile-work p{
     font-size: 12px;
-    color: orange;
+    color: rgb(255,128, 0, 1);
     font-weight: 600;
     margin-top: 10%;
 }
@@ -94,13 +94,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 .profile-work ul{
     list-style: none;
 }
+
 .profile-tab label{
     font-weight: 600;
     color: white;
 }
+
 .profile-tab p{
     font-weight: 600;
-    color: orange;
+    color: rgb(255,128, 0, 1);
 }
 .boton-file:hover{
     cursor: pointer;
@@ -118,4 +120,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 .gris{
     background-color: gray;
 }
- 
+
+.labelPerfil{
+    font-size: 20px;  
+    color: rgb(255,128, 0, 1);
+} 

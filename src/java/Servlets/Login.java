@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import logica.clases.Cliente;
 import logica.clases.Usuario;
 import logica.fabrica.Fabrica;
 import logica.interfaces.IAdministracion;
@@ -105,6 +106,11 @@ public class Login extends HttpServlet {
             if (contrasenia.equals(encryptPassword)) {
                 HttpSession session = request.getSession(true);
                 session.setAttribute("user", correo);
+
+                IAdministracion IA = Fabrica.getInstancia().getControladorCliente();
+                Cliente client = IA.traerClientePorCorreo(correo); 
+                session.setAttribute("cliente", client); 
+                session.setAttribute("fotoPerfil", user.getIdFoto());
                 if (user.getAdmin() == 1) {
                     session.setAttribute("admin", true);
                 }

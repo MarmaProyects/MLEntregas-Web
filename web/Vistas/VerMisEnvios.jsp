@@ -13,15 +13,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="CSS/bootstrap.min.css" rel="stylesheet">
-        <script src="JS/bootstrap.bundle.min.js"></script>
-        <script src="JS/Script.js"></script>
+        <script src="JS/bootstrap.bundle.min.js"></script> 
         <link href="CSS/Styles.css" rel="stylesheet">
         <link href="CSS/VerMisEnvios.css" rel="stylesheet"> 
         <link rel="icon" href="Images/logo-sm-extra.png" type="image/png">
         <title>MLEntregas</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
         <script src="JS/VerMisEnvios.js"></script>
         <script src="https://www.paypalobjects.com/api/checkout.js"></script>
         <script src="https://sdk.mercadopago.com/js/v2"></script>
@@ -88,7 +86,7 @@
                         </div>
                         <div class="modal-footer " style='
                              flex-direction: column;'>
-                            <div id="paymentBrick_container"></div> 
+                            <div id="paymentBrick_container"></div>  
                             <div id="paypal-button-container"></div>
                         </div>
                     </div>
