@@ -26,25 +26,27 @@
                     <img src="/Images/Logo_Paginas.png" alt="logoHome" width="250px" height="250px">
                 </div>
                 <div class="container">
+                    <% if(session.getAttribute("user") == null) {%>
                     <div class="row">
                         <div class="col-6">
-                            <a href="/Login" class="btn home-buttons">Ingresar</a>
+                            <a href="/Login" class="btn home-buttons button">Ingresar</a>
                         </div>
                         <div class="col-6">
-                            <a href="/Registro" class="btn home-buttons">Registrate</a>
+                            <a href="/Registro" class="btn home-buttons button">Registrate</a>
                         </div>
                     </div>
+                    <%}%>
                     <div class="row">
                         <div class="col-6">
-                            <a href="/Seguimiento" class="btn home-buttons">Rastrear Envío</a>
+                            <a href="/Seguimiento" class="btn home-buttons button">Rastrear Envío</a>
                         </div>
                         <div class="col-6">
-                            <a href="/Tarifas" class="btn home-buttons">Tarifas</a>
+                            <a href="/Tarifas" class="btn home-buttons button">Tarifas</a>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <a href="mailto:mlentregas@gmail.com" class="btn home-buttons">Contáctanos</a>
+                            <a href="mailto:mlentregas@gmail.com" class="btn home-buttons button">Contáctanos</a>
                         </div>
                     </div>
                 </div>

@@ -44,8 +44,8 @@ body {
     margin-left: 35%;
     width: 30%;
     background-color: rgb(31, 37, 46);
-    height: 65%;
     margin-top: 70px;
+    margin-bottom: 70px;
     padding: 30px;
     border-radius: 12px;
 }
@@ -65,27 +65,11 @@ body {
 .home-buttons{
     margin-top: 40px;
     width: 100%;
-    text-align: center;
-    text-decoration: none;
+    text-align: center; 
     background: rgb(255,128, 0, 1);
-    border: none;
-    color: black;
-    font-weight: bold;
     height: 40px;
-    box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.5);
 }
 
-
-.home-buttons:hover{
-    background: rgb(255,142, 27);
-    border: none;
-    color: black;
-    box-shadow:
-        0 0 5px #F26800,
-        0 0 20px #F26800,
-        0 0 60px #F26800,
-        0 0 150px #F26800;
-}
 
 @media (max-width: 768px){
     .home-content{

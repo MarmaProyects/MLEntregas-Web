@@ -8,11 +8,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 */
 
 body {
-    background-color: rgb(192,192,192);
+    background-color: rgb(46, 55, 68);
 }
 
 h1, h4 {
-    color: black;
     text-align: center;
 }
 
@@ -38,15 +37,7 @@ h1, h4 {
 .form-image button{
     margin-top: 40px;
     width: 100%;
-    color: black;
-    border-radius: 5px;
     margin-top: 15px;
-    background: rgb(255,128, 0, 1);
-    border: none;
-}
-
-.form-image button:hover{
-    background: rgb(255,128, 0, 0.6);
 }
 
 .form-image form{
