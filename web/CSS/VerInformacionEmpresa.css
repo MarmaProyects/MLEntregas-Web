@@ -62,7 +62,7 @@ body{
     color: #fff;
     padding: 72px;
     border-radius: 10px;
-    border: solid #000;
+    border: solid;
 }
 
 .informacion-contacto h2 {
