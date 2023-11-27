@@ -124,3 +124,8 @@ label {
     max-height: 46px;
     border-radius: 3px
 }
+
+.table {
+    border: solid;
+    border-radius: 5px;
+}
