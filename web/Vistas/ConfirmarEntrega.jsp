@@ -65,7 +65,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="exampleModalToggleLabel">MÉTODOS DE PAGO</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 Seleccione su método de pago:
@@ -108,10 +108,10 @@
                                 <div class="title-container">
                                     <h1 class="modal-title fs-5" id="exampleModalLabel">¿Desea confirmar la entrega?</h1>
                                 </div>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="button cancel" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="button" class="button buttonCancel" data-bs-dismiss="modal">Cancelar</button>
                                 <% if (!listadoEnv.isEmpty()) {%>
                                 <form method="post" action="<%= request.getContextPath()%>/ConfirmarEntrega"> 
                                     <input type="hidden" id="efectivoIdEnvio" name="idEnvio" value="">
@@ -127,7 +127,7 @@
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content"> 
                             <div class="modal-header"> 
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <div id="contenedorQR2" class="contenedorQR"></div>

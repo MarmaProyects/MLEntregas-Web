@@ -51,7 +51,7 @@
                     </div>
                     <% if (request.getAttribute("error") != null) {%>
                     <div class="col-md-2">
-                        <button type="button" class="profile-edit-btn button gris" id="btnEdit" value="Editar Perfil">Cancelar</button>
+                        <button type="button" class="profile-edit-btn buttonCancel" id="btnEdit" value="Editar Perfil">Cancelar</button>
                     </div>
                     <% } else { %>
                     <div class="col-md-2">

@@ -54,6 +54,27 @@ body {
         0 0 15px #F26800;
 }
 
+.buttonCancel{
+    color: black;
+    border-radius: 5px;
+    background: rgb(160, 160, 160);
+    border: none;
+    font-weight: bold;
+    box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.5);
+    text-decoration: none;
+}
+
+.buttonCancel:hover{
+    background: rgb(242, 56, 56);
+    border: none;
+    color: black;
+    box-shadow:
+        0 0 5px #4c1111,
+        0 0 15px #4c1111,
+        0 0 15px #4c1111,
+        0 0 15px #4c1111;
+}
+
 .contenedor {
     flex: 1;
     margin-top: 30px;
