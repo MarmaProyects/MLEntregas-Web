@@ -31,13 +31,13 @@
             <div id="DivTabla">
                 <% if (listadoEnv.size() == 0) {%>
                 <div class="row mensaje-no-envios">
-                    <p>No hay envios para confirmar</p> 
+                    <p>No hay envíos para confirmar</p> 
                     <p class="paquete-escrito">📦</p>
                 </div>
                 <% } else { %>
                 <table class="table table-dark table-envio">
                     <tr>
-                        <th>Dirección destino</th>
+                        <th>Dirección Destino</th>
                         <th>Cliente Emisor</th>
                         <th>Cliente Receptor</th>
                         <th>Descripción</th>
@@ -87,7 +87,7 @@
                             </div>
                             <div class="modal-body">
                                 <div id="contenedorQR" class="contenedorQR"></div>
-                                Escanee el código QR para realizar el pago.
+                                Escaneé el código QR para realizar el pago.
                             </div>
                             <div class="modal-footer">
                                 <% if (!listadoEnv.isEmpty()) {%>
@@ -131,7 +131,7 @@
                             </div>
                             <div class="modal-body">
                                 <div id="contenedorQR2" class="contenedorQR"></div>
-                                Escanee el código QR para realizar el pago.
+                                Escaneé el código QR para realizar el pago.
                             </div> 
                         </div>
                     </div>

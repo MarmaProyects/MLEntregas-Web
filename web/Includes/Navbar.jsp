@@ -16,12 +16,12 @@
                     <a class="nav-link active" aria-current="page" href="/">Inicio</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link active dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Envios</a>
+                    <a class="nav-link active dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Envíos</a>
                     <ul class="dropdown-menu">
                         <% if (session.getAttribute("user") != null) {%>
-                        <li><a class="dropdown-item" aria-current="page" href="/VerMisEnvios">Ver mis envios</a></li>
+                        <li><a class="dropdown-item" aria-current="page" href="/VerMisEnvios">Ver mis envíos</a></li>
                             <% }%>
-                        <li><a class="dropdown-item" aria-current="page" href="/Seguimiento">Rastrear envio</a></li>
+                        <li><a class="dropdown-item" aria-current="page" href="/Seguimiento">Rastrear envío</a></li>
                         <li><a class="dropdown-item" aria-current="page" href="Tarifas">Tarifas</a></li>
                         <li><a class="dropdown-item" aria-current="page" href="VerZonasDeReparto">Zonas de reparto</a></li>
                         <li><hr class="dropdown-divider"></li>
