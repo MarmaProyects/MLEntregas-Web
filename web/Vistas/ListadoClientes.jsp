@@ -20,8 +20,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="CSS/bootstrap.min.css" rel="stylesheet">
-        <link href="CSS/listadoClientes.css" rel="stylesheet">
         <link href="CSS/Styles.css" rel="stylesheet">
+        <link href="CSS/listadoClientes.css" rel="stylesheet">
         <script src="JS/bootstrap.bundle.min.js"></script>
         <script src="JS/jquery-3.7.1.min.js"></script> 
         <script src="JS/ListarClientes.js"></script>
