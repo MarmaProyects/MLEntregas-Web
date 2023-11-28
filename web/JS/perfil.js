@@ -5,19 +5,35 @@
 $(document).ready(function () {
     $("#btnEdit").on('click', function () {
         const info = document.getElementById("myTabContent");
+        const nameProfile = document.getElementById("nameProfile");
+        const titleEditProfile = document.getElementById("titleEditProfile");
+        nameProfile.classList.toggle('col-md-9');
+        nameProfile.classList.toggle('oculto');
+        titleEditProfile.classList.toggle('text-center');
+        titleEditProfile.classList.toggle('oculto');
         info.classList.toggle('oculto');
         const editinfo = document.getElementById("contentEdit");
         editinfo.classList.toggle('oculto');
         const button = document.getElementById("btnEdit");
-        if (button.textContent == 'Editar Perfil') {
-            button.textContent = "Cancelar";
-            button.classList.toggle("buttonCancel");
-            button.classList.toggle("gris");
-        } else {
-            button.textContent = "Editar Perfil";
-            button.classList.toggle("buttonCancel");
-            button.classList.toggle("gris");
-        }
+        button.classList.toggle("buttonCancel");
+        button.classList.toggle("gris");
+        button.classList.toggle("oculto");
+    });
+    $("#btnCancel").on('click', function () {
+        const nameProfile = document.getElementById("nameProfile");
+        const titleEditProfile = document.getElementById("titleEditProfile");
+        nameProfile.classList.toggle('col-md-9');
+        nameProfile.classList.toggle('oculto');
+        titleEditProfile.classList.toggle('text-center');
+        titleEditProfile.classList.toggle('oculto');
+        const info = document.getElementById("myTabContent");
+        info.classList.toggle('oculto');
+        const editinfo = document.getElementById("contentEdit");
+        editinfo.classList.toggle('oculto');
+        const button = document.getElementById("btnEdit");
+        button.classList.toggle("gris");
+        button.classList.toggle("buttonCancel");
+        button.classList.toggle("oculto");
     });
     $('#fileToUpload').on('change', function () {
         const url_api = "https://imgur-8mef.vercel.app/upload";
@@ -40,7 +56,7 @@ $(document).ready(function () {
                         const imageUrl = data.data.url;
                         const regex = /https:\/\/i\.imgur\.com\/([a-zA-Z0-9]+)(\.[a-z]+)$/;
                         const match = imageUrl.match(regex);
-                        const imageId = match ? match[1] : null; 
+                        const imageId = match ? match[1] : null;
                         let servletURL = "/ImageUpload";
                         let dataImage = {
                             idFoto: imageId
@@ -48,8 +64,8 @@ $(document).ready(function () {
                         let jsonString = JSON.stringify(dataImage);
 
                         return fetch(servletURL, {
-                            method: "POST", 
-                            headers: { 
+                            method: "POST",
+                            headers: {
                                 "Content-Type": "application/json"
                             },
                             body: jsonString
@@ -57,7 +73,7 @@ $(document).ready(function () {
                     })
                     .then(response => {
                         if (response.ok) {
-                             window.location.href = "/Perfil";
+                            window.location.href = "/Perfil";
                         } else {
                             console.error("Error en la segunda solicitud:", response.statusText);
                         }
@@ -215,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let checkbox = document.getElementById("notisEmail");
     checkbox.addEventListener("change", function () {
         const baseUrl = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port;
-        const url = baseUrl + "/NotisEmail?notisEmail=" + checkbox.checked; 
+        const url = baseUrl + "/NotisEmail?notisEmail=" + checkbox.checked;
         fetch(url, {
             method: 'POST'
         }).then(response => {
