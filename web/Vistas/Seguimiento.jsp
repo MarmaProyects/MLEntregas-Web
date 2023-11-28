@@ -112,7 +112,7 @@
                         <% for (int h = envio.getEstados().size() - 1; h >= 0; h--) {%>
                         <tr>
                             <td><%= envio.getEstados().get(h).getFecha()%></td>
-                            <td><%= envio.getEstados().get(h).getTipo().getEstado()%></td>
+                            <td><span class="estado-seguimiento <%= envio.getEstados().get(h).getTipo() %>"><%= envio.getEstados().get(h).getTipo().getEstado()%></span></td>
                             <td><%= envio.getEstados().get(h).getComentario()%></td>
                         </tr>
                         <% } %>

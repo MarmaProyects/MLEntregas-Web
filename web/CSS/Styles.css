@@ -160,3 +160,31 @@ label {
     border: solid;
     border-radius: 5px;
 }
+
+
+.Preparando{
+    background-color: orange;
+}
+
+.EnCamino{
+    background-color: yellow;
+}
+
+.Entregado{
+    background-color: green;
+}
+
+.Cancelado{
+    background-color: red;
+}
+
+.ListoParaRetirar{
+    background-color: yellowgreen;
+}
+
+.estado-text{
+    padding: 5px;
+    border-radius: 10px;
+    color: black;
+    font-weight: bold;
+}
