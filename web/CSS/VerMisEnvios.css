@@ -107,6 +107,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     background-color: transparent;
     border: none; /* Para quitar el borde predeterminado del botón */
     padding: 10px; /* Ajusta el relleno según sea necesario */
+    padding-top: 0px;
 }
 
 .alerta {

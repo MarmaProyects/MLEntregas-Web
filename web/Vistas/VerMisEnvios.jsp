@@ -49,7 +49,7 @@
                                 <p>Descripción: <%= listadoEnv.get(i).getPaquete().getDescripcion()%></p>
                                 <p>Precio del envío: <%= listadoEnv.get(i).getPago().getPrecio()%></p> 
                                 <div id="divCodigoRastreo">
-                                    <p>Codigo de rastreo: <%= listadoEnv.get(i).getCodigoRastreo()%></p>
+                                    <p style="margin-top: 4px; margin-bottom: 12px;">Codigo de rastreo: <%= listadoEnv.get(i).getCodigoRastreo()%></p>    
                                     <input type="hidden" value=<%= listadoEnv.get(i).getCodigoRastreo()%> id="InputCodigoRastreo_<%= i%>">
                                     <button class="clipboardCopyButton" boton-copiar-CR="<%= i%>">
                                         <img src="Images/copiarIcon.png" alt="📋" style="width: 16px; height: 16px;" id="imagenCopiar_<%= i%>"
