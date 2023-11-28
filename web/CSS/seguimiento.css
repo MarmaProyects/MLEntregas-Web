@@ -58,3 +58,10 @@ h1, h4 {
 .contenedor-seguimiento{
     padding: 0 10% 70px 10%;
 }
+
+.estado-seguimiento{
+    padding: 5px;
+    border-radius: 10px;
+    color: black;
+    font-weight: bold;
+}

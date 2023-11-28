@@ -76,6 +76,15 @@
                     <hr>
                     <p>Podés ver todos los horarios y las direcciones de nuestra sucursal en <a href="/VerInformacionEmpresa">MLEntregas</a>.</p>
                 </div> 
+                <div class='preguntas'>
+                    <h4>Tipos de estados y sus colores</h4>
+                    <hr>
+                    <p>El estado <span class="estado-text EnCamino">En camino</span> con el color amarillo, significa que el paquete está haciendo su recorrido al destino.</p>
+                    <p>El estado <span class="estado-text Preparando">En preparación</span> con el color naranja, significa que el paquete se está preparando para enviar.</p>
+                    <p>El estado <span class="estado-text ListoParaRetirar">Listo para entregar</span> con el color verde claro, significa que el paquete está listo para entregar en la agencia.</p>
+                    <p>El estado <span class="estado-text Entregado">Entregado</span> con el color verde, significa que el paquete ya se entregó.</p>
+                    <p>El estado <span class="estado-text Cancelado">Cancelado</span> con el color rojo, significa que el paquete fue cancelado y devuelto.</p>
+                </div>
             </div>
 
         </div>

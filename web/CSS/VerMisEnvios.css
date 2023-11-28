@@ -64,3 +64,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 .modal-content{
     color: black;
 }
+
+.estadoDiv {
+    position: relative;
+    padding: 20px;
+}
+
+.solapa {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    color: #fff;
+    padding: 5px 10px;
+    border: 1px solid white;
+    border-radius: 0 10px 0 10px;
+    color: black;
+    font-weight: bold;
+}
