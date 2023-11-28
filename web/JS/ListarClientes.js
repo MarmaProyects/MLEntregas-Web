@@ -2,42 +2,28 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/JavaScript.js to edit this template
  */
+$(document).ready(function() {
+    $.extend($.fn.dataTable.ext.type.search, {
+        // Define un método de búsqueda que sea insensible a acentos
+        "type-based": function (data) {
+            return !data ?
+                '' :
+                typeof data === 'string' ?
+                    data
+                        .replace(/á/g, 'a')
+                        .replace(/é/g, 'e')
+                        .replace(/í/g, 'i')
+                        .replace(/ó/g, 'o')
+                        .replace(/ú/g, 'u')
+                        .replace(/ñ/g, 'n') :
+                    data;
+        }
+    });
 
-
-function buscarNombre() {
-    let input = document.getElementById("nombre-apellido").value;
-    if (input!= null || !input.equals("")) {
-        input = encodeURIComponent(input);
-    }
-    window.location.href = "/Listaclientes?buscar=" + input;
-}
-
-function validarNomApe() {
-    let input = document.getElementById("nombre-apellido");
-    let valor = input.value;
-
-    let errordigi = document.getElementById("errordigi");
-    let errorNomApe = document.getElementById("errorNomApe");
-    if (errorNomApe === "") {
-        input.classList.add('oculto');
-    }
-    if (valor === "") {
-        input.classList.add('input-error');
-        errordigi.classList.remove('oculto');
-        return false;
-    }
-    return true;
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-    let input = document.getElementById("nombre-apellido");
-    input.focus();
+    // Inicializa el DataTable y aplica la configuración
+    $('#dataTable').DataTable({
+        "columnDefs": [
+            { "type": "type-based", "targets": "_all" }
+        ]
+    });
 });
-
-function pulsar(e) {
-    if (e.keyCode === 13) {
-        e.preventDefault();
-        var boton = document.getElementById("btnBuscar");
-        boton.click();
-    }
-}

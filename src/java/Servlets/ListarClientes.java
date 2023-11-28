@@ -58,11 +58,6 @@ public class ListarClientes extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         IAdministracion iA = fab.getControladorCliente();
-        String nomApe = request.getParameter("buscar");
-        if (nomApe != null && !nomApe.equals("")) {
-            nomApe = URLDecoder.decode(nomApe, "UTF-8");
-        }
-        request.setAttribute("nomApe", nomApe);
         request.setAttribute("ListaClientes", iA.obtenerLosClientes());
         request.setAttribute("ListaEnvios", fab.getControladorEnvio().listaDeEnvios());
         RequestDispatcher dispatcher = request.getRequestDispatcher("/Vistas/ListadoClientes.jsp");
