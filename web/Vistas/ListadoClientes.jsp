@@ -20,6 +20,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="CSS/bootstrap.min.css" rel="stylesheet">
+        <link href="CSS/listadoClientes.css" rel="stylesheet">
         <link href="CSS/Styles.css" rel="stylesheet">
         <script src="JS/bootstrap.bundle.min.js"></script>
         <script src="JS/jquery-3.7.1.min.js"></script> 
@@ -28,7 +29,7 @@
         <link rel="icon" href="Images/logo-sm-extra.png" type="image/png">
         <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
         <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
-        <link href="CSS/listadoClientes.css" rel="stylesheet">
+        
     </head>
     <body>
         <header>
@@ -37,7 +38,7 @@
         <div class="contenedor">
             <h1>Listado de clientes</h1>
             <div class="form-table">
-                <table id="dataTable" class="table table-dark">
+                <table id="dataTable" class="table table-dark" style="border-style: none;">
                     <thead>
                         <tr>
                             <th>Nombre</th>

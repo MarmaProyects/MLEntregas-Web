@@ -19,9 +19,10 @@ label {
 }
 
 #dataTable_wrapper {
-    width: 130vh;
+    max-width: 130vh;
+    
 }
 
-table.dataTable {
-    border-collapse: collapse;
+#dataTable select, option{
+    background-color: #212529;
 }
