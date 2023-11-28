@@ -7,7 +7,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Author     : leo
 */
 body{
-    background-color: rgb(192,192,192);
+    background-color: rgb(46, 55, 68);
 }
 
 #Titulo{
@@ -49,6 +49,7 @@ body{
 
 #DivContacto{
     margin-right: 60px;
+    background-color: rgb(31, 37, 46);
 }
 
 #DivMapa{

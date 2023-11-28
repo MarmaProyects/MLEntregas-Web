@@ -53,7 +53,7 @@ button.botonModal{
 }
 
 .modal-content{
-    background-color: lightgray;
+    background-color: rgb(46, 55, 68);
 }
 
 .modal-footer{
@@ -71,10 +71,6 @@ button.botonModal{
     display: flex;
     flex-direction: column-reverse;
     text-align: center;
-}
-
-.cancel{
-    background: rgb(160, 160, 160);
 }
 
 .modal-header{

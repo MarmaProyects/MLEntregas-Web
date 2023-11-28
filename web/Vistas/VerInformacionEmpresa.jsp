@@ -24,14 +24,14 @@
         <header>
             <jsp:include page="/Includes/Navbar.jsp" />
         </header>
-        <h1 id="Titulo"><strong>MLEntregas</strong></h1>
+        <h1 id="Titulo"><strong>ML Entregas</strong></h1>
         <div id="contenedor1">
             <div id="DivLogo">
                 <img id="logo" src="Images/Logo_Paginas.png" alt="Descripción del icono">
             </div>
             <div id="descripcionEmpresa">
                 <h5><strong>Sobre nosotros</strong></h5>
-                <p>MLEntregas es una empresa de paquetería local sanducera que propone una nueva opción a la hora de repartir paquetes; <br>
+                <p>ML Entregas es una empresa de paquetería local sanducera que propone una nueva opción a la hora de repartir paquetes; <br>
                     Contamos con un local para el manejo de los mismos y un sistema de reparto para llevarlos a la puerta de tu casa.</p>
             </div>
         </div>

@@ -60,3 +60,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 .paypal-button{
     height: 150px;
 }
+
+.modal-content{
+    color: black;
+}

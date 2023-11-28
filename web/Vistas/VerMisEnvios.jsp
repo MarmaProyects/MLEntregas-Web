@@ -59,7 +59,7 @@
                         <% if (!cancelado) { %>
                         <div id="contenedorBotonesEnvio">
                             <% if (listadoEnv.get(i).getPago().getFecha() != null) {%>
-                            <p id="EnvioPagoTexto"> ENVIO PAGO </p>
+                            <p id="EnvioPagoTexto"> ENVÍO PAGO </p>
                             <%} else {%>
                             <div id="divBotonesEnvio">
                                 <form class="wallet_container_form" >

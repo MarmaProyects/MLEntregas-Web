@@ -42,7 +42,7 @@
                             <p class="oculto error" id="errornull">El código de rastreo debe contener exactamente 9 dígitos.</p>
                         </div>
                         <div class=" ">
-                            <button type="submit" class="btn">Buscar</button>
+                            <button type="submit" class="btn button">Buscar</button>
                         </div>
                     </form>
                 </div>

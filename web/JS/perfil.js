@@ -11,9 +11,11 @@ $(document).ready(function () {
         const button = document.getElementById("btnEdit");
         if (button.textContent == 'Editar Perfil') {
             button.textContent = "Cancelar";
+            button.classList.toggle("buttonCancel");
             button.classList.toggle("gris");
         } else {
             button.textContent = "Editar Perfil";
+            button.classList.toggle("buttonCancel");
             button.classList.toggle("gris");
         }
     });
