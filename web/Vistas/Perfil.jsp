@@ -193,7 +193,7 @@
                                             <div class="col-md-3"> 
                                             </div>
                                             <div class="col-md-3"> 
-                                                <button type="button" class="profile-edit-btn button gris" id="btnCancel" value="Editar Perfil">Cancelar</button> 
+                                                <button type="button" class="profile-edit-btn button buttonCancel" id="btnCancel" value="Editar Perfil">Cancelar</button> 
                                             </div>
                                             <div class="col-md-3">
                                                 <input class='btn button profile-edit-btn' type="submit" value="Guardar" />
