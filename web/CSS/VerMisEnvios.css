@@ -81,3 +81,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     color: black;
     font-weight: bold;
 }
+
+#divCodigoRastreo{
+    display: flex;
+}
+
+#divCodigoRastreo p{
+    margin: auto;   
+}
+
+.clipboardCopyButton{
+  background-color: transparent;
+  border: none; /* Para quitar el borde predeterminado del botón */
+  padding: 10px; /* Ajusta el relleno según sea necesario */
+}

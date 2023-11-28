@@ -23,6 +23,16 @@ document.addEventListener('DOMContentLoaded', function () {
         modal[i].addEventListener("submit", handleSubmit)
     }
     mostrarBotonPaypal()
+    
+    //Copiar codigo rastreo por cada boton de copiar CR
+    let idInput = 0;
+    document.querySelectorAll('button[boton-copiar-CR]').forEach(function (button) {
+        button.addEventListener('click', function () {
+            copiarCRClipboard(document.getElementById("InputCodigoRastreo_"+idInput));
+            idInput = idInput +1;
+        });
+    });
+    
 });
 
 function createPreferenceId() {
@@ -115,7 +125,7 @@ function mostrarBotonPaypal() {
             sandbox: 'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
             production: '<insert production client id>'
         },
-        style: { 
+        style: {
             size: 'medium', // small | medium | large | responsive 
             color: 'gold'      // gold | blue | silver | black
         },
@@ -155,8 +165,21 @@ function mostrarBotonPaypal() {
         }
 
     }, '#paypal-button-container');
-     
+
     return true;
 }
 
+function copiarCRClipboard(input) {
+    // Crear un input clonado
+    const tempInput = document.createElement("input");
+    tempInput.type = "text";  // Cambiar el tipo de oculto a texto
+    tempInput.value = input.value;
+    document.body.appendChild(tempInput);
+    // Seleccionar y copiar el texto
+    tempInput.select();
+    tempInput.setSelectionRange(0, 99999); // Para celulares
+    document.execCommand("copy");
+    // Eliminar el input clonado
+    document.body.removeChild(tempInput);
+}
 
