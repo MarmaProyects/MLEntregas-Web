@@ -38,14 +38,7 @@
                 <table>
                     <div id="contenedorEnvio" class="estadoDiv">
                         <% int J = listadoEnv.get(i).getEstados().size();%>
-                        <div class="solapa <%= listadoEnv.get(i).getEstados().get(J - 1).getTipo() %>"><%= listadoEnv.get(i).getEstados().get(J - 1).getTipo().getEstado()%></div>
-                        <div id="divCodigoRastreo">
-                            <p>Codigo de rastreo: <%= listadoEnv.get(i).getCodigoRastreo()%></p>
-                            <input type="hidden" value=<%= listadoEnv.get(i).getCodigoRastreo()%> id="InputCodigoRastreo_<%= i%>">
-                            <button class="clipboardCopyButton" boton-copiar-CR="<%= i%>">
-                                <img src="/Images/copiarIcon.png" alt="📋" style="width: 16px; height: 16px;">
-                            </button>
-                        </div>
+                        <div class="solapa <%= listadoEnv.get(i).getEstados().get(J - 1).getTipo()%>"><%= listadoEnv.get(i).getEstados().get(J - 1).getTipo().getEstado()%></div>
                         <div id="contenedorDatosEnvio">
                             <div id="divDatosClientes">
                                 <p>Dirección de origen: <%= listadoEnv.get(i).getDireccionOrigen().getCalle() + "/" + listadoEnv.get(i).getDireccionOrigen().getSegunda_calle() + " " + listadoEnv.get(i).getDireccionOrigen().getNro_puerta()%></p>
@@ -55,7 +48,14 @@
                             <div id="divDatosEnvio">
                                 <p>Descripción: <%= listadoEnv.get(i).getPaquete().getDescripcion()%></p>
                                 <p>Precio del envío: <%= listadoEnv.get(i).getPago().getPrecio()%></p> 
-                                <p>Codigo de rastreo: <%= listadoEnv.get(i).getCodigoRastreo() %></p>
+                                <div id="divCodigoRastreo">
+                                    <p>Codigo de rastreo: <%= listadoEnv.get(i).getCodigoRastreo()%></p>
+                                    <input type="hidden" value=<%= listadoEnv.get(i).getCodigoRastreo()%> id="InputCodigoRastreo_<%= i%>">
+                                    <button class="clipboardCopyButton" boton-copiar-CR="<%= i%>">
+                                        <img src="Images/copiarIcon.png" alt="📋" style="width: 16px; height: 16px;" id="imagenCopiar_<%= i%>"
+                                    </button>
+                                    <div class="alerta">Copiado</div>
+                                </div>
                             </div>
                         </div>
                         <% boolean cancelado = false;%>

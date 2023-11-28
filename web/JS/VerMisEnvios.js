@@ -23,16 +23,23 @@ document.addEventListener('DOMContentLoaded', function () {
         modal[i].addEventListener("submit", handleSubmit)
     }
     mostrarBotonPaypal()
-    
+
     //Copiar codigo rastreo por cada boton de copiar CR
-    let idInput = 0;
     document.querySelectorAll('button[boton-copiar-CR]').forEach(function (button) {
         button.addEventListener('click', function () {
-            copiarCRClipboard(document.getElementById("InputCodigoRastreo_"+idInput));
-            idInput = idInput +1;
+            let idBoton = this.getAttribute('boton-copiar-CR');
+            let input = document.getElementById("InputCodigoRastreo_" + this.getAttribute('boton-copiar-CR'));
+            let imagen = document.getElementById("imagenCopiar_" + idBoton);
+            let imagenOriginal = imagen.src;
+            imagen.src = "Images/SuccesCopiarIcon.png";
+            copiarCRClipboard(input);
+            setTimeout(function () {
+                imagen.src = imagenOriginal;
+            }, 2000);
         });
     });
-    
+
+
 });
 
 function createPreferenceId() {
@@ -170,7 +177,6 @@ function mostrarBotonPaypal() {
 }
 
 function copiarCRClipboard(input) {
-    // Crear un input clonado
     const tempInput = document.createElement("input");
     tempInput.type = "text";  // Cambiar el tipo de oculto a texto
     tempInput.value = input.value;
@@ -182,4 +188,5 @@ function copiarCRClipboard(input) {
     // Eliminar el input clonado
     document.body.removeChild(tempInput);
 }
+
 
