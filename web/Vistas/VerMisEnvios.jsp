@@ -31,7 +31,7 @@
             <jsp:include page="/Includes/Navbar.jsp" />
         </header>
         <div class="contenedor">
-            <h1>MIS ENVÍOS</h1>
+            <h1>Mis envíos</h1>
             <% if (!listadoEnv.isEmpty()) {%>
             <% for (int i = 0; i < listadoEnv.size(); i++) {%>
             <div class="TablaEnvio">
