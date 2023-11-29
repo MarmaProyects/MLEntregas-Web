@@ -64,4 +64,5 @@ body {
     display: flex;
     justify-content: center;
     border-radius: 12px;
+    align-items: center;
 }

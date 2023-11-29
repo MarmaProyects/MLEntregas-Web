@@ -15,11 +15,14 @@
         <link href="CSS/Styles.css" rel="stylesheet">
         <script src="JS/bootstrap.bundle.min.js"></script>
         <script defer src="JS/qrcode.min.js"></script>
+        <script src="JS/jquery-3.7.1.min.js"></script> 
         <script defer src="JS/ConfirmarEntrega.js"></script>
         <script src="JS/Scripts.js"></script>
         <link href="CSS/ConfirmarEntrega.css" rel="stylesheet">
         <link rel="icon" href="Images/logo-sm-extra.png" type="image/png">
         <title>MLEntregas</title>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
+        <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
     </head>
     <body>
         <% ArrayList<Envio> listadoEnv = (ArrayList<Envio>) request.getAttribute("ListaEnvios"); %>
@@ -27,7 +30,7 @@
             <jsp:include page="/Includes/Navbar.jsp" />
         </header>
         <div class='contenedor'>
-            <h1>Listado de envíos</h1>
+            <h1>Envíos en camino</h1>
             <div id="DivTabla">
                 <% if (listadoEnv.size() == 0) {%>
                 <div class="row mensaje-no-envios">
@@ -35,7 +38,8 @@
                     <p class="paquete-escrito">📦</p>
                 </div>
                 <% } else { %>
-                <table class="table table-dark table-envio">
+                <table class="table table-dark table-envio" id="dataTable" style="border-style: none;">
+                    <thead>
                     <tr>
                         <th>Dirección Destino</th>
                         <th>Cliente Emisor</th>
@@ -44,6 +48,8 @@
                         <th><button class="button" id=" " data-bs-target="#modalQR" data-bs-dismiss="modal" data-bs-toggle="modal">QR Mercado Pago</button>
                         </th>
                     </tr>
+                    </thead>
+                    <tbody>
                     <% for (int i = 0; i < listadoEnv.size(); i++) {%>
                     <tr>
                         <% String segunda_calle = listadoEnv.get(i).getDireccionDestino().getSegunda_calle();%>
@@ -57,7 +63,8 @@
                             </button>
                         </td>
                     </tr>
-                    <%}%>
+                    <% } %>
+                    </tbody>
                 </table>
                 <% } %>
                 <div class="modal fade" id="ModalMedioPago" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
