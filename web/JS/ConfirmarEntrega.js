@@ -67,7 +67,7 @@ $(document).ready(function () {
 });
 
 function verMapa(calle, numero) {
-    let direccion =  calle + "+" + numero;
+    let direccion =  "Paysandu" + "+" + calle + "+" + numero;
     let url = 'https://www.google.com/maps?q=' + direccion; // Construye la URL de búsqueda en Google Maps
     window.open(url, '_blank'); // Abre la URL en una nueva pestaña
 };
