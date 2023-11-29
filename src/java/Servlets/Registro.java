@@ -97,7 +97,7 @@ public class Registro extends HttpServlet {
 
         Usuario user = IA.obtenerUsuario(correo);
         ProtectedUserPassword encryptedPassword = null;
-
+        
         try {
             encryptedPassword = new ProtectedUserPassword(contrasenia);
         } catch (NoSuchAlgorithmException ex) {
@@ -115,6 +115,7 @@ public class Registro extends HttpServlet {
         
         if (user == null) {
             IA.crearUsuario(correo, encryptPassword, encryptedPassword.getKey().getEncoded());
+            user = IA.obtenerUsuario(correo);
         } else {
             request.setAttribute("correo", correo);
             request.setAttribute("nombre", nombre);
@@ -131,7 +132,9 @@ public class Registro extends HttpServlet {
             IA.agregarCliente(cedula, nombre, apellido, telefono, correo);
         }
         HttpSession session = request.getSession(true);
+        session.setAttribute("fotoPerfil", null);
         session.setAttribute("user", correo);
+        session.setAttribute("cliente", IA.traerClienteSeleccionado(cedula));
 
         response.sendRedirect("/");
 

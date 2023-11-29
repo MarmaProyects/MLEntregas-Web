@@ -107,3 +107,7 @@ label {
 #dataTable select, option{
     background-color: #2e3744;
 }
+
+a{
+    cursor: pointer;
+}
