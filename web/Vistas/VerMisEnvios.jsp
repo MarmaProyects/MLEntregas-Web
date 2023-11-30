@@ -39,15 +39,15 @@
                     <div class="solapa <%= listadoEnv.get(i).getEstados().get(J - 1).getTipo()%>"><%= listadoEnv.get(i).getEstados().get(J - 1).getTipo().getEstado()%></div>
                     <div id="contenedorDatosEnvio">
                         <div id="divDatosClientes">
-                            <p>Dirección de origen: <%= listadoEnv.get(i).getDireccionOrigen().getCalle() + "/" + listadoEnv.get(i).getDireccionOrigen().getSegunda_calle() + " " + listadoEnv.get(i).getDireccionOrigen().getNro_puerta()%></p>
-                            <p>Dirección de destino: <%= listadoEnv.get(i).getDireccionDestino().getCalle() + "/" + listadoEnv.get(i).getDireccionDestino().getSegunda_calle() + " " + listadoEnv.get(i).getDireccionDestino().getNro_puerta()%></p>
-                            <p>Cliente receptor: <%= listadoEnv.get(i).getClienteReceptor().getNombre() + " " + listadoEnv.get(i).getClienteReceptor().getApellido()%></p>
+                            <p><span style="font-weight: bold;">Dirección de origen:</span> <%= listadoEnv.get(i).getDireccionOrigen().getCalle() + " " + listadoEnv.get(i).getDireccionOrigen().getNro_puerta() + " / " + listadoEnv.get(i).getDireccionOrigen().getSegunda_calle()%></p>
+                            <p><span style="font-weight: bold;">Dirección de destino:</span> <%= listadoEnv.get(i).getDireccionDestino().getCalle() + " " + listadoEnv.get(i).getDireccionDestino().getNro_puerta() + " / " + listadoEnv.get(i).getDireccionDestino().getSegunda_calle()%></p>
+                            <p><span style="font-weight: bold;">Cliente receptor:</span> <%= listadoEnv.get(i).getClienteReceptor().getNombre() + " " + listadoEnv.get(i).getClienteReceptor().getApellido()%></p>
                         </div>
                         <div id="divDatosEnvio">
-                            <p>Descripción: <%= listadoEnv.get(i).getPaquete().getDescripcion()%></p>
-                            <p>Precio del envío: <%= listadoEnv.get(i).getPago().getPrecio()%></p> 
+                            <p><span style="font-weight: bold;">Descripción:</span> <%= listadoEnv.get(i).getPaquete().getDescripcion()%></p>
+                            <p><span style="font-weight: bold;">Precio del envío:</span> <%= listadoEnv.get(i).getPago().getPrecio()%></p> 
                             <div id="divCodigoRastreo">
-                                <p class='codigo-rastreo'>Codigo de rastreo: <%= listadoEnv.get(i).getCodigoRastreo()%></p>    
+                                <p style="margin-top: 4px; margin-bottom: 12px;"><span style="font-weight: bold;">Codigo de rastreo:</span> <%= listadoEnv.get(i).getCodigoRastreo()%></p>        
                                 <input type="hidden" value=<%= listadoEnv.get(i).getCodigoRastreo()%> id="InputCodigoRastreo_<%= i%>">
                                 <button class="clipboardCopyButton" boton-copiar-CR="<%= i%>">
                                     <img src="Images/copiarIcon.png" alt="📋" style="width: 16px; height: 16px;" id="imagenCopiar_<%= i%>"
@@ -80,7 +80,7 @@
             <%}%>
             <% }%> 
             <div class="modal fade" id="ModalMedioPago" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-                
+
                 <div class="modal-dialog modal-lg modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">

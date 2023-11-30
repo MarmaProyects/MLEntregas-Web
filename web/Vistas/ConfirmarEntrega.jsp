@@ -82,7 +82,7 @@
                             <div class="modal-footer">
                                 <button class="button" data-bs-target="#ModalPagarEfectivo" data-bs-dismiss="modal" data-bs-toggle="modal">Efectivo</button>
                                 <input type="hidden" id="inputCredito" value="">
-                                <button class="button" id="btnCredito" data-bs-target="#modalPagarCredito" onclick="agregarPrecio()" data-bs-dismiss="modal" data-bs-toggle="modal">Crédito</button>
+                                <button class="button" id="btnCredito" data-bs-target="#modalPagarCredito" onclick="agregarPrecio()" data-bs-dismiss="modal" data-bs-toggle="modal">Mercado Pago</button>
                             </div>
                         </div>
                     </div>
