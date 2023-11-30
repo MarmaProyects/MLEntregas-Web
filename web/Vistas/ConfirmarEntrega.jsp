@@ -53,7 +53,9 @@
                     <% for (int i = 0; i < listadoEnv.size(); i++) {%>
                     <tr>
                         <% String segunda_calle = listadoEnv.get(i).getDireccionDestino().getSegunda_calle();%>
-                        <td><%= listadoEnv.get(i).getDireccionDestino().getCalle() + " Nro Puerta " + listadoEnv.get(i).getDireccionDestino().getNro_puerta()%><%= segunda_calle.isBlank() ? "" : ", esquina " + segunda_calle%></td>
+                        <td><a style="text-decoration: underline; " onclick="verMapa('<%= listadoEnv.get(i).getDireccionDestino().getCalle()%>', '<%= listadoEnv.get(i).getDireccionDestino().getNro_puerta()%>')">
+                                <%= listadoEnv.get(i).getDireccionDestino().getCalle() + " Nro Puerta " + listadoEnv.get(i).getDireccionDestino().getNro_puerta()%>
+                                <%= segunda_calle.isBlank() ? "" : "/ " + segunda_calle%></a></td>
                         <td><%= listadoEnv.get(i).getClienteEmisor().getNombre() + " " + listadoEnv.get(i).getClienteEmisor().getApellido()%></td>
                         <td><%= listadoEnv.get(i).getClienteReceptor().getNombre() + " " + listadoEnv.get(i).getClienteReceptor().getApellido()%></td>
                         <td><%= listadoEnv.get(i).getPaquete().getDescripcion()%></td>
