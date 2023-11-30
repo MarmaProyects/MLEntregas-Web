@@ -26,3 +26,16 @@ label {
 #dataTable select, option{
     background-color: #2e3744;
 }
+
+
+@media (max-width: 980px) {
+    .dataTables_wrapper {
+        font-size: 25px;
+        width: 95%;
+        margin: auto;
+    }
+    
+    .dataTables_wrapper label{
+        font-size: 25px;
+    }
+}

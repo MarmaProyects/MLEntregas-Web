@@ -45,7 +45,7 @@
                             <p>OPERACIONES</p>
                             <a href="/VerMisEnvios">Ver envios</a><br/>
                             <a href="/Seguimiento">Buscar envio</a><br/>
-                            <label for="notifEmail" title="Recibir notificaciones por correo" style="color: white; font-weight: 600; font-size: 14px;">
+                            <label for="notifEmail" title="Recibir notificaciones por correo" for="notifEmail" >
                                 Notificaciones de estados</label> <% Boolean valueNotisEmail = (Boolean) request.getAttribute("notisEmails");  %>
                             <input title="Recibir notificaciones por correo" type="checkbox" id="notisEmail" name="notifEmail" value="<% request.getAttribute("notisEmails"); %>"
                                    <% if (request.getAttribute("notisEmail") != null && (Boolean) request.getAttribute("notisEmail")) { %> checked <% }%>>

@@ -29,19 +29,18 @@
                     <p>Telefónicamente solicitando el retiro del envío en domicilio.</p>
                     <p>Presencial en sucursales o agencias.</p>
                     <br>
-                    <h5>Todos los envíos para su procesamiento deben estar correctamente embalados y rotulados con la siguiente información:</h5>
+                    <h4>Todos los envíos para su procesamiento deben estar correctamente embalados y rotulados con la siguiente información:</h4>
                     <ul>
                         <li>Nombre completo de destinatario</li>
                         <li>Si retira en agencia (agencia en la cual retira)</li>
                         <li>Si es entrega en domicilio (domicilio completo, localidad)</li>
                         <li>Teléfono del destinatario (en ambos casos)</li>
                     </ul>
-
                 </div>
                 <div class='preguntas'>
                     <h4>¿Cuál es nuestro horario?</h4>
                     <hr>
-                    <p>El horario de atención está comprendido entre -- y --, mientras que el de envío entre -- y --.</p>
+                    <p>El horario de atención está comprendido entre 08 y 21, mientras que el de envío entre 10 y 18.</p>
                 </div>
                 <div class='preguntas'>
                     <h4>¿Puede pagar el destinatario?</h4>

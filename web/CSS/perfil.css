@@ -122,9 +122,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 }
 
 .labelPerfil{
-    font-size: 20px;  
+    font-size: 20px;
     color: rgb(255,128, 0, 1);
-} 
+}
 
 .editar-perfil{
     position: relative;
@@ -132,11 +132,61 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 }
 
 .text-center {
-  text-align: center;
+    text-align: center;
 }
 
 .editarPTitle{
     color: rgb(255,128, 0, 1);
     font-size: 24px;
     font-weight: bold;
+}
+.profile-work label{
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+
+@media (max-width: 980px) {
+    .contenedor  {
+        width: 95%;
+    }
+
+    .emp-profile {
+        width: 100%;
+        height: auto;
+    }
+    .col-md-4{
+        font-size: 35px;
+        width: 100%;
+    }
+    .profile-work p{
+        font-size: 35px;
+    }
+    .profile-work a{
+        font-size: 35px;
+    }
+    .profile-work label{
+        font-size: 35px;
+    }
+    .profile-work input{
+        font-size: 35px;
+    }
+    .emp-profile .col-md-8 {
+        width: 100%;
+        font-size: 20px;
+    }
+
+    h5{
+        font-size: 45px;
+        margin-bottom: 50px;
+    }
+    .profile-edit-btn{
+        margin-bottom: 50px;
+
+    } 
+    .col-md-6{
+        margin: auto;
+        width: 95%;
+    }
 }

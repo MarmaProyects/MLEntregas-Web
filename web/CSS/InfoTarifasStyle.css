@@ -6,34 +6,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     Created on : Oct 11, 2023, 9:02:09 PM
     Author     : franc
 */
- 
- 
- 
+
+
+
 #cuerpo{
     display: flex;
-    flex-direction: column; 
-    align-items: center; 
-}
-         
- 
-@media  (max-width: 500px) {
-    body{
-        height: 30%;
-        width: 100%;   
-    }
-
-    html{
-        background-color: green; 
-    }
-
-    #divTablaNormales, #divTablaEspeciales{
-        margin-top: 10px;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 10px;
-        border: solid green;
-    }
-
+    flex-direction: column;
+    align-items: center;
 }
 
 .table_tarifa{
@@ -47,4 +26,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 
 .table{
     margin: 30px;
+}
+
+@media  (max-width: 980px) {
+    h1{
+        font-size: 80px;
+    }
+    h4{
+        font-size: 50px;
+    }
+    .table_tarifa{
+        width: 90%;
+        font-size: 45px;
+    }
+    .table{
+        margin: 0px 2.5% 0px 2.5%;
+    }
+
 }

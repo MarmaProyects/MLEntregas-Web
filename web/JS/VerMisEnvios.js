@@ -129,7 +129,7 @@ function mostrarBotonPaypal() {
         // PayPal Client IDs - replace with your own
         // Create a PayPal app: https://developer.paypal.com/developer/applications/create
         client: {
-            sandbox: 'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
+            sandbox: 'AfhCkQdyLb3C1vJmviZAorwxVG2BZ5BNaVLUYXACzxuTzYI4SC9gUD6r267IdmSa1PWvjrD56sPASmSN',
             production: '<insert production client id>'
         },
         style: {
@@ -148,7 +148,7 @@ function mostrarBotonPaypal() {
                 payment: {
                     transactions: [
                         {
-                            amount: {total: '0.01', currency: 'USD'}
+                            amount: {total: precio, currency: 'USD'}
                         }
                     ]
                 }

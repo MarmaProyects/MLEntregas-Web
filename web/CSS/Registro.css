@@ -33,7 +33,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 
 #divTitulo{
     margin: auto;
-   text-align: center;
+    text-align: center;
 }
 
 .col-auto span{
@@ -43,5 +43,42 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 .ocultarElemento{
     display: none;
 }
+@media (max-width: 980px) {
+    h1{
+        font-size: 80px;
+    }
+    .formularioRegistro {
+        font-size: 45px;
+        height: 95%;
+        width: 100%;
+        margin:  0 0 0 0;
+        margin-top: 70px;
+    }
 
+    #formularioL{
+        margin:  0 2.5% 0 2.5%;
+        width: 100%;
+    }
+
+    .form-control{
+        font-size: 50px;
+    }
+
+    .boton-movil{
+        font-size: 50px;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    #divRegistrarUsuario{
+        margin: auto;
+        text-align: center;
+        width: 100%;
+    }
+
+    #botonR{
+        width: 100%;
+    }
+
+}
 
