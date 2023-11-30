@@ -28,11 +28,9 @@
             <h4>Consulte aquí el estado de su envío, ingresando su número de rastreo.</h4>
             <div class="form-image">
                 <div class="form">
-                    <form action="/Seguimiento" name="rastreo" method="POST" onsubmit="return validarRastreo()">
-                        <div class=" ">
-                            <label>Codigo de rastreo</label>
-                            <input type="text" oninput="validarNumero(this)" id="codigoRastreo" name="codigoRastreo">
-                        </div>
+                    <form action="/Seguimiento" name="rastreo" method="POST" onsubmit="return validarRastreo()"> 
+                        <label>Codigo de rastreo</label>
+                        <input type="text" oninput="validarNumero(this)" id="codigoRastreo" name="codigoRastreo"> 
                         <div class="error-message">
                             <% String error = (String) request.getAttribute("error"); %>
                             <% if (error != null) {%> 
@@ -40,10 +38,8 @@
                             <% }%>
                             <p class="oculto error" id="errordigi">El código no debe estar vacío</p>
                             <p class="oculto error" id="errornull">El código de rastreo debe contener exactamente 9 dígitos.</p>
-                        </div>
-                        <div class=" ">
-                            <button type="submit" class="btn button">Buscar</button>
-                        </div>
+                        </div> 
+                        <button type="submit" class="btn button boton-movil">Buscar</button> 
                     </form>
                 </div>
                 <div class="image">
@@ -112,7 +108,7 @@
                         <% for (int h = envio.getEstados().size() - 1; h >= 0; h--) {%>
                         <tr>
                             <td><%= envio.getEstados().get(h).getFecha()%></td>
-                            <td><span class="estado-seguimiento <%= envio.getEstados().get(h).getTipo() %>"><%= envio.getEstados().get(h).getTipo().getEstado()%></span></td>
+                            <td><span class="estado-seguimiento <%= envio.getEstados().get(h).getTipo()%>"><%= envio.getEstados().get(h).getTipo().getEstado()%></span></td>
                             <td><%= envio.getEstados().get(h).getComentario()%></td>
                         </tr>
                         <% } %>
@@ -121,7 +117,7 @@
                 </table>
             </div>
         </div>
-                        
+
         <% }%>
         <header>
             <jsp:include page="/Includes/Footer.jsp" />

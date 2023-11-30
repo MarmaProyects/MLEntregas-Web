@@ -85,3 +85,35 @@ body{
 .informacion-contacto a:hover {
     color: #ff9900; /* Cambia a un tono más claro de naranja al pasar el mouse */
 }
+
+@media (max-width: 980px) {
+    #DivContacto {
+        display: block;
+        width: 95%;
+        margin: auto;
+    }
+
+    #contenedor2 {
+        display: block;
+    }
+
+    h5 {
+        font-size: 40px;
+    }
+
+    h1 {
+        font-size: 80px;
+        margin-bottom: 30px;
+    }
+
+    .contenedor {
+        display: block;
+        font-size: 30px;
+    }
+
+    #DivMapa{
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+    }
+}

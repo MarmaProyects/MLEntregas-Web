@@ -9,17 +9,36 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 
 .formularioLogin{
     height: 50%;
-    width: 20%;
+    width: 400px;
     align-content: center;
     margin: auto;
     border-radius: 15px;
     margin-top: 70px;
+    margin-bottom: 70px;
+}
+
+@media (max-width: 980px) {
+    h1{
+        font-size: 100px;
+    }
+    .formularioLogin {
+        font-size: 45px;
+        height: 95%;
+        width: 95%;
+    }
+
+    .form-control{
+        font-size: 50px;
+    }
+
+    .boton-movil{
+        font-size: 50px;
+    }
 }
 
 #divInicioSesion{
     margin: auto;
     text-align: center;
-    width: 384px;
 }
 
 #botonIniciarS{
@@ -29,29 +48,30 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 .col-auto span{
     color: red;
 }
- 
+
 #linksLogin{
-   margin: auto;
-   text-align: center;
+    margin: auto;
+    text-align: center;
 }
 
 .link:hover{
-   color:   rgb(255,128, 0, 1);
+    color:   rgb(255,128, 0, 1);
 }
 
 .link-right:hover{
-   color:   rgb(255,128, 0, 1);
+    color:   rgb(255,128, 0, 1);
 }
 
 .link{
-   text-decoration: none;
-   color:  rgb(100, 103, 112);
-   font-weight: bold;
+    text-decoration: none;
+    color:  rgb(100, 103, 112);
+    font-weight: bold;
 }
 
 .link-right{
-   text-decoration: none;
-   color:  rgb(100, 103, 112);
-   float: right;
-   font-weight: bold;
+    display: none;
+    text-decoration: none;
+    color:  rgb(100, 103, 112);
+    float: right;
+    font-weight: bold;
 }

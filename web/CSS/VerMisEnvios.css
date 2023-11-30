@@ -95,7 +95,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
         background-size: cover;
         background-position: center;
     }
-    
+
     p{
         margin: auto;
     }
@@ -120,4 +120,40 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
+}
+
+.codigo-rastreo{
+    margin-top: 4px;
+    margin-bottom: 12px;
+}
+
+@media (max-width: 980px) {
+    .TablaEnvio {
+        display: block;
+        width: 95%;
+        font-size: 35px;
+        margin: auto;
+    }
+
+    #contenedorDatosEnvio{
+        min-width: 95%;
+        display: block;
+    }
+    .codigo-rastreo{
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    #divCodigoRastreo{
+        display: flex;
+        justify-content: flex-start
+    }
+    #ModalMedioPago{
+        min-width: 95%;
+        font-size: 35px;
+    }
+    .fade-wrapper-34hB2J.svelte-18v2ee9{
+        min-width: 95%;
+        font-size: 35px;
+        
+    }
 }

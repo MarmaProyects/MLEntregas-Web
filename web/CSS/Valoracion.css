@@ -9,7 +9,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 
 label:hover,
 label:hover ~ label {
-  color: rgb(33, 37, 41); /* Cambia el color de las estrellas al pasar el mouse por encima */
+    color: rgb(33, 37, 41); /* Cambia el color de las estrellas al pasar el mouse por encima */
 }
 
 #divComentarioDelEnvio{
@@ -36,4 +36,32 @@ label:hover ~ label {
 
 .rating h1, .rating h2, .rating p{
     color: orange;
+}
+
+
+@media (max-width: 980px) {
+    .contenedor {
+        font-size: 45px;
+    }
+    
+    .contenedor .rating{
+        width: 95%;
+        height: 100%;
+        margin-bottom: 20px;
+    }
+    
+    h1 {
+        font-size: 70px;
+    }
+
+    h2 {
+        font-size: 50px;
+    }
+    .form-control {
+        font-size: 45px;
+    }
+    
+    #botonComentario{
+        font-size: 45px;
+    }
 }

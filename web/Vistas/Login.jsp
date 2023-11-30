@@ -55,7 +55,7 @@
                     </div>
                     <br>
                     <div id="divInicioSesion">
-                        <button type="submit" class="btn button" id="botonIniciarS">Iniciar sesión</button>
+                        <button type="submit" class="btn button boton-movil" id="botonIniciarS">Iniciar sesión</button>
                     </div>
                     <a href="/Registro" class="link">¿No tienes cuenta?</a>
                     <a href="#" class="link-right">¿Olvidó su contraseña?</a>

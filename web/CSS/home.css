@@ -1,22 +1,11 @@
-/*
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
-*/
-/* 
-    Created on : 12 oct 2023, 14:47:17
-    Author     : MarmaduX
-*/
-
 body {
     background-image: url("/Images/backgroundMLEntregas.png");
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
-
 }
 
-
-.home-content{
+.home-content {
     margin-left: 35%;
     width: 30%;
     background-color: rgb(31, 37, 46);
@@ -26,11 +15,11 @@ body {
     border-radius: 12px;
 }
 
-.home-content .border border-4{
-    color: rgb(255,128, 0, 1);
+.home-content .border border-4 {
+    color: rgb(255, 128, 0, 1);
 }
 
-.home-title{
+.home-title {
     padding-top: 50px;
     font-size: 35px;
     color: black;
@@ -38,31 +27,62 @@ body {
     text-align: center;
 }
 
-.home-buttons{
+.home-buttons {
     margin-top: 40px;
     width: 100%;
-    text-align: center; 
-    background: rgb(255,128, 0, 1);
+    text-align: center;
+    background: rgb(255, 128, 0);
     height: 40px;
 }
-
-
-@media (max-width: 768px){
-    .home-content{
-        width: 100%;
+.home-content-movil{
+    display: none;
+}
+@media (max-width: 1300px) {
+    .home-content {
+        margin: 70px 200px 70px 200px;
+        width: auto;
     }
+}
+
+@media (max-width: 980px) {
+    .home-content {
+        display: none;
+    }
+
+    .home-content-movil{
+        display: block;
+        height: 100%;
+        background-color: rgb(46, 55, 68);
+        margin-bottom: 70px;
+    }
+
+    #divLogoMovil {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        background-color: rgb(46, 55, 68);
+    }
+
+    .boton-home{
+        min-height: 125px;
+        font-size: 60px;
+    }
+    body {
+        background-image: none; 
+    }
+
 }
 
 .contenedor {
     margin-top: 0px;
 }
 
-#divLogo{
+#divLogo {
     background-color: #14140F;
     width: 100%;
     height: 200px;
     display: flex;
     justify-content: center;
-    border-radius: 12px;
-    align-items: center;
-}
+    border-radius: 12px; 
+    align-items: center; 
+} 

@@ -109,7 +109,7 @@
                         
                     </div>
                     <div id="divRegistrarUsuario">
-                        <button type="submit" class="btn btn-primary button" id="botonR">Registrarme</button>
+                        <button type="submit" class="btn btn-primary button boton-movil" id="botonR">Registrarme</button>
                     </div>
                 </form>
             </div>
